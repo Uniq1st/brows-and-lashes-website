@@ -24,21 +24,21 @@ export function HeroSection() {
         </p>
         
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight mb-8 animate-fade-up text-balance" style={{ animationDelay: "0.1s" }}>
-          Exquisite beauty
-          <span className="block italic">meets artistry</span>
+          Beauty with
+          <span className="block italic">the Thread</span>
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg md:text-xl font-[family-name:var(--font-montserrat)] font-light text-muted-foreground mb-10 animate-fade-up text-pretty" style={{ animationDelay: "0.2s" }}>
-          Transform your look with our bespoke brow and lash services. 
-          Experience the perfect blend of precision, artistry, and luxury.
+          Your one-stop destination for all your beauty needs. Expert threading, facials, 
+          eyelash extensions, and waxing in the heart of the Upper East Side.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
           <Button asChild size="lg" className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase px-8 py-6">
-            <Link href="#book">
+            <a href="https://simplebrows.trafft.com" target="_blank" rel="noopener noreferrer">
               Book Appointment
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
           </Button>
           <Button asChild variant="outline" size="lg" className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase px-8 py-6 bg-transparent hover:bg-foreground hover:text-background">
             <Link href="#services">

@@ -54,10 +54,10 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-medium mb-2">Phone</h3>
                 <a 
-                  href="tel:+12125551234" 
+                  href="tel:+19173882434" 
                   className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light hover:text-primary transition-colors"
                 >
-                  (212) 555-1234
+                  +1 (917) 388-2434
                 </a>
               </div>
             </div>
@@ -67,12 +67,14 @@ export function ContactSection() {
                 <Mail className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="text-lg font-medium mb-2">Email</h3>
+                <h3 className="text-lg font-medium mb-2">Website</h3>
                 <a 
-                  href="mailto:hello@uniqswek.com" 
+                  href="https://yoursimplebrows.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light hover:text-primary transition-colors"
                 >
-                  hello@uniqswek.com
+                  yoursimplebrows.com
                 </a>
               </div>
             </div>

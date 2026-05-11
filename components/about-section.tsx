@@ -30,13 +30,13 @@ export function AboutSection() {
             </h2>
             <div className="space-y-6 font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed">
               <p>
-                Welcome to Brows and Lashes by UniqSwek, a sanctuary of beauty nestled in the heart of New York City. Founded with a passion for enhancing natural beauty, our studio has become a haven for those seeking exceptional brow and lash services.
+                Welcome to Brows and Lashes by UniqSwek, your go-to destination for beauty and self-care on the Upper East Side! We are a premier beauty salon specializing in threading, waxing, facials, and eyelash extensions, committed to enhancing your natural beauty with expert care and precision.
               </p>
               <p>
-                Our team of certified artists brings years of expertise and an unwavering commitment to perfection. We believe that every face tells a unique story, and our mission is to frame that story beautifully.
+                Our team of highly trained specialists is passionate about delivering personalized, high-quality services tailored to your unique preferences. Whether you&apos;re shaping your brows with meticulous threading, achieving smooth, radiant skin with our waxing and facial treatments, or adding drama to your eyes with stunning eyelash extensions, we prioritize your comfort and satisfaction every step of the way.
               </p>
               <p>
-                Using only premium products and the latest techniques, we create looks that are as unique as you are—whether you prefer subtle elegance or bold glamour.
+                At Brows and Lashes, we combine advanced techniques with premium products in a clean, relaxing environment to ensure exceptional results. Your beauty and confidence are our top priorities.
               </p>
             </div>
 
