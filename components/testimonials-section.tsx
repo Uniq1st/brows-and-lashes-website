@@ -6,33 +6,21 @@ import { Button } from "@/components/ui/button"
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
-    service: "Microblading",
-    text: "I've been to many brow artists in NYC, but UniqSwek is truly exceptional. My microblading looks so natural that people think I was born with perfect brows. The attention to detail is unmatched.",
+    name: "Aleesha Maskey",
+    service: "Eyebrow Threading",
+    text: "I'm very picky with my brows, glad that I chose this place. Swek has done a fabulous job. Great customer experience, neat and tidy place. Highly recommended!",
     rating: 5
   },
   {
-    name: "Jessica Chen",
-    service: "Volume Lashes",
-    text: "My lashes have never looked better! The team took the time to understand exactly what I wanted and delivered beyond my expectations. I wake up feeling glamorous every day.",
+    name: "Manon Hallay",
+    service: "Eyebrow Threading & Tinting",
+    text: "Incredible place! Clean, fast and with some of the nicest staff members I've had. Went there for eyebrow threading and tinting and my brows were the best I've had! I will be back!",
     rating: 5
   },
   {
-    name: "Amanda Roberts",
-    service: "Brow Lamination",
-    text: "The brow lamination transformed my unruly brows into perfectly groomed arches. The results lasted for weeks and the process was so relaxing. I'm officially hooked!",
-    rating: 5
-  },
-  {
-    name: "Emily Thompson",
-    service: "Hybrid Lashes",
-    text: "As a bride, I wanted my lashes to be perfect for my wedding. UniqSwek created the most beautiful, natural yet glamorous look. All my guests kept asking where I got them done!",
-    rating: 5
-  },
-  {
-    name: "Maria Garcia",
-    service: "Lash Lift",
-    text: "For someone who doesn't want the maintenance of extensions, the lash lift is perfect. My natural lashes look curled and lifted for weeks. Best decision I've made for my beauty routine.",
+    name: "Emmanuelle Yeremou",
+    service: "Eyebrow Threading",
+    text: "This place is absolutely wonderful. Satisfactory and top tier service, and customer service. Swek was so friendly and nice. She did an amazing job and I will definitely be back.",
     rating: 5
   }
 ]

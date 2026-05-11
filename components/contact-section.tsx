@@ -19,7 +19,7 @@ export function ContactSection() {
           {/* Map Placeholder */}
           <div className="aspect-square lg:aspect-auto lg:min-h-[500px] bg-secondary relative overflow-hidden rounded-sm">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96708.34194156103!2d-74.03927096447754!3d40.75904032920749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2588f046ee661%3A0xa0b3281fcecc08c!2sManhattan%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5!2d-73.9565!3d40.7825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258a2b1c3b5e7%3A0x1234567890abcdef!2s1240%20Lexington%20Ave%2C%20New%20York%2C%20NY%2010028!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -40,8 +40,9 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-medium mb-2">Location</h3>
                 <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light">
-                  123 Beauty Lane, Suite 4B<br />
-                  Manhattan, New York, NY 10001
+                  1240 Lexington Avenue<br />
+                  New York, NY 10028<br />
+                  <span className="text-primary/80">Upper East Side</span>
                 </p>
               </div>
             </div>
@@ -53,10 +54,10 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-medium mb-2">Phone</h3>
                 <a 
-                  href="tel:+12125551234" 
+                  href="tel:+19173882434" 
                   className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light hover:text-primary transition-colors"
                 >
-                  (212) 555-1234
+                  +1 (917) 388-2434
                 </a>
               </div>
             </div>
@@ -66,12 +67,14 @@ export function ContactSection() {
                 <Mail className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="text-lg font-medium mb-2">Email</h3>
+                <h3 className="text-lg font-medium mb-2">Website</h3>
                 <a 
-                  href="mailto:hello@uniqswek.com" 
+                  href="https://yoursimplebrows.com" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light hover:text-primary transition-colors"
                 >
-                  hello@uniqswek.com
+                  yoursimplebrows.com
                 </a>
               </div>
             </div>

@@ -37,7 +37,7 @@ export function Navigation() {
             </Link>
           ))}
           <Button asChild className="ml-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
-            <Link href="#book">Book Now</Link>
+            <a href="https://simplebrows.trafft.com" target="_blank" rel="noopener noreferrer">Book Now</a>
           </Button>
         </div>
 
@@ -62,7 +62,7 @@ export function Navigation() {
                 </Link>
               ))}
               <Button asChild className="mt-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
-                <Link href="#book" onClick={() => setIsOpen(false)}>Book Now</Link>
+                <a href="https://simplebrows.trafft.com" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>Book Now</a>
               </Button>
             </div>
           </SheetContent>

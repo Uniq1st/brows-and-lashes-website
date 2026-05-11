@@ -5,37 +5,37 @@ import { cn } from "@/lib/utils"
 
 const services = [
   {
-    category: "Brows",
+    category: "Threading & Brows",
     items: [
       {
-        name: "Microblading",
-        description: "Semi-permanent technique creating natural, hair-like strokes for fuller, defined brows.",
-        price: "From $450",
-        duration: "2-3 hours"
+        name: "Eyebrow Threading",
+        description: "Precise hair removal technique using thread for perfectly shaped brows with clean, defined lines.",
+        price: "From $15",
+        duration: "15 mins"
       },
       {
-        name: "Brow Lamination",
-        description: "Restructures brow hairs to create a fuller, more defined shape that lasts 6-8 weeks.",
-        price: "From $120",
-        duration: "45 mins"
-      },
-      {
-        name: "Brow Tinting",
-        description: "Semi-permanent dye enhances brow color for a naturally fuller appearance.",
-        price: "From $35",
+        name: "Eyebrow Waxing",
+        description: "Quick and effective brow shaping using premium wax for smooth, long-lasting results.",
+        price: "From $20",
         duration: "20 mins"
       },
       {
-        name: "Brow Shaping & Wax",
-        description: "Expert sculpting to define and enhance your natural brow shape.",
-        price: "From $45",
-        duration: "30 mins"
+        name: "Eyebrow Tinting",
+        description: "Semi-permanent dye enhances brow color for a naturally fuller, defined appearance.",
+        price: "From $25",
+        duration: "20 mins"
       },
       {
-        name: "Ombre Powder Brows",
-        description: "Soft, powdered effect that gives a filled-in, makeup look.",
-        price: "From $500",
-        duration: "2-3 hours"
+        name: "Male Threading",
+        description: "Specialized threading service for men, including brow shaping and facial hair grooming.",
+        price: "From $15",
+        duration: "15 mins"
+      },
+      {
+        name: "Full Face Threading",
+        description: "Complete facial hair removal including brows, upper lip, chin, and sides using threading technique.",
+        price: "From $45",
+        duration: "30 mins"
       },
     ]
   },
@@ -44,40 +44,110 @@ const services = [
     items: [
       {
         name: "Classic Lash Extensions",
-        description: "One extension per natural lash for a subtle, natural enhancement.",
-        price: "From $180",
+        description: "One extension per natural lash for a subtle, natural enhancement that opens up your eyes.",
+        price: "From $120",
         duration: "90 mins"
       },
       {
         name: "Volume Lash Extensions",
-        description: "Multiple lightweight extensions per natural lash for dramatic fullness.",
-        price: "From $250",
+        description: "Multiple lightweight extensions per natural lash for dramatic, full, glamorous lashes.",
+        price: "From $180",
         duration: "2 hours"
       },
       {
         name: "Hybrid Lash Extensions",
-        description: "Perfect blend of classic and volume techniques for textured dimension.",
-        price: "From $220",
+        description: "Perfect blend of classic and volume techniques for beautiful textured dimension.",
+        price: "From $150",
         duration: "2 hours"
       },
       {
         name: "Lash Lift & Tint",
-        description: "Semi-permanent curl and color enhancement for your natural lashes.",
-        price: "From $95",
+        description: "Semi-permanent curl and color enhancement for your natural lashes that lasts 6-8 weeks.",
+        price: "From $85",
         duration: "60 mins"
       },
       {
-        name: "Lash Fill (2-3 weeks)",
-        description: "Maintenance appointment to refresh your lash extensions.",
+        name: "Eyelash Tinting",
+        description: "Darken and define your natural lashes for a mascara-free, polished look.",
+        price: "From $25",
+        duration: "20 mins"
+      },
+    ]
+  },
+  {
+    category: "Waxing",
+    items: [
+      {
+        name: "Full Body Wax",
+        description: "Complete body waxing service for smooth, hair-free skin from head to toe.",
+        price: "From $150",
+        duration: "90 mins"
+      },
+      {
+        name: "Brazilian Wax",
+        description: "Professional bikini waxing for a clean, smooth finish with minimal discomfort.",
+        price: "From $55",
+        duration: "30 mins"
+      },
+      {
+        name: "Leg Wax",
+        description: "Full or half leg waxing for silky smooth, hair-free legs that last weeks.",
+        price: "From $45",
+        duration: "45 mins"
+      },
+      {
+        name: "Arm Wax",
+        description: "Complete arm waxing for smooth, touchable skin all day long.",
+        price: "From $35",
+        duration: "30 mins"
+      },
+      {
+        name: "Underarm Wax",
+        description: "Quick and effective underarm hair removal for lasting smoothness.",
+        price: "From $20",
+        duration: "15 mins"
+      },
+    ]
+  },
+  {
+    category: "Facials & More",
+    items: [
+      {
+        name: "Classic Facial",
+        description: "Deep cleansing facial treatment to rejuvenate and refresh your skin for a healthy glow.",
+        price: "From $65",
+        duration: "45 mins"
+      },
+      {
+        name: "Deep Cleanse Facial",
+        description: "Intensive facial with extractions and deep pore cleansing for clear, radiant skin.",
         price: "From $85",
-        duration: "45-60 mins"
+        duration: "60 mins"
+      },
+      {
+        name: "Hydrating Facial",
+        description: "Nourishing treatment to restore moisture and plump dehydrated skin.",
+        price: "From $75",
+        duration: "50 mins"
+      },
+      {
+        name: "Henna Tattoos",
+        description: "Beautiful, intricate temporary henna designs for special occasions and celebrations.",
+        price: "From $25",
+        duration: "30 mins"
+      },
+      {
+        name: "Anti-Aging Facial",
+        description: "Rejuvenating treatment targeting fine lines and wrinkles for youthful, firm skin.",
+        price: "From $95",
+        duration: "60 mins"
       },
     ]
   }
 ]
 
 export function ServicesSection() {
-  const [activeCategory, setActiveCategory] = useState("Brows")
+  const [activeCategory, setActiveCategory] = useState("Threading & Brows")
 
   const activeServices = services.find(s => s.category === activeCategory)?.items || []
 
@@ -90,22 +160,22 @@ export function ServicesSection() {
             Our Services
           </p>
           <h2 className="text-4xl md:text-5xl font-light leading-tight mb-6">
-            Tailored treatments for
-            <span className="block italic">your unique beauty</span>
+            Beauty with the Thread
+            <span className="block italic">and so much more</span>
           </h2>
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light">
-            From subtle enhancements to bold transformations, discover our curated menu of brow and lash services.
+            From expert threading to luxurious facials, discover our full menu of beauty services tailored for you.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {services.map((service) => (
             <button
               key={service.category}
               onClick={() => setActiveCategory(service.category)}
               className={cn(
-                "px-8 py-3 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase transition-all",
+                "px-6 py-3 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase transition-all",
                 activeCategory === service.category
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -118,7 +188,7 @@ export function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {activeServices.map((service, index) => (
+          {activeServices.map((service) => (
             <div
               key={service.name}
               className="group bg-card p-8 border border-border hover:border-primary/50 transition-all duration-300"
@@ -136,9 +206,14 @@ export function ServicesSection() {
                 <span className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-muted-foreground">
                   {service.duration}
                 </span>
-                <span className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                <a 
+                  href="https://simplebrows.trafft.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                >
                   Book Now →
-                </span>
+                </a>
               </div>
             </div>
           ))}
@@ -147,13 +222,15 @@ export function ServicesSection() {
         {/* CTA */}
         <div className="text-center mt-16">
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground mb-4">
-            Not sure which service is right for you?
+            Ready to enhance your natural beauty?
           </p>
           <a
-            href="#contact"
-            className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-primary hover:underline underline-offset-4"
+            href="https://simplebrows.trafft.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-primary/90 transition-colors"
           >
-            Schedule a Consultation →
+            Book Your Appointment
           </a>
         </div>
       </div>

@@ -69,11 +69,11 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               {[
-                "Microblading",
-                "Brow Lamination",
+                "Eyebrow Threading",
                 "Lash Extensions",
-                "Lash Lift",
-                "Brow Tinting",
+                "Facials",
+                "Full Body Waxing",
+                "Henna Tattoos",
               ].map((service) => (
                 <li key={service}>
                   <span className="font-[family-name:var(--font-montserrat)] text-background/70 font-light">
