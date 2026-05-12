@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Instagram, Facebook } from "lucide-react"
+import { Instagram } from "lucide-react"
+import { STORES } from "@/lib/stores"
 
 export function Footer() {
   return (
@@ -9,31 +10,51 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="text-2xl font-semibold tracking-tight">
-              Brows & Lashes
-              <span className="block text-sm font-light tracking-[0.3em] text-background/70">by UniqSwek</span>
+              UniqSwek
+              <span className="block text-sm font-light tracking-[0.3em] text-background/70">Beauty Studios · NYC</span>
             </Link>
             <p className="font-[family-name:var(--font-montserrat)] text-background/70 font-light mt-4 max-w-sm leading-relaxed">
-              NYC&apos;s premier destination for exquisite brow and lash services. Where beauty meets artistry.
+              Two NYC studios under one brand. Expert threading, lash extensions, waxing & facials — where beauty meets artistry.
             </p>
             <div className="flex gap-4 mt-6">
-              <a
-                href="https://www.instagram.com/browsandlashesnyc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-                <span className="sr-only">Instagram</span>
-              </a>
-              <a
-                href="https://www.facebook.com/browsandlashesnyc"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-                <span className="sr-only">Facebook</span>
-              </a>
+              {STORES.map((store) => (
+                <a
+                  key={store.id}
+                  href={store.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={store.instagram}
+                  className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                  <span className="sr-only">{store.instagram}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Our Studios */}
+          <div>
+            <h4 className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase mb-6">
+              Our Studios
+            </h4>
+            <div className="space-y-6">
+              {STORES.map((store) => (
+                <div key={store.id}>
+                  <p className="font-[family-name:var(--font-montserrat)] text-background/90 text-sm font-medium mb-1">
+                    {store.name}
+                  </p>
+                  <p className="font-[family-name:var(--font-montserrat)] text-background/60 text-xs leading-relaxed">
+                    {store.address}<br />{store.cityStateZip}
+                  </p>
+                  <a
+                    href={store.phoneHref}
+                    className="font-[family-name:var(--font-montserrat)] text-background/60 text-xs hover:text-background transition-colors"
+                  >
+                    {store.phone}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -46,8 +67,9 @@ export function Footer() {
               {[
                 { href: "#about", label: "About" },
                 { href: "#services", label: "Services" },
+                { href: "#locations", label: "Locations" },
                 { href: "#gallery", label: "Gallery" },
-                { href: "#testimonials", label: "Testimonials" },
+                { href: "#testimonials", label: "Reviews" },
                 { href: "#book", label: "Book Now" },
               ].map((link) => (
                 <li key={link.href}>
@@ -61,34 +83,12 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase mb-6">
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {[
-                "Eyebrow Threading",
-                "Lash Extensions",
-                "Facials",
-                "Full Body Waxing",
-                "Henna Tattoos",
-              ].map((service) => (
-                <li key={service}>
-                  <span className="font-[family-name:var(--font-montserrat)] text-background/70 font-light">
-                    {service}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         {/* Bottom */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-[family-name:var(--font-montserrat)] text-sm text-background/50 font-light">
-            © {new Date().getFullYear()} Brows and Lashes by UniqSwek. All rights reserved.
+            © {new Date().getFullYear()} UniqSwek Beauty Studios. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link

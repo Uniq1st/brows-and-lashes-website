@@ -2,13 +2,23 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { STORES } from "@/lib/stores"
 
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#locations", label: "Locations" },
   { href: "#gallery", label: "Gallery" },
   { href: "#testimonials", label: "Testimonials" },
   { href: "#contact", label: "Contact" },
@@ -21,8 +31,8 @@ export function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
-          Brows & Lashes
-          <span className="block text-sm font-light tracking-[0.3em] text-muted-foreground">by UniqSwek</span>
+          UniqSwek
+          <span className="block text-sm font-light tracking-[0.3em] text-muted-foreground">Beauty Studios</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -36,9 +46,36 @@ export function Navigation() {
               {link.label}
             </Link>
           ))}
-          <Button asChild className="ml-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
-            <a href="https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D" target="_blank" rel="noopener noreferrer">Book Now</a>
-          </Button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="ml-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
+                Book Now
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-64">
+              <DropdownMenuLabel className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-muted-foreground py-2">
+                Choose a Location
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {STORES.map((store) => (
+                <DropdownMenuItem key={store.id} asChild>
+                  <a
+                    href={store.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-col items-start gap-0.5 py-3 cursor-pointer"
+                  >
+                    <span className="font-medium text-sm">{store.name}</span>
+                    <span className="text-xs text-muted-foreground font-[family-name:var(--font-montserrat)]">
+                      {store.neighborhood}
+                    </span>
+                  </a>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Mobile Navigation */}
@@ -61,9 +98,28 @@ export function Navigation() {
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="mt-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
-                <a href="https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>Book Now</a>
-              </Button>
+
+              <div className="border-t border-border pt-6 space-y-3">
+                <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-muted-foreground">
+                  Book a Studio
+                </p>
+                {STORES.map((store) => (
+                  <a
+                    key={store.id}
+                    href={store.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-between font-[family-name:var(--font-montserrat)] text-sm py-3 px-4 bg-secondary hover:bg-secondary/80 transition-colors"
+                  >
+                    <div>
+                      <p className="font-medium">{store.name}</p>
+                      <p className="text-xs text-muted-foreground">{store.neighborhood}</p>
+                    </div>
+                    <span className="text-primary text-xs uppercase tracking-wider">Book →</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </SheetContent>
         </Sheet>

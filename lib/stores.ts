@@ -1,0 +1,38 @@
+export const STORES = [
+  {
+    id: "brows-and-lashes",
+    name: "Brows & Lashes",
+    fullName: "Brows & Lashes by UniqSwek",
+    neighborhood: "Upper East Side, Manhattan",
+    address: "1240 Lexington Avenue",
+    cityStateZip: "New York, NY 10028",
+    phone: "+1 (917) 388-2434",
+    phoneHref: "tel:+19173882434",
+    instagram: "@browsandlashesnyc",
+    instagramUrl: "https://www.instagram.com/browsandlashesnyc",
+    bookingUrl:
+      "https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D",
+    googleReviewUrl: "https://g.page/r/CUN4yeXaRdrwEAE/review",
+    mapSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5!2d-73.9565!3d40.7825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258a2b1c3b5e7%3A0x1234567890abcdef!2s1240%20Lexington%20Ave%2C%20New%20York%2C%20NY%2010028!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus",
+  },
+  {
+    id: "eyebrow-shape",
+    name: "Eyebrow Shape",
+    fullName: "Eyebrow Shape by UniqSwek",
+    neighborhood: "Ridgewood, Queens",
+    address: "59-15 71st Ave",
+    cityStateZip: "Ridgewood, NY 11385",
+    phone: "(347) 889-5027",
+    phoneHref: "tel:+13478895027",
+    instagram: "@eyebrowshapenyc",
+    instagramUrl: "https://www.instagram.com/eyebrowshapenyc",
+    bookingUrl:
+      "https://book.squareup.com/appointments/l5f8uasy444v40/location/LPT50K5SGRJTC/services?rwg_token=AFd1xnEaECUSkKyBXSkHBl1EvPjIY8g4A3MnG3OXAB2IRwUjK5hoqRcJoOgU2C2zyrLyzyaCCD9kreZXo4n4Klyh6i8ZeCoVaQ%3D%3D",
+    googleReviewUrl: "https://g.page/r/eyebrowshape/review",
+    mapSrc:
+      "https://maps.google.com/maps?q=59-15+71st+Ave,+Ridgewood,+NY+11385&output=embed",
+  },
+] as const
+
+export type Store = (typeof STORES)[number]
