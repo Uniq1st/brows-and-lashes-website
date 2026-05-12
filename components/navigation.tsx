@@ -37,7 +37,7 @@ export function Navigation() {
             </Link>
           ))}
           <Button asChild className="ml-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
-            <a href="https://simplebrows.trafft.com" target="_blank" rel="noopener noreferrer">Book Now</a>
+            <a href="https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D" target="_blank" rel="noopener noreferrer">Book Now</a>
           </Button>
         </div>
 
@@ -62,7 +62,7 @@ export function Navigation() {
                 </Link>
               ))}
               <Button asChild className="mt-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase">
-                <a href="https://simplebrows.trafft.com" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>Book Now</a>
+                <a href="https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>Book Now</a>
               </Button>
             </div>
           </SheetContent>

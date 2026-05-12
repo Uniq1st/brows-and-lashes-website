@@ -2,7 +2,7 @@
 
 **NYC's premier threading, lash & beauty studio — Upper East Side**
 
-> Live site → [uniqswek.com](https://uniqswek.com) · Book → [simplebrows.trafft.com](https://simplebrows.trafft.com) · 📍 1240 Lexington Ave, New York NY 10028
+> Live site → [uniqswek.com](https://uniqswek.com) · Book → [Square Appointments](https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D) · 📍 1240 Lexington Ave, New York NY 10028
 
 ---
 
@@ -22,7 +22,7 @@ Brows & Lashes by UniqSwek is a luxury beauty studio on the Upper East Side of M
 | Components | [shadcn/ui](https://ui.shadcn.com) + Radix UI |
 | Fonts | Cormorant Garamond + Montserrat (Google Fonts) |
 | Analytics | Vercel Analytics |
-| Booking | [Trafft](https://simplebrows.trafft.com) (external) |
+| Booking | [Square Appointments](https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D) (external) |
 | Deployment | [Vercel](https://vercel.com) |
 
 ---
@@ -132,7 +132,7 @@ Then in **Spaceship** (spaceship.com → Domains → uniqswek.com → DNS):
 
 ## Booking System
 
-Appointments are handled externally via **Trafft** at [simplebrows.trafft.com](https://simplebrows.trafft.com). All "Book Now" buttons on the site link directly there — no backend or database required.
+Appointments are handled externally via **Square Appointments**. All "Book Now" buttons on the site link directly there — no backend or database required.
 
 ---
 

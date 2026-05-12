@@ -80,7 +80,7 @@ export function BookingSection() {
               className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase px-10 py-6"
             >
               <a 
-                href="https://simplebrows.trafft.com" 
+                href="https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
