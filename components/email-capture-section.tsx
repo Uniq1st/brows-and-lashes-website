@@ -16,7 +16,7 @@ export function EmailCaptureSection() {
     try {
       // Using Formspree — sign up free at formspree.io and replace YOUR_FORM_ID
       // with your actual form endpoint ID to start receiving emails.
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      const res = await fetch("https://formspree.io/f/xbdwbldn", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({ name, email, _subject: "New subscriber — UniqSwek website" }),
