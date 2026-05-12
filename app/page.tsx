@@ -6,6 +6,8 @@ import { ServicesSection } from "@/components/services-section"
 import { TeamSection } from "@/components/team-section"
 import { GallerySection } from "@/components/gallery-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { EmailCaptureSection } from "@/components/email-capture-section"
+import { FaqSection } from "@/components/faq-section"
 import { BookingSection } from "@/components/booking-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -22,6 +24,8 @@ export default function Home() {
       <TeamSection />
       <GallerySection />
       <TestimonialsSection />
+      <EmailCaptureSection />
+      <FaqSection />
       <BookingSection />
       <ContactSection />
       <Footer />

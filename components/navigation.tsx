@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Menu, ChevronDown } from "lucide-react"
+import { Menu, ChevronDown, X, Gift } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -27,9 +27,33 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [showBanner, setShowBanner] = useState(true)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* Promo Banner */}
+      {showBanner && (
+        <div className="bg-primary text-primary-foreground px-4 py-2 flex items-center justify-center gap-3 relative">
+          <Gift className="w-4 h-4 shrink-0 opacity-80" />
+          <p className="font-[family-name:var(--font-montserrat)] text-xs md:text-sm text-center">
+            <span className="font-medium">10% off your first visit</span>
+            <span className="opacity-80"> — mention this website when you book.</span>
+            <a href="#locations" className="ml-2 underline underline-offset-2 font-medium hover:opacity-80 transition-opacity">
+              Book now →
+            </a>
+          </p>
+          <button
+            onClick={() => setShowBanner(false)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 opacity-70 hover:opacity-100 transition-opacity"
+            aria-label="Dismiss offer"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      )}
+
+      {/* Nav Bar */}
+      <div className="bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
           UniqSwek
@@ -125,6 +149,7 @@ export function Navigation() {
           </SheetContent>
         </Sheet>
       </nav>
+      </div>
     </header>
   )
 }

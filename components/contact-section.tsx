@@ -118,8 +118,8 @@ export function ContactSection() {
               <div>
                 <h4 className="text-lg font-medium mb-2">Hours</h4>
                 <div className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light space-y-1">
-                  <p>Monday – Saturday: 10am – 8pm</p>
-                  <p>Sunday: 10am – 7pm</p>
+                  <p>{store.hours.weekdays}</p>
+                  <p>{store.hours.sunday}</p>
                 </div>
               </div>
             </div>

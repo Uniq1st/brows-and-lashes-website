@@ -47,6 +47,71 @@ export const metadata: Metadata = {
   },
 }
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BeautySalon",
+      "@id": "https://uniqswek.com/#brows-and-lashes",
+      "name": "Brows & Lashes by UniqSwek",
+      "url": "https://uniqswek.com",
+      "telephone": "+19173882434",
+      "priceRange": "$$",
+      "image": "https://uniqswek.com/images/hero-bg.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1240 Lexington Avenue",
+        "addressLocality": "New York",
+        "addressRegion": "NY",
+        "postalCode": "10028",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.7825,
+        "longitude": -73.9565
+      },
+      "openingHours": ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
+      "sameAs": ["https://www.instagram.com/browsandlashesnyc"],
+      "hasMap": "https://maps.google.com/?q=1240+Lexington+Avenue+New+York+NY+10028",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "200",
+        "bestRating": "5"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Swekchha Luitel"
+      }
+    },
+    {
+      "@type": "BeautySalon",
+      "@id": "https://uniqswek.com/#eyebrow-shape",
+      "name": "Eyebrow Shape by UniqSwek",
+      "url": "https://uniqswek.com",
+      "telephone": "+13478895027",
+      "priceRange": "$$",
+      "image": "https://uniqswek.com/images/hero-bg.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "59-15 71st Ave",
+        "addressLocality": "Ridgewood",
+        "addressRegion": "NY",
+        "postalCode": "11385",
+        "addressCountry": "US"
+      },
+      "openingHours": ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
+      "sameAs": ["https://www.instagram.com/eyebrowshapenyc"],
+      "hasMap": "https://maps.google.com/?q=59-15+71st+Ave+Ridgewood+NY+11385",
+      "founder": {
+        "@type": "Person",
+        "name": "Swekchha Luitel"
+      }
+    }
+  ]
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -54,6 +119,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className={`${cormorant.variable} ${montserrat.variable} font-serif antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
