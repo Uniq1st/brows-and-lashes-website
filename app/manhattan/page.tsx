@@ -21,6 +21,7 @@ export default function ManhattanPage() {
   return (
     <LocationPage
       store={store}
+      storeId="brows-and-lashes"
       teamMembers={uesTeam}
       heroTagline="Your go-to threading and lash studio on the Upper East Side of Manhattan. Over 200 five-star reviews and counting."
       neighborhoodDesc="Located at 1240 Lexington Avenue in the heart of the Upper East Side, our Manhattan studio has served thousands of New Yorkers since opening. Whether you're a regular threading client or trying lash extensions for the first time, our licensed team ensures you leave looking and feeling your best. Steps from the 4/5/6 subway at 86th Street."
