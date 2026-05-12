@@ -56,7 +56,10 @@ export function BookingSection() {
                 <div>
                   <h3 className="font-medium mb-1">Hours</h3>
                   <p className="font-[family-name:var(--font-montserrat)] text-sm text-primary-foreground/70">
-                    Open 7 days a week
+                    Mon – Sat: 10am – 8pm
+                  </p>
+                  <p className="font-[family-name:var(--font-montserrat)] text-sm text-primary-foreground/70">
+                    Sunday: 10am – 7pm
                   </p>
                 </div>
               </div>

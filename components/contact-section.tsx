@@ -86,10 +86,8 @@ export function ContactSection() {
               <div>
                 <h3 className="text-lg font-medium mb-2">Hours</h3>
                 <div className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light space-y-1">
-                  <p>Tuesday - Friday: 10am - 7pm</p>
-                  <p>Saturday: 9am - 6pm</p>
-                  <p>Sunday: 11am - 5pm</p>
-                  <p>Monday: Closed</p>
+                  <p>Monday – Saturday: 10am – 8pm</p>
+                  <p>Sunday: 10am – 7pm</p>
                 </div>
               </div>
             </div>
