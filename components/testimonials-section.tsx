@@ -116,6 +116,9 @@ export function TestimonialsSection() {
             What our clients
             <span className="block italic">are saying</span>
           </h2>
+          <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-4">
+            200+ five-star reviews in our first year — thank you, New York.
+          </p>
         </div>
 
         {/* Google Rating Summary */}
@@ -126,7 +129,7 @@ export function TestimonialsSection() {
             ))}
           </div>
           <span className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground">
-            5.0 · 60+ reviews on
+            5.0 · 200+ reviews on
           </span>
           <span className="font-[family-name:var(--font-montserrat)] text-sm font-medium flex items-center gap-1">
             <svg viewBox="0 0 24 24" className="w-4 h-4" xmlns="http://www.w3.org/2000/svg">
