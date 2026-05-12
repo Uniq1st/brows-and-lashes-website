@@ -1,3 +1,7 @@
+// Shared gift card URL (e.g. for the memberships page footer note)
+// Each store also has its own giftCardUrl for store-specific links.
+export const GIFT_CARD_URL = "https://app.squareup.com/gift/MLYHY6BNH9Q3R/order"
+
 export const STORES = [
   {
     id: "brows-and-lashes",

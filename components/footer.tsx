@@ -58,24 +58,26 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div>
             <h4 className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase mb-6">
-              Quick Links
+              Explore
             </h4>
             <ul className="space-y-3">
               {[
-                { href: "#about", label: "About" },
-                { href: "#services", label: "Services" },
-                { href: "#locations", label: "Locations" },
-                { href: "#gallery", label: "Gallery" },
-                { href: "#testimonials", label: "Reviews" },
-                { href: "#book", label: "Book Now" },
+                { href: "/memberships", label: "✦ Memberships" },
+                { href: "/bridal", label: "Bridal & Groups" },
+                { href: "/manhattan", label: "Upper East Side Studio" },
+                { href: "/ridgewood", label: "Ridgewood Studio" },
+                { href: "/#services", label: "Services" },
+                { href: "/#team", label: "Our Team" },
+                { href: "/#faq", label: "FAQs" },
+                { href: "/#book", label: "Book Now" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="font-[family-name:var(--font-montserrat)] text-background/70 font-light hover:text-background transition-colors"
+                    className="font-[family-name:var(--font-montserrat)] text-background/70 font-light hover:text-background transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
