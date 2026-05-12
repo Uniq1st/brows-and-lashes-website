@@ -332,7 +332,7 @@ export async function LocationPage({
           <div className="max-w-2xl mx-auto px-6">
             <h2 className="text-3xl font-light mb-4">Visit us monthly?</h2>
             <p className="font-[family-name:var(--font-montserrat)] text-primary-foreground/80 font-light mb-6">
-              Save every visit with an UniqSwek membership. Starting at $35/month.
+              Save every visit with an UniqSwek membership. Starting at $25/month.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

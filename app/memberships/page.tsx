@@ -5,7 +5,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { MembershipTabs } from "@/components/membership-tabs"
 import type { StoreMembership } from "@/components/membership-tabs"
-import { MEMBERSHIPS } from "@/lib/memberships"
+import { UES_MEMBERSHIPS, RIDGEWOOD_MEMBERSHIPS } from "@/lib/memberships"
 import type { MembershipTier } from "@/lib/memberships"
 import { STORES, GIFT_CARD_URL } from "@/lib/stores"
 import { getSubscriptionPlans } from "@/lib/square"
@@ -14,7 +14,7 @@ import type { SquareStoreId, SquareSubscriptionPlan } from "@/lib/square"
 export const metadata: Metadata = {
   title: "Beauty Memberships | UniqSwek Beauty Studios NYC",
   description:
-    "Save every month with an UniqSwek membership. Unlimited threading, lash fills, facials & more starting at $35/month. Available at Upper East Side and Ridgewood locations.",
+    "Save every month with an UniqSwek membership. Unlimited threading, lash fills, facials & more starting at $25/month. Available at Upper East Side and Ridgewood locations.",
 }
 
 // Map Square subscription plan → MembershipTier shape so the UI reuses
@@ -79,10 +79,10 @@ const faqItems = [
 ]
 
 export default async function MembershipsPage() {
-  // Fetch plans for each store in parallel
+  // Fetch plans for each store in parallel, with per-store fallbacks
   const [uesTiers, ridgewoodTiers] = await Promise.all([
-    getTiersForStore("brows-and-lashes", MEMBERSHIPS),
-    getTiersForStore("eyebrow-shape", MEMBERSHIPS),
+    getTiersForStore("brows-and-lashes", UES_MEMBERSHIPS),
+    getTiersForStore("eyebrow-shape", RIDGEWOOD_MEMBERSHIPS),
   ])
 
   const storeData: StoreMembership[] = [

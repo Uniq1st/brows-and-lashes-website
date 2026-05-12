@@ -439,10 +439,11 @@ export async function getSubscriptionPlans(
     })
   }
 
-  // Sort cheapest first
-  return results.sort(
-    (a, b) => (a.priceCents ?? 0) - (b.priceCents ?? 0)
-  )
+  // Filter out plans with no price (incomplete/draft plans in Square Dashboard)
+  // then sort cheapest first
+  return results
+    .filter((p) => p.priceCents != null && p.priceCents > 0)
+    .sort((a, b) => (a.priceCents ?? 0) - (b.priceCents ?? 0))
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

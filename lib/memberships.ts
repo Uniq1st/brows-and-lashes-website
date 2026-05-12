@@ -12,97 +12,86 @@ export type MembershipTier = {
   squareUrl: string
 }
 
-export const MEMBERSHIPS: MembershipTier[] = [
+// ─── UES (Brows & Lashes) membership tiers ────────────────────────────────────
+// These reflect the plans already created in Square for the UES account.
+// Once all plans are created and priced in Square Dashboard, this list is only
+// used as a fallback — the live page pulls from Square automatically.
+export const UES_MEMBERSHIPS: MembershipTier[] = [
   {
-    id: "brow-club",
-    name: "Brow Club",
-    price: 35,
+    id: "unlimited-threading",
+    name: "Unlimited Threading",
+    price: 25,
     tagline: "Perfect brows, every week",
     accentColor: "rose",
     benefits: [
-      "Unlimited eyebrow threading (up to 4×/month)",
+      "Unlimited eyebrow threading",
       "Priority booking — skip the wait",
       "10% off all other services",
-      "Free brow consult with first visit",
     ],
     bestFor: "Threading regulars who want always-perfect brows",
-    squareUrl: "#",
+    squareUrl: "#", // TODO: paste Square subscription checkout URL here
   },
   {
-    id: "wax-club",
-    name: "Wax Club",
-    price: 59,
-    tagline: "Smooth skin, year-round",
-    accentColor: "amber",
-    benefits: [
-      "3 waxing services per month (mix & match)",
-      "Choose from legs, arms, underarm, brazilian & more",
-      "10% off threading and facial services",
-      "Priority scheduling",
-    ],
-    bestFor: "Clients who want smooth, hair-free skin all year",
-    squareUrl: "#",
-  },
-  {
-    id: "glow-pass",
-    name: "Glow Pass",
-    price: 75,
-    tagline: "Glowing skin, defined brows",
+    id: "unlimited-facials",
+    name: "Unlimited Regular Facials",
+    price: 100,
+    tagline: "Glowing skin, every month",
     accentColor: "violet",
     benefits: [
-      "1 signature facial per month",
-      "Unlimited eyebrow threading",
-      "10% off lash extension services",
+      "Unlimited regular facials",
       "Personalized skincare recommendations",
+      "Priority scheduling",
+      "10% off all other services",
     ],
-    bestFor: "Clients focused on skincare + brow maintenance",
-    squareUrl: "#",
+    bestFor: "Skincare-focused clients who want consistent results",
+    squareUrl: "#", // TODO: paste Square subscription checkout URL here
   },
+  // ── Add more tiers here as you create them in Square Dashboard ──
+  // {
+  //   id: "lash-club",
+  //   name: "Lash Club",
+  //   price: 150,
+  //   tagline: "Always lash-ready",
+  //   accentColor: "sky",
+  //   benefits: ["1 lash fill per month", "Unlimited threading", "20% off full sets"],
+  //   bestFor: "Lash extension regulars",
+  //   squareUrl: "#",
+  // },
+]
+
+// ─── Ridgewood (Eyebrow Shape) membership tiers ───────────────────────────────
+// No plans in Square yet for this location — create them in Square Dashboard
+// under the Eyebrow Shape account, then this list becomes the fallback only.
+export const RIDGEWOOD_MEMBERSHIPS: MembershipTier[] = [
   {
-    id: "beauty-pass",
-    name: "Beauty Pass",
-    price: 99,
-    tagline: "Your complete beauty routine",
-    accentColor: "teal",
-    popular: true,
+    id: "rw-threading",
+    name: "Unlimited Threading",
+    price: 25,
+    tagline: "Perfect brows, every week",
+    accentColor: "rose",
     benefits: [
-      "2 threading sessions per month",
-      "1 facial or waxing service of choice",
-      "15% off all other services",
-      "Priority booking + flexible cancellation",
-    ],
-    bestFor: "Clients who want a full, regular beauty routine",
-    squareUrl: "#",
-  },
-  {
-    id: "lash-club",
-    name: "Lash Club",
-    price: 150,
-    tagline: "Always lash-ready",
-    accentColor: "sky",
-    benefits: [
-      "1 lash fill per month (classic, volume, or hybrid)",
       "Unlimited eyebrow threading",
-      "20% off full new lash sets",
-      "Priority lash artist scheduling",
+      "Priority booking",
+      "10% off all other services",
     ],
-    bestFor: "Lash extension clients who want consistent, flawless lashes",
+    bestFor: "Threading regulars in Ridgewood & Glendale",
     squareUrl: "#",
   },
   {
-    id: "vip-unlimited",
-    name: "VIP Unlimited",
-    price: 199,
-    tagline: "The full UniqSwek experience",
-    accentColor: "gold",
+    id: "rw-facials",
+    name: "Unlimited Regular Facials",
+    price: 100,
+    tagline: "Glowing skin, every month",
+    accentColor: "violet",
     benefits: [
-      "Unlimited threading (brows, full face & more)",
-      "1 facial per month",
-      "1 lash fill per month",
-      "20% off all additional services",
-      "First-priority booking across both studios",
+      "Unlimited regular facials",
+      "Personalized skincare recommendations",
+      "10% off all other services",
     ],
-    bestFor: "Clients who want the absolute best of everything",
+    bestFor: "Clients focused on consistent skincare",
     squareUrl: "#",
   },
 ]
+
+// ─── Legacy combined list (used as last-resort fallback) ──────────────────────
+export const MEMBERSHIPS: MembershipTier[] = UES_MEMBERSHIPS
