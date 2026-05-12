@@ -16,9 +16,18 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Brows and Lashes by UniqSwek | NYC Beauty Studio',
-  description: 'Premier brow and lash studio in New York City. Experience exquisite beauty treatments including microblading, lash extensions, brow lamination, and more.',
-  keywords: 'brows, lashes, beauty salon, NYC, microblading, lash extensions, brow lamination, New York beauty',
+  title: 'Brows & Lashes by UniqSwek | NYC Beauty Studio – Upper East Side',
+  description: 'Premier brow and lash studio on the Upper East Side, New York City. Expert eyebrow threading, lash extensions, waxing, facials & henna. Book online at uniqswek.com.',
+  keywords: 'brows, lashes, beauty salon, NYC, eyebrow threading, lash extensions, waxing, facials, henna tattoo, Upper East Side, New York beauty, uniqswek',
+  metadataBase: new URL('https://uniqswek.com'),
+  openGraph: {
+    title: 'Brows & Lashes by UniqSwek | NYC Beauty Studio',
+    description: 'Expert threading, lash extensions, waxing & facials in the Upper East Side, NYC. Book your appointment today.',
+    url: 'https://uniqswek.com',
+    siteName: 'Brows & Lashes by UniqSwek',
+    locale: 'en_US',
+    type: 'website',
+  },
   icons: {
     icon: [
       {

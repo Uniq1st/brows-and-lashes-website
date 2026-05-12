@@ -5,12 +5,12 @@ import { useState } from "react"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 const galleryImages = [
-  { src: "/images/gallery-1.jpg", alt: "Microblading before and after", category: "Brows" },
-  { src: "/images/gallery-2.jpg", alt: "Volume lash extensions", category: "Lashes" },
-  { src: "/images/gallery-3.jpg", alt: "Brow lamination result", category: "Brows" },
-  { src: "/images/gallery-4.jpg", alt: "Classic lash extensions", category: "Lashes" },
-  { src: "/images/gallery-5.jpg", alt: "Ombre powder brows", category: "Brows" },
-  { src: "/images/gallery-6.jpg", alt: "Hybrid lash extensions", category: "Lashes" },
+  { src: "/images/gallery-1.jpg", alt: "Perfectly shaped eyebrow threading result", category: "Brows" },
+  { src: "/images/gallery-2.jpg", alt: "Volume lash extensions — dramatic and full", category: "Lashes" },
+  { src: "/images/gallery-3.jpg", alt: "Eyebrow tinting for deeper, defined arches", category: "Brows" },
+  { src: "/images/gallery-4.jpg", alt: "Classic lash extensions — natural and wispy", category: "Lashes" },
+  { src: "/images/gallery-5.jpg", alt: "Full face threading — clean and flawless finish", category: "Brows" },
+  { src: "/images/gallery-6.jpg", alt: "Hybrid lash extensions — textured dimension", category: "Lashes" },
 ]
 
 export function GallerySection() {
@@ -65,12 +65,12 @@ export function GallerySection() {
             See more of our work
           </p>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/browsandlashesnyc"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-primary hover:underline underline-offset-4"
           >
-            Follow @BrowsLashesUniqSwek
+            Follow us on Instagram →
           </a>
         </div>
       </div>

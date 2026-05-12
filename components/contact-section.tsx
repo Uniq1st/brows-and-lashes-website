@@ -68,13 +68,13 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="text-lg font-medium mb-2">Website</h3>
-                <a 
-                  href="https://yoursimplebrows.com" 
+                <a
+                  href="https://uniqswek.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light hover:text-primary transition-colors"
                 >
-                  yoursimplebrows.com
+                  uniqswek.com
                 </a>
               </div>
             </div>
@@ -100,13 +100,13 @@ export function ContactSection() {
               </div>
               <div>
                 <h3 className="text-lg font-medium mb-2">Follow Us</h3>
-                <a 
-                  href="https://instagram.com" 
+                <a
+                  href="https://www.instagram.com/browsandlashesnyc"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light hover:text-primary transition-colors"
                 >
-                  @BrowsLashesUniqSwek
+                  @browsandlashesnyc
                 </a>
               </div>
             </div>
