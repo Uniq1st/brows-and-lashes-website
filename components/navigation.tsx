@@ -18,6 +18,7 @@ import { STORES } from "@/lib/stores"
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#team", label: "Team" },
   { href: "#locations", label: "Locations" },
   { href: "#gallery", label: "Gallery" },
   { href: "#testimonials", label: "Testimonials" },

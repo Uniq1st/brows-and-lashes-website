@@ -2,7 +2,10 @@
 
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { STORES } from "@/lib/stores"
 
+// bookingId: Square service ID — fill these in from your Square Dashboard
+// (Items > Services) to enable direct service pre-selection in the booking flow.
 const services = [
   {
     category: "Threading & Brows",
@@ -10,27 +13,32 @@ const services = [
       {
         name: "Eyebrow Threading",
         description: "Precise hair removal technique using thread for perfectly shaped brows with clean, defined lines.",
-        duration: "15 mins"
+        duration: "15 mins",
+        bookingId: "", // TODO: add Square service ID
       },
       {
         name: "Eyebrow Waxing",
         description: "Quick and effective brow shaping using premium wax for smooth, long-lasting results.",
-        duration: "20 mins"
+        duration: "20 mins",
+        bookingId: "",
       },
       {
         name: "Eyebrow Tinting",
         description: "Semi-permanent dye enhances brow color for a naturally fuller, defined appearance.",
-        duration: "20 mins"
+        duration: "20 mins",
+        bookingId: "",
       },
       {
         name: "Male Threading",
         description: "Specialized threading service for men, including brow shaping and facial hair grooming.",
-        duration: "15 mins"
+        duration: "15 mins",
+        bookingId: "",
       },
       {
         name: "Full Face Threading",
         description: "Complete facial hair removal including brows, upper lip, chin, and sides using threading technique.",
-        duration: "30 mins"
+        duration: "30 mins",
+        bookingId: "",
       },
     ]
   },
@@ -40,27 +48,32 @@ const services = [
       {
         name: "Classic Lash Extensions",
         description: "One extension per natural lash for a subtle, natural enhancement that opens up your eyes.",
-        duration: "90 mins"
+        duration: "90 mins",
+        bookingId: "",
       },
       {
         name: "Volume Lash Extensions",
         description: "Multiple lightweight extensions per natural lash for dramatic, full, glamorous lashes.",
-        duration: "2 hours"
+        duration: "2 hours",
+        bookingId: "",
       },
       {
         name: "Hybrid Lash Extensions",
         description: "Perfect blend of classic and volume techniques for beautiful textured dimension.",
-        duration: "2 hours"
+        duration: "2 hours",
+        bookingId: "",
       },
       {
         name: "Lash Lift & Tint",
         description: "Semi-permanent curl and color enhancement for your natural lashes that lasts 6-8 weeks.",
-        duration: "60 mins"
+        duration: "60 mins",
+        bookingId: "",
       },
       {
         name: "Eyelash Tinting",
         description: "Darken and define your natural lashes for a mascara-free, polished look.",
-        duration: "20 mins"
+        duration: "20 mins",
+        bookingId: "",
       },
     ]
   },
@@ -70,27 +83,32 @@ const services = [
       {
         name: "Full Body Wax",
         description: "Complete body waxing service for smooth, hair-free skin from head to toe.",
-        duration: "90 mins"
+        duration: "90 mins",
+        bookingId: "",
       },
       {
         name: "Brazilian Wax",
         description: "Professional bikini waxing for a clean, smooth finish with minimal discomfort.",
-        duration: "30 mins"
+        duration: "30 mins",
+        bookingId: "",
       },
       {
         name: "Leg Wax",
         description: "Full or half leg waxing for silky smooth, hair-free legs that last weeks.",
-        duration: "45 mins"
+        duration: "45 mins",
+        bookingId: "",
       },
       {
         name: "Arm Wax",
         description: "Complete arm waxing for smooth, touchable skin all day long.",
-        duration: "30 mins"
+        duration: "30 mins",
+        bookingId: "",
       },
       {
         name: "Underarm Wax",
         description: "Quick and effective underarm hair removal for lasting smoothness.",
-        duration: "15 mins"
+        duration: "15 mins",
+        bookingId: "",
       },
     ]
   },
@@ -100,31 +118,45 @@ const services = [
       {
         name: "Classic Facial",
         description: "Deep cleansing facial treatment to rejuvenate and refresh your skin for a healthy glow.",
-        duration: "45 mins"
+        duration: "45 mins",
+        bookingId: "",
       },
       {
         name: "Deep Cleanse Facial",
         description: "Intensive facial with extractions and deep pore cleansing for clear, radiant skin.",
-        duration: "60 mins"
+        duration: "60 mins",
+        bookingId: "",
       },
       {
         name: "Hydrating Facial",
         description: "Nourishing treatment to restore moisture and plump dehydrated skin.",
-        duration: "50 mins"
+        duration: "50 mins",
+        bookingId: "",
       },
       {
         name: "Henna Tattoos",
         description: "Beautiful, intricate temporary henna designs for special occasions and celebrations.",
-        duration: "30 mins"
+        duration: "30 mins",
+        bookingId: "",
       },
       {
         name: "Anti-Aging Facial",
         description: "Rejuvenating treatment targeting fine lines and wrinkles for youthful, firm skin.",
-        duration: "60 mins"
+        duration: "60 mins",
+        bookingId: "",
       },
     ]
   }
 ]
+
+// Build a booking URL for a given store + optional Square service ID
+function buildBookingUrl(storeBookingUrl: string, bookingId?: string) {
+  if (!bookingId) return storeBookingUrl
+  // Square Appointments supports pre-selecting a service via the `services` param
+  const url = new URL(storeBookingUrl)
+  url.searchParams.set("services", bookingId)
+  return url.toString()
+}
 
 export function ServicesSection() {
   const [activeCategory, setActiveCategory] = useState("Threading & Brows")
@@ -184,7 +216,9 @@ export function ServicesSection() {
                   {service.duration}
                 </span>
                 <a
-                  href="#locations"
+                  href={buildBookingUrl(STORES[0].bookingUrl, service.bookingId)}
+                  target={service.bookingId ? "_blank" : undefined}
+                  rel={service.bookingId ? "noopener noreferrer" : undefined}
                   className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-primary opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   Book Now →

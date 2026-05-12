@@ -16,15 +16,15 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Brows & Lashes by UniqSwek | NYC Beauty Studio – Upper East Side',
-  description: 'Premier brow and lash studio on the Upper East Side, New York City. Expert eyebrow threading, lash extensions, waxing, facials & henna. Book online at uniqswek.com.',
-  keywords: 'brows, lashes, beauty salon, NYC, eyebrow threading, lash extensions, waxing, facials, henna tattoo, Upper East Side, New York beauty, uniqswek',
+  title: 'UniqSwek Beauty Studios | Best Eyebrow Threading & Lashes in NYC',
+  description: 'Expert eyebrow threading, lash extensions, and facials by licensed cosmetologists at UniqSwek Beauty Studios. Locations in Upper East Side and Ridgewood.',
+  keywords: 'eyebrow threading NYC, lash extensions, facials, waxing, UniqSwek, beauty studio, Upper East Side, Ridgewood Queens, licensed cosmetologist, Swekchha Luitel',
   metadataBase: new URL('https://uniqswek.com'),
   openGraph: {
-    title: 'Brows & Lashes by UniqSwek | NYC Beauty Studio',
-    description: 'Expert threading, lash extensions, waxing & facials in the Upper East Side, NYC. Book your appointment today.',
+    title: 'UniqSwek Beauty Studios | Best Eyebrow Threading & Lashes in NYC',
+    description: 'Expert eyebrow threading, lash extensions, and facials by licensed cosmetologists at UniqSwek Beauty Studios. Locations in Upper East Side and Ridgewood.',
     url: 'https://uniqswek.com',
-    siteName: 'Brows & Lashes by UniqSwek',
+    siteName: 'UniqSwek Beauty Studios',
     locale: 'en_US',
     type: 'website',
   },
