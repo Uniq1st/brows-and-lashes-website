@@ -30,13 +30,13 @@ export function AboutSection() {
             </h2>
             <div className="space-y-6 font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed">
               <p>
-                Welcome to Brows and Lashes by UniqSwek, your go-to destination for beauty and self-care on the Upper East Side! We are a premier beauty salon specializing in threading, waxing, facials, and eyelash extensions, committed to enhancing your natural beauty with expert care and precision.
+                UniqSwek was founded by <span className="text-foreground font-medium">Swekchha Luitel</span> with one vision: bring expert, precision beauty services to New York City. What started as a single studio on the Upper East Side of Manhattan has grown into two NYC locations — a testament to the trust and love of our incredible clients.
               </p>
               <p>
-                Our team of highly trained specialists is passionate about delivering personalized, high-quality services tailored to your unique preferences. Whether you&apos;re shaping your brows with meticulous threading, achieving smooth, radiant skin with our waxing and facial treatments, or adding drama to your eyes with stunning eyelash extensions, we prioritize your comfort and satisfaction every step of the way.
+                Our team of highly trained specialists is passionate about delivering personalized, high-quality services tailored to your unique preferences. Whether you&apos;re shaping your brows with meticulous threading, achieving smooth, radiant skin with our waxing and facial treatments, or adding drama to your eyes with stunning lash extensions, we prioritize your comfort and satisfaction every step of the way.
               </p>
               <p>
-                At Brows and Lashes, we combine advanced techniques with premium products in a clean, relaxing environment to ensure exceptional results. Your beauty and confidence are our top priorities.
+                At UniqSwek, we combine advanced techniques with premium products in a clean, relaxing environment. Your beauty and confidence are our top priorities — and always will be.
               </p>
             </div>
 

@@ -1,14 +1,30 @@
-# ✨ Brows & Lashes by UniqSwek
+# ✨ UniqSwek Beauty Studios
 
-**NYC's premier threading, lash & beauty studio — Upper East Side**
+**Two NYC beauty studios under one brand — threading, lashes, waxing & facials**
 
-> Live site → [uniqswek.com](https://uniqswek.com) · Book → [Square Appointments](https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D) · 📍 1240 Lexington Ave, New York NY 10028
+> Live site → [uniqswek.com](https://uniqswek.com)
 
 ---
 
-## About the Studio
+## Our Studios
 
-Brows & Lashes by UniqSwek is a luxury beauty studio on the Upper East Side of Manhattan specializing in **eyebrow threading**, **lash extensions**, **waxing**, **facials**, and **henna tattoos**. With 8+ years of experience and 5,000+ happy clients, every service is tailored to enhance your natural beauty.
+### Brows & Lashes by UniqSwek — Upper East Side, Manhattan
+📍 1240 Lexington Avenue, New York, NY 10028  
+📞 [+1 (917) 388-2434](tel:+19173882434)  
+📸 [@browsandlashesnyc](https://www.instagram.com/browsandlashesnyc)  
+🗓️ [Book an Appointment](https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D)
+
+### Eyebrow Shape by UniqSwek — Ridgewood, Queens
+📍 59-15 71st Avenue, Ridgewood, NY 11385  
+📞 [(347) 889-5027](tel:+13478895027)  
+📸 [@eyebrowshapenyc](https://www.instagram.com/eyebrowshapenyc)  
+🗓️ [Book an Appointment](https://book.squareup.com/appointments/l5f8uasy444v40/location/LPT50K5SGRJTC/services?rwg_token=AFd1xnEaECUSkKyBXSkHBl1EvPjIY8g4A3MnG3OXAB2IRwUjK5hoqRcJoOgU2C2zyrLyzyaCCD9kreZXo4n4Klyh6i8ZeCoVaQ%3D%3D)
+
+---
+
+## About
+
+UniqSwek Beauty Studios is founded and owned by **Swekchha Luitel**. What started as a single studio on the Upper East Side of Manhattan has grown into two NYC locations in the first year — a testament to the quality of service and the loyalty of our clients. Both studios specialize in eyebrow threading, lash extensions, waxing, facials, and henna tattoos.
 
 ---
 
@@ -22,7 +38,7 @@ Brows & Lashes by UniqSwek is a luxury beauty studio on the Upper East Side of M
 | Components | [shadcn/ui](https://ui.shadcn.com) + Radix UI |
 | Fonts | Cormorant Garamond + Montserrat (Google Fonts) |
 | Analytics | Vercel Analytics |
-| Booking | [Square Appointments](https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services?rwg_token=AFd1xnFwA5c7P3Zb7Kpt8pLOgW-9UZc_586SRt9tceevn64d8khlN7HJIS6NLrdsj8cijlavItegsDD9Kw5iZkX95W13wCdprw%3D%3D) (external) |
+| Booking | [Square Appointments](https://squareup.com/appointments) (external) |
 | Deployment | [Vercel](https://vercel.com) |
 
 ---
@@ -52,24 +68,53 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 ```
 brows-and-lashes-website/
 ├── app/
-│   ├── layout.tsx          # Root layout, fonts, metadata
-│   ├── page.tsx            # Home page (assembles all sections)
-│   └── globals.css         # Global styles & Tailwind config
+│   ├── layout.tsx              # Root layout, fonts, metadata
+│   ├── page.tsx                # Home page (assembles all sections)
+│   └── globals.css             # Global styles & Tailwind config
 ├── components/
-│   ├── navigation.tsx      # Fixed top nav + mobile menu
-│   ├── hero-section.tsx    # Full-screen hero with CTA
-│   ├── about-section.tsx   # Studio story + stats
-│   ├── services-section.tsx# Tabbed service menu with pricing
-│   ├── gallery-section.tsx # Photo grid with lightbox
-│   ├── testimonials-section.tsx  # Google reviews carousel
-│   ├── booking-section.tsx # Booking CTA + contact info
-│   ├── contact-section.tsx # Map + contact details
-│   ├── footer.tsx          # Footer with links + socials
-│   └── ui/                 # shadcn/ui component library
+│   ├── navigation.tsx          # Fixed top nav + mobile menu + Book dropdown
+│   ├── hero-section.tsx        # Full-screen hero with CTA
+│   ├── location-selector.tsx   # Two-store picker section
+│   ├── about-section.tsx       # Studio story + stats
+│   ├── services-section.tsx    # Tabbed service menu
+│   ├── gallery-section.tsx     # Photo grid
+│   ├── testimonials-section.tsx# Google reviews carousel
+│   ├── booking-section.tsx     # Booking CTA — both stores
+│   ├── contact-section.tsx     # Map + contact details (tab per store)
+│   ├── footer.tsx              # Footer with links + socials
+│   └── ui/                     # shadcn/ui component library
+├── lib/
+│   └── stores.ts               # ⭐ Single source of truth for both store configs
 ├── public/
-│   └── images/             # Hero, gallery, and about images
-└── hooks/                  # Custom React hooks
+│   └── images/                 # Hero, gallery, and about images
+└── hooks/                      # Custom React hooks
 ```
+
+---
+
+## Adding or Updating a Store
+
+All store data lives in **one place**: `lib/stores.ts`
+
+```ts
+// lib/stores.ts
+export const STORES = [
+  {
+    id: "brows-and-lashes",
+    name: "Brows & Lashes",
+    address: "1240 Lexington Avenue",
+    // ...
+  },
+  {
+    id: "eyebrow-shape",
+    name: "Eyebrow Shape",
+    address: "59-15 71st Ave",
+    // ...
+  }
+] as const
+```
+
+Every component (navigation, booking cards, contact section, footer) reads from this array — edit `stores.ts` once and the whole site updates.
 
 ---
 
@@ -89,23 +134,21 @@ Recommended sizes: **hero-bg** 1920×1080px · **about** 800×1000px · **galler
 
 ## Updating Content
 
-All content is co-located with its component — no CMS needed.
-
-- **Services & prices** → `components/services-section.tsx`
-- **Reviews** → `components/testimonials-section.tsx`
-- **Hours & contact info** → `components/contact-section.tsx`
-- **Social links** → `components/footer.tsx` + `components/gallery-section.tsx`
+| What to change | Where |
+|---|---|
+| Store addresses, phones, booking links, Instagram | `lib/stores.ts` |
+| Services list | `components/services-section.tsx` |
+| Reviews | `components/testimonials-section.tsx` |
+| About / founder story | `components/about-section.tsx` |
+| SEO title & description | `app/layout.tsx` |
 
 ---
 
 ## Deployment (Vercel)
 
-The site is deployed on Vercel and connected to `uniqswek.com`.
-
-### Deploy a new version
+The site is deployed on Vercel and connected to `uniqswek.com`. Every push to `main` triggers an automatic deploy.
 
 ```bash
-# Push to main branch — Vercel auto-deploys
 git add .
 git commit -m "your message"
 git push origin main
@@ -113,36 +156,23 @@ git push origin main
 
 ### Custom Domain (Spaceship → Vercel)
 
-To connect `uniqswek.com` (registered on Spaceship):
+| Type | Host | Value |
+|---|---|---|
+| `A` | `@` | `76.76.21.21` |
+| `CNAME` | `www` | `cname.vercel-dns.com` |
 
-1. Go to your **Vercel project → Settings → Domains**
-2. Add `uniqswek.com` and `www.uniqswek.com`
-3. Vercel will show you two DNS records to add
-
-Then in **Spaceship** (spaceship.com → Domains → uniqswek.com → DNS):
-
-| Type | Host | Value | TTL |
-|---|---|---|---|
-| `A` | `@` | `76.76.21.21` | Auto |
-| `CNAME` | `www` | `cname.vercel-dns.com` | Auto |
-
-> Changes propagate in 5–30 minutes. Vercel auto-provisions an SSL certificate.
+> Changes propagate in 5–30 minutes. Vercel auto-provisions SSL.
 
 ---
 
-## Booking System
+## Questions or Feedback?
 
-Appointments are handled externally via **Square Appointments**. All "Book Now" buttons on the site link directly there — no backend or database required.
+For anything related to the website, reach out to:
 
----
-
-## Contact
-
-📍 1240 Lexington Avenue, New York, NY 10028  
-📞 [+1 (917) 388-2434](tel:+19173882434)  
-📸 [@browsandlashesnyc](https://www.instagram.com/browsandlashesnyc)  
-🌐 [uniqswek.com](https://uniqswek.com)
+**Swekchha Luitel** — Founder & Owner, UniqSwek Beauty Studios  
+🌐 [uniqswek.com](https://uniqswek.com)  
+📸 [@browsandlashesnyc](https://www.instagram.com/browsandlashesnyc) · [@eyebrowshapenyc](https://www.instagram.com/eyebrowshapenyc)
 
 ---
 
-*Built with ❤️ for Brows & Lashes by UniqSwek*
+*Built with ❤️ for UniqSwek Beauty Studios · Founded by Swekchha Luitel*
