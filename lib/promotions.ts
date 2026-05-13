@@ -15,7 +15,7 @@ export type Promo = {
 export const PROMOTIONS: Promo[] = [
   {
     id: "welcome",
-    active: true,
+    active: false,
     message: "10% off your first visit — mention this website when you book.",
     ctaText: "Book now →",
     ctaHref: "/#locations",
@@ -23,7 +23,7 @@ export const PROMOTIONS: Promo[] = [
   {
     id: "memberships",
     active: false,
-    message: "🌟 New! Monthly memberships starting at $35 — unlimited brows, lashes & more.",
+    message: "🌟 New! Monthly memberships starting at $25 — unlimited brows, lashes & more.",
     ctaText: "See plans →",
     ctaHref: "/memberships",
   },
@@ -43,10 +43,10 @@ export const PROMOTIONS: Promo[] = [
   },
   {
     id: "summer",
-    active: false,
-    message: "☀️ Summer Smooth — 15% off all waxing services this month.",
+    active: true,
+    message: "☀️ Summer Glow — 15% off all waxing services this month. Book online or walk in.",
     ctaText: "Book now →",
-    ctaHref: "/#locations",
+    ctaHref: "/#book",
   },
   {
     id: "holiday",

@@ -56,13 +56,36 @@ function InquiryForm({ store }: { store: typeof STORES[number] }) {
   const [form, setForm] = useState({ name: "", email: "", phone: "", date: "", guests: "", message: "" })
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
+  const studioEmail = store.id === "brows-and-lashes"
+    ? "browsandlashesbyuniqswek@gmail.com"
+    : "eyebrowshapebyuniqswek@gmail.com"
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus("loading")
     try {
-      const mailtoLink = `mailto:${store.id === "brows-and-lashes" ? "browsandlashesbyuniqswek@gmail.com" : "eyebrowshapebyuniqswek@gmail.com"}?subject=Bridal/Group Inquiry — ${form.name}&body=Name: ${form.name}%0AEmail: ${form.email}%0APhone: ${form.phone}%0ADate: ${form.date}%0AGuests: ${form.guests}%0A%0AMessage: ${form.message}`
-      window.location.href = mailtoLink
-      setStatus("success")
+      const res = await fetch("https://formspree.io/f/xbdwbldn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Bridal/Group Inquiry — ${form.name} (${store.name})`,
+          form_type: "bridal_inquiry",
+          studio: store.name,
+          studio_email: studioEmail,
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          event_date: form.date,
+          number_of_guests: form.guests,
+          message: form.message,
+        }),
+      })
+      if (res.ok) {
+        setStatus("success")
+        setForm({ name: "", email: "", phone: "", date: "", guests: "", message: "" })
+      } else {
+        setStatus("error")
+      }
     } catch {
       setStatus("error")
     }
@@ -97,8 +120,16 @@ function InquiryForm({ store }: { store: typeof STORES[number] }) {
         <ArrowRight className="w-4 h-4" />
       </button>
       {status === "success" && (
-        <p className="text-sm text-center font-[family-name:var(--font-montserrat)] text-muted-foreground">
-          Your email client opened. We'll respond within 24 hours.
+        <div className="bg-primary/10 border border-primary/20 rounded-sm px-6 py-5 text-center">
+          <p className="font-[family-name:var(--font-montserrat)] text-primary font-medium mb-1">Inquiry received! ✨</p>
+          <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground text-sm font-light">
+            We'll get back to you within 24 hours to confirm availability.
+          </p>
+        </div>
+      )}
+      {status === "error" && (
+        <p className="font-[family-name:var(--font-montserrat)] text-sm text-red-500 text-center">
+          Something went wrong. Please call us directly or email us below.
         </p>
       )}
     </form>
