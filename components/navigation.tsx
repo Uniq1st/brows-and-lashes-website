@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { STORES } from "@/lib/stores"
 import { getActivePromo } from "@/lib/promotions"
+import { trackBooking, trackPhone } from "@/lib/analytics"
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -128,6 +129,7 @@ export function Navigation() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex flex-col items-start gap-0.5 py-3 cursor-pointer"
+                      onClick={() => trackBooking(store.id, "nav")}
                     >
                       <span className="font-medium text-sm">{store.name}</span>
                       <span className="text-xs text-muted-foreground font-[family-name:var(--font-montserrat)]">
@@ -208,7 +210,7 @@ export function Navigation() {
                       href={store.bookingUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => { setIsOpen(false); trackBooking(store.id, "nav-mobile") }}
                       className="flex items-center justify-between font-[family-name:var(--font-montserrat)] text-sm py-3 px-4 bg-secondary hover:bg-secondary/80 transition-colors"
                     >
                       <div>

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, MapPin, Phone, Gift } from "lucide-react"
 import { STORES } from "@/lib/stores"
+import { trackBooking, trackPhone, trackGiftCard } from "@/lib/analytics"
 
 export function BookingSection() {
   return (
@@ -44,7 +45,11 @@ export function BookingSection() {
                 </div>
                 <div className="flex items-center justify-center gap-2">
                   <Phone className="w-4 h-4 text-primary" />
-                  <a href={store.phoneHref} className="hover:text-primary transition-colors">
+                  <a
+                    href={store.phoneHref}
+                    className="hover:text-primary transition-colors"
+                    onClick={() => trackPhone(store.id)}
+                  >
                     {store.phone}
                   </a>
                 </div>
@@ -55,7 +60,12 @@ export function BookingSection() {
                 size="lg"
                 className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase px-8 w-full"
               >
-                <a href={store.bookingUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={store.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackBooking(store.id, "booking-section")}
+                >
                   Book Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
@@ -85,6 +95,7 @@ export function BookingSection() {
                   href={store.giftCardUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackGiftCard(store.id)}
                   className="flex flex-col items-center gap-1 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase border border-primary-foreground/30 px-6 py-4 hover:bg-primary-foreground hover:text-primary transition-colors text-center"
                 >
                   <span className="font-medium">{store.name}</span>

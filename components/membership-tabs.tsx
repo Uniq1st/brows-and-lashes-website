@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Check, ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { MembershipTier } from "@/lib/memberships"
+import { trackMembershipClick } from "@/lib/analytics"
 
 export interface StoreMembership {
   storeId: string
@@ -149,6 +150,7 @@ export function MembershipTabs({ stores }: MembershipTabsProps) {
                 href={isComingSoon ? current.bookingUrl : tier.squareUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackMembershipClick(tier.name, current.storeId)}
                 className={cn(
                   "w-full text-center font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase py-3 px-6 border transition-colors flex items-center justify-center gap-2",
                   styles.button

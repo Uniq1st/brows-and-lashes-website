@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ArrowRight, Sparkles } from "lucide-react"
+import { trackEmailSignup } from "@/lib/analytics"
 
 export function EmailCaptureSection() {
   const [email, setEmail] = useState("")
@@ -25,6 +26,7 @@ export function EmailCaptureSection() {
         setStatus("success")
         setEmail("")
         setName("")
+        trackEmailSignup()
       } else {
         setStatus("error")
       }
