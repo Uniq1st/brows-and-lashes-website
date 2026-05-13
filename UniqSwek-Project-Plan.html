@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniqSwek Beauty Studios — Master Project Plan</title>
+<style>
+  :root {
+    --primary: #1a1a1a;
+    --accent: #c9a97a;
+    --accent-light: #f5ede0;
+    --success: #2d7a4f;
+    --success-light: #e8f5ee;
+    --warning: #b45309;
+    --warning-light: #fef3c7;
+    --danger: #be123c;
+    --danger-light: #ffe4e6;
+    --info: #1d4ed8;
+    --info-light: #dbeafe;
+    --border: #e5e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+    --bg: #ffffff;
+    --surface: #f9fafb;
+    --tpm: #7c3aed;
+    --tpm-light: #ede9fe;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--surface); line-height: 1.6; }
+
+  .header { background: var(--primary); color: white; padding: 2rem 2.5rem; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+  .header h1 { font-size: 1.6rem; font-weight: 300; letter-spacing: 0.05em; }
+  .header h1 strong { font-weight: 600; }
+  .header-sub { font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; margin-top: 0.25rem; }
+  .header-meta { text-align: right; font-size: 0.8rem; opacity: 0.7; }
+
+  .progress-bar-section { background: #111; padding: 1.25rem 2.5rem; border-bottom: 1px solid #333; }
+  .progress-bar-section h3 { color: rgba(255,255,255,0.5); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 400; margin-bottom: 0.6rem; }
+  .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+  .progress-item label { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.5); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; }
+  .progress-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.5s ease; }
+  .progress-count { font-size: 0.8rem; color: white; margin-top: 0.3rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+  .revenue-targets { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+  .rev-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; }
+  .rev-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.4rem; }
+  .rev-card .amount { font-size: 1.8rem; font-weight: 300; color: var(--text); }
+  .rev-card .sub { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+  .rev-card.highlight { border-color: var(--accent); background: var(--accent-light); }
+  .rev-card.highlight .amount { color: var(--warning); }
+
+  .section { margin-bottom: 2.5rem; }
+  .section-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--border); }
+  .section-header h2 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .phase-badge { font-size: 0.65rem; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .badge-now { background: #fef2f2; color: #be123c; border: 1px solid #fecdd3; }
+  .badge-week { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+  .badge-month { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+  .badge-quarter { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .badge-ongoing { background: #f5f3ff; color: #6d28d9; border: 1px solid #ddd6fe; }
+  .badge-tpm { background: var(--tpm-light); color: var(--tpm); border: 1px solid #c4b5fd; }
+
+  .task-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .task { display: flex; align-items: flex-start; gap: 0.75rem; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; transition: all 0.15s; }
+  .task:hover { border-color: #d1d5db; background: #fdfdfd; }
+  .task.done { opacity: 0.5; background: var(--surface); }
+  .task.done .task-title { text-decoration: line-through; color: var(--muted); }
+  .task input[type="checkbox"] { width: 17px; height: 17px; cursor: pointer; accent-color: var(--success); flex-shrink: 0; margin-top: 2px; }
+  .task-body { flex: 1; min-width: 0; }
+  .task-title { font-size: 0.9rem; font-weight: 500; line-height: 1.4; }
+  .task-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; line-height: 1.5; }
+  .task-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .tag { font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+  .tag-effort-low { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .tag-effort-med { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .tag-effort-high { background: #fef2f2; color: #991b1b; border: 1px solid #fecdd3; }
+  .tag-impact-high { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; font-weight: 700; }
+  .tag-impact-med { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .tag-impact-low { background: #f9fafb; color: #6b7280; border: 1px solid #e5e7eb; }
+  .tag-you { background: #fdf4ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+  .tag-me { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
+  .tag-both { background: #fff1f2; color: #9f1239; border: 1px solid #fecdd3; }
+  .tag-done { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+  .task-revenue { font-size: 0.72rem; font-weight: 600; color: var(--success); background: var(--success-light); padding: 0.15rem 0.5rem; border-radius: 20px; border: 1px solid #a7f3d0; white-space: nowrap; }
+
+  .tpm-section { background: var(--tpm-light); border: 1px solid #c4b5fd; border-radius: 10px; padding: 1.5rem; margin-bottom: 2.5rem; }
+  .tpm-section h2 { color: var(--tpm); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+  .tpm-intro { font-size: 0.85rem; color: #4c1d95; line-height: 1.6; margin-bottom: 1.2rem; }
+  .tpm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  .tpm-card { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #ddd6fe; }
+  .tpm-card h4 { font-size: 0.8rem; font-weight: 600; color: var(--tpm); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+  .tpm-card ul { list-style: none; padding: 0; }
+  .tpm-card ul li { font-size: 0.78rem; color: #4c1d95; padding: 0.2rem 0; border-bottom: 1px solid #ede9fe; display: flex; align-items: flex-start; gap: 0.4rem; }
+  .tpm-card ul li:last-child { border-bottom: none; }
+  .tpm-card ul li::before { content: "→"; color: var(--tpm); flex-shrink: 0; font-size: 0.7rem; margin-top: 0.15rem; }
+
+  .tpm-skill-list { margin-top: 1rem; }
+  .tpm-skill { display: flex; align-items: flex-start; gap: 0.75rem; background: var(--bg); border: 1px solid #ddd6fe; border-radius: 8px; padding: 0.9rem 1rem; cursor: pointer; transition: all 0.15s; margin-bottom: 0.5rem; }
+  .tpm-skill.done { opacity: 0.5; }
+  .tpm-skill.done .tpm-skill-title { text-decoration: line-through; color: var(--muted); }
+  .tpm-skill input[type="checkbox"] { width: 17px; height: 17px; cursor: pointer; accent-color: var(--tpm); flex-shrink: 0; margin-top: 2px; }
+  .tpm-skill-title { font-size: 0.88rem; font-weight: 500; color: var(--tpm); }
+  .tpm-skill-desc { font-size: 0.76rem; color: #6d28d9; margin-top: 0.15rem; }
+  .tpm-skill-project { font-size: 0.72rem; color: #7c3aed; background: #ede9fe; padding: 0.15rem 0.5rem; border-radius: 4px; margin-top: 0.4rem; display: inline-block; }
+
+  .milestone { background: var(--primary); color: white; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; }
+  .milestone h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.5; margin-bottom: 0.75rem; }
+  .milestone-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
+  .milestone-item { border-left: 2px solid var(--accent); padding-left: 0.75rem; }
+  .milestone-item .week { font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.08em; }
+  .milestone-item .goal { font-size: 0.9rem; font-weight: 500; margin-top: 0.1rem; }
+  .milestone-item .target { font-size: 1.2rem; font-weight: 300; color: var(--accent); margin-top: 0.25rem; }
+
+  .notes-section { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; margin-bottom: 2.5rem; }
+  .notes-section h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.75rem; }
+  .notes-section textarea { width: 100%; border: 1px solid var(--border); border-radius: 6px; padding: 0.75rem; font-family: inherit; font-size: 0.85rem; color: var(--text); resize: vertical; min-height: 120px; outline: none; }
+  .notes-section textarea:focus { border-color: var(--accent); }
+
+  .footer-note { text-align: center; font-size: 0.72rem; color: var(--muted); padding: 2rem 0 3rem; }
+  .reset-btn { display: inline-block; margin-top: 1rem; font-size: 0.72rem; color: var(--danger); cursor: pointer; background: none; border: 1px solid #fecdd3; border-radius: 4px; padding: 0.3rem 0.75rem; }
+  .reset-btn:hover { background: var(--danger-light); }
+
+  @media (max-width: 600px) {
+    .header { padding: 1.5rem; }
+    .container { padding: 1.5rem 1rem; }
+    .progress-bar-section { padding: 1rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-sub">Master Project Plan · Revenue Growth Program</div>
+      <h1><strong>UniqSwek</strong> Beauty Studios</h1>
+      <div class="header-sub" style="margin-top:0.4rem">Brows &amp; Lashes (UES) · Eyebrow Shape (Ridgewood)</div>
+    </div>
+    <div class="header-meta">
+      <div>Created: May 2026</div>
+      <div>Owner: Unique Upreti</div>
+      <div style="margin-top:0.4rem; color: rgba(255,255,255,0.4)">Check off tasks as you complete them.</div>
+      <div style="margin-top:0.15rem; color: rgba(255,255,255,0.4)">Progress saves automatically in your browser.</div>
+    </div>
+  </div>
+</div>
+
+<div class="progress-bar-section">
+  <h3>Overall Progress</h3>
+  <div class="progress-grid">
+    <div class="progress-item">
+      <label>Website Fixes</label>
+      <div class="progress-bar"><div class="progress-fill" id="bar-website" style="width:0%"></div></div>
+      <div class="progress-count" id="count-website">0/0 done</div>
+    </div>
+    <div class="progress-item">
+      <label>Revenue Actions</label>
+      <div class="progress-bar"><div class="progress-fill" id="bar-revenue" style="width:0%"></div></div>
+      <div class="progress-count" id="count-revenue">0/0 done</div>
+    </div>
+    <div class="progress-item">
+      <label>Marketing</label>
+      <div class="progress-bar"><div class="progress-fill" id="bar-marketing" style="width:0%"></div></div>
+      <div class="progress-count" id="count-marketing">0/0 done</div>
+    </div>
+    <div class="progress-item">
+      <label>Operations</label>
+      <div class="progress-bar"><div class="progress-fill" id="bar-ops" style="width:0%"></div></div>
+      <div class="progress-count" id="count-ops">0/0 done</div>
+    </div>
+    <div class="progress-item">
+      <label>TPM Skills</label>
+      <div class="progress-bar"><div class="progress-fill" id="bar-tpm" style="width:0%"></div></div>
+      <div class="progress-count" id="count-tpm">0/0 done</div>
+    </div>
+    <div class="progress-item">
+      <label>Total Tasks</label>
+      <div class="progress-bar"><div class="progress-fill" id="bar-total" style="width:0%"></div></div>
+      <div class="progress-count" id="count-total">0/0 done</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Revenue Targets -->
+  <div class="revenue-targets">
+    <div class="rev-card">
+      <div class="label">Current est. monthly</div>
+      <div class="amount">~$8K</div>
+      <div class="sub">Both stores combined baseline</div>
+    </div>
+    <div class="rev-card">
+      <div class="label">Month 1 target</div>
+      <div class="amount">$11K</div>
+      <div class="sub">Memberships + summer promo live</div>
+    </div>
+    <div class="rev-card">
+      <div class="label">Month 3 target</div>
+      <div class="amount">$16K</div>
+      <div class="sub">50 members + email marketing + Ridgewood growth</div>
+    </div>
+    <div class="rev-card highlight">
+      <div class="label">Month 6 target</div>
+      <div class="amount">$25K+</div>
+      <div class="sub">Full funnel running, 100+ members, both stores at capacity</div>
+    </div>
+  </div>
+
+  <!-- Milestones -->
+  <div class="milestone">
+    <h3>Revenue Milestones</h3>
+    <div class="milestone-grid">
+      <div class="milestone-item">
+        <div class="week">Week 1</div>
+        <div class="goal">Memberships go live online</div>
+        <div class="target">First $25–$100 recurring</div>
+      </div>
+      <div class="milestone-item">
+        <div class="week">Week 2</div>
+        <div class="goal">Email list active + Mailchimp</div>
+        <div class="target">50+ subscribers</div>
+      </div>
+      <div class="milestone-item">
+        <div class="week">Month 1</div>
+        <div class="goal">10 active members, before/afters live</div>
+        <div class="target">+$750/mo recurring</div>
+      </div>
+      <div class="milestone-item">
+        <div class="week">Month 2</div>
+        <div class="goal">Instagram → website converting</div>
+        <div class="target">30+ members, Ridgewood growing</div>
+      </div>
+      <div class="milestone-item">
+        <div class="week">Month 3</div>
+        <div class="goal">50 members, referral program live</div>
+        <div class="target">$3,000+ MRR from memberships alone</div>
+      </div>
+      <div class="milestone-item">
+        <div class="week">Month 6</div>
+        <div class="goal">100 members, Google Ads running</div>
+        <div class="target">Both stores near full capacity</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Phase 1 — Critical Fixes</h2>
+      <span class="phase-badge badge-now">Do This Week</span>
+    </div>
+    <div class="task-list" data-group="website">
+
+      <div class="task" data-id="w1">
+        <input type="checkbox" id="w1">
+        <div class="task-body">
+          <div class="task-title">✅ Switch promo banner to Summer Waxing offer</div>
+          <div class="task-desc">Done — banner now shows "☀️ Summer Glow — 15% off all waxing." Push to GitHub to deploy.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">5 min</span>
+            <span class="tag tag-impact-high">High impact</span>
+            <span class="tag tag-done">Completed by Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="w2">
+        <input type="checkbox" id="w2">
+        <div class="task-body">
+          <div class="task-title">Get Square subscription checkout URLs for both stores</div>
+          <div class="task-desc">Square Dashboard → Subscriptions → click each plan → copy "Share link". You need 4 URLs: UES Threading ($25), UES Facials ($100), Ridgewood Threading ($25), Ridgewood Facials ($100). Paste to Claude and the website updates instantly.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">10 min</span>
+            <span class="tag tag-impact-high">Highest revenue impact</span>
+            <span class="tag tag-you">You do this</span>
+            <span class="task-revenue">Unlocks online membership sales</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="w3">
+        <input type="checkbox" id="w3">
+        <div class="task-body">
+          <div class="task-title">Create Ridgewood membership plans in Square Dashboard</div>
+          <div class="task-desc">Log into Eyebrow Shape Square account → Subscriptions → Create plan. Make "Unlimited Threading" ($25/mo) and "Unlimited Regular Facials" ($100/mo). Mirror the UES plan settings exactly.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">20 min</span>
+            <span class="tag tag-impact-high">High impact</span>
+            <span class="tag tag-you">You do this</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="w4">
+        <input type="checkbox" id="w4">
+        <div class="task-body">
+          <div class="task-title">Add before/after photos to website</div>
+          <div class="task-desc">The section shows "Add photo" placeholders on the live site right now — this is the #1 trust killer for a beauty studio. Pull 6 best before/afters from Instagram. Rename: ba-1-before.jpg, ba-1-after.jpg ... ba-6. Drop into public/images/before-after/. Tell Claude and the Image tags go live immediately.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">30 min</span>
+            <span class="tag tag-impact-high">High conversion impact</span>
+            <span class="tag tag-you">You provide photos</span>
+            <span class="tag tag-me">Claude enables them</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="w5">
+        <input type="checkbox" id="w5">
+        <div class="task-body">
+          <div class="task-title">✅ Fix bridal inquiry form (was using unreliable mailto)</div>
+          <div class="task-desc">Done — bridal form now submits via Formspree, same as email capture. Push to GitHub to deploy.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">Done</span>
+            <span class="tag tag-impact-med">Medium impact</span>
+            <span class="tag tag-done">Completed by Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="w6">
+        <input type="checkbox" id="w6">
+        <div class="task-body">
+          <div class="task-title">✅ Privacy Policy and Terms of Service pages live</div>
+          <div class="task-desc">Done — /privacy and /terms pages created. Footer links fixed. Push to GitHub to deploy.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">Done</span>
+            <span class="tag tag-impact-low">Compliance</span>
+            <span class="tag tag-done">Completed by Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="w7">
+        <input type="checkbox" id="w7">
+        <div class="task-body">
+          <div class="task-title">Fix Ridgewood Google Review URL in stores.ts</div>
+          <div class="task-desc">Current URL is a placeholder. Go to Google Business Profile for Eyebrow Shape → Get more reviews → copy the real shortlink. Give to Claude to update lib/stores.ts. This affects the "Leave a Review" button on the site.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">5 min</span>
+            <span class="tag tag-impact-med">Medium impact</span>
+            <span class="tag tag-you">You find the URL</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Phase 2 — Revenue Activation</h2>
+      <span class="phase-badge badge-week">Weeks 1–2</span>
+    </div>
+    <div class="task-list" data-group="revenue">
+
+      <div class="task" data-id="r1">
+        <input type="checkbox" id="r1">
+        <div class="task-body">
+          <div class="task-title">Set up Mailchimp and connect your Formspree email list</div>
+          <div class="task-desc">Right now Formspree collects emails but you can't email those people. Create a free Mailchimp account → create an audience → in Formspree, set up a Zapier or direct integration to forward new signups to Mailchimp. This turns your website into a real marketing channel.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">1 hour</span>
+            <span class="tag tag-impact-high">High long-term impact</span>
+            <span class="tag tag-you">You set up accounts</span>
+            <span class="task-revenue">Builds marketing list</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="r2">
+        <input type="checkbox" id="r2">
+        <div class="task-body">
+          <div class="task-title">Turn on Square appointment reminders</div>
+          <div class="task-desc">Square Dashboard → Appointments → Settings → Notifications → enable automated reminders (text + email, 24 hours before). Reduces no-shows by 30-50% which directly increases revenue you don't lose.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">5 min</span>
+            <span class="tag tag-impact-high">High impact</span>
+            <span class="tag tag-you">You do this</span>
+            <span class="task-revenue">Reduces no-shows by ~40%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="r3">
+        <input type="checkbox" id="r3">
+        <div class="task-body">
+          <div class="task-title">Start asking for emails at checkout in-store</div>
+          <div class="task-desc">Train your team to say: "Can I get your email? We give a 10% discount to new clients and send exclusive offers — no spam, just real deals." This is your highest ROI action — zero cost, immediate impact. Capture to Square customer profile.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">0 cost</span>
+            <span class="tag tag-impact-high">Highest long-term impact</span>
+            <span class="tag tag-you">You + your team</span>
+            <span class="task-revenue">Builds retention database</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="r4">
+        <input type="checkbox" id="r4">
+        <div class="task-body">
+          <div class="task-title">Post about memberships on both Instagram accounts this week</div>
+          <div class="task-desc">Create 2–3 posts for @browsandlashesnyc and @eyebrowshapenyc announcing memberships. Use a before/after as the visual. Caption: "Unlimited eyebrow threading for $25/month 🤯 Link in bio to sign up." This is your fastest path to first members.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">1 hour</span>
+            <span class="tag tag-impact-high">High impact</span>
+            <span class="tag tag-you">You post</span>
+            <span class="tag tag-me">Claude writes captions</span>
+            <span class="task-revenue">First membership signups</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="r5">
+        <input type="checkbox" id="r5">
+        <div class="task-body">
+          <div class="task-title">Mention memberships at checkout to every client for 2 weeks</div>
+          <div class="task-desc">Script: "By the way, we just launched a membership — unlimited threading for $25/month. Would you like me to send you the link?" This in-person push converts faster than any digital ad. Track how many sign up this way.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">0 cost</span>
+            <span class="tag tag-impact-high">Highest immediate revenue</span>
+            <span class="tag tag-you">You + team</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="r6">
+        <input type="checkbox" id="r6">
+        <div class="task-body">
+          <div class="task-title">Add Ridgewood Behold Instagram feed to the website</div>
+          <div class="task-desc">Add @eyebrowshapenyc to your Behold account at behold.so. Get the feed ID. Tell Claude and the Ridgewood location page gets a live Instagram feed. Currently only UES has one — Ridgewood looks incomplete.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">15 min</span>
+            <span class="tag tag-impact-med">Medium impact</span>
+            <span class="tag tag-you">You set up Behold</span>
+            <span class="tag tag-me">Claude wires it in</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="r7">
+        <input type="checkbox" id="r7">
+        <div class="task-body">
+          <div class="task-title">Add 3–4 Ridgewood-specific testimonials to the website</div>
+          <div class="task-desc">The testimonials section only features UES clients. Pull your best Google reviews for Eyebrow Shape and add them to the testimonials array in components/testimonials-section.tsx. This makes Ridgewood feel equally loved.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">20 min</span>
+            <span class="tag tag-impact-med">Medium impact</span>
+            <span class="tag tag-you">You find reviews</span>
+            <span class="tag tag-me">Claude adds to code</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Phase 3 — Growth Engine</h2>
+      <span class="phase-badge badge-month">Month 2–3</span>
+    </div>
+    <div class="task-list" data-group="marketing">
+
+      <div class="task" data-id="m1">
+        <input type="checkbox" id="m1">
+        <div class="task-body">
+          <div class="task-title">Send your first marketing email to your subscriber list</div>
+          <div class="task-desc">Once Mailchimp is set up: send a "Welcome to the community" email with the WELCOME10 code and a spotlight on the new summer waxing deal. Include a link to book and a link to memberships. Aim for monthly emails minimum.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">1 hour</span>
+            <span class="tag tag-impact-high">High impact</span>
+            <span class="tag tag-both">You + Claude write it</span>
+            <span class="task-revenue">Re-activates past clients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m2">
+        <input type="checkbox" id="m2">
+        <div class="task-body">
+          <div class="task-title">Launch a referral program for members</div>
+          <div class="task-desc">"Refer a friend who joins a membership, get one month free." This turns your 10 members into 20. Create a simple tracking method (a code or just asking at checkout). Claude can add a referral section to the memberships page.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">2 hours</span>
+            <span class="tag tag-impact-high">High impact</span>
+            <span class="tag tag-both">You design, Claude builds</span>
+            <span class="task-revenue">Doubles membership growth rate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m3">
+        <input type="checkbox" id="m3">
+        <div class="task-body">
+          <div class="task-title">Create a "Lash Club" membership tier ($150–$175/month)</div>
+          <div class="task-desc">Add a 3rd membership tier: 1 lash fill per month + unlimited threading. Lash clients come every 3–4 weeks anyway — locking them in at $150/month is $1,800/year of guaranteed revenue per client. Create in Square, add to memberships page.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">30 min</span>
+            <span class="tag tag-impact-high">High revenue impact</span>
+            <span class="tag tag-you">Create in Square</span>
+            <span class="tag tag-me">Claude adds to website</span>
+            <span class="task-revenue">+$150/mo per member</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m4">
+        <input type="checkbox" id="m4">
+        <div class="task-body">
+          <div class="task-title">Set up Google Business Profile posts (weekly)</div>
+          <div class="task-desc">Google Business Profile lets you post updates, offers, and photos that show up directly in Google search results. One post/week showing a service, a before/after, or a promo dramatically improves local SEO and drives walk-ins. Takes 5 minutes per post.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">5 min/week</span>
+            <span class="tag tag-impact-high">High SEO impact</span>
+            <span class="tag tag-you">You post weekly</span>
+            <span class="task-revenue">Increases Google visibility</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m5">
+        <input type="checkbox" id="m5">
+        <div class="task-body">
+          <div class="task-title">Add TikTok presence — threading and lash transformation videos</div>
+          <div class="task-desc">Eyebrow threading and lash extension transformations perform extremely well on TikTok and Instagram Reels. One viral video can bring in hundreds of new clients. Aim for 3 videos/week. Film the transformation process — the thread movement is visually compelling. No script needed.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">3 videos/week</span>
+            <span class="tag tag-impact-high">Potentially viral</span>
+            <span class="tag tag-you">You or your team films</span>
+            <span class="task-revenue">Free organic growth</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m6">
+        <input type="checkbox" id="m6">
+        <div class="task-body">
+          <div class="task-title">Run first Google Ads campaign for "eyebrow threading near me"</div>
+          <div class="task-desc">Start with a $10/day budget targeting "eyebrow threading UES," "lash extensions Upper East Side," and "eyebrow threading Ridgewood Queens." These are high-intent searches. Claude can help write the ad copy. Expect $15–20 cost per new client — worth it if they return.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-high">Setup: 2 hours</span>
+            <span class="tag tag-impact-high">High ROI</span>
+            <span class="tag tag-both">Setup together</span>
+            <span class="task-revenue">$10/day → new clients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m7">
+        <input type="checkbox" id="m7">
+        <div class="task-body">
+          <div class="task-title">Add a "Services" highlight reel on homepage — feature top 3 revenue services</div>
+          <div class="task-desc">Homepage currently positions UniqSwek as a threading studio. Add a featured spotlight on your 3 highest-ticket services: Full Lash Set, Volume Lashes, Seaweed Facial. Show price, duration, and a Book Now button per service. Claude builds this — you just approve the design.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">30 min</span>
+            <span class="tag tag-impact-med">Medium impact</span>
+            <span class="tag tag-me">Claude builds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="m8">
+        <input type="checkbox" id="m8">
+        <div class="task-body">
+          <div class="task-title">Seasonal promo calendar — plan all 12 months in advance</div>
+          <div class="task-desc">The promo system is already built in promotions.ts. Create a calendar: Jan=New Year glow, Feb=Valentine's, Mar=Spring reset, Apr=Wedding season starts, May=Mother's Day, Jun=Summer smooth, Jul=Summer deals, Aug=Back to school, Sep=Fall refresh, Oct=Halloween glam, Nov=Holiday prep, Dec=Gift cards push.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">1 hour</span>
+            <span class="tag tag-impact-med">Medium consistent impact</span>
+            <span class="tag tag-both">Plan together</span>
+            <span class="task-revenue">Year-round promo cadence</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Phase 4 — Scale</h2>
+      <span class="phase-badge badge-quarter">Month 3–6</span>
+    </div>
+    <div class="task-list" data-group="ops">
+
+      <div class="task" data-id="o1">
+        <input type="checkbox" id="o1">
+        <div class="task-body">
+          <div class="task-title">Add online retail to the website (aftercare products)</div>
+          <div class="task-desc">Your clients need lash sealant, lash shampoo, brow tinting kits, and post-threading soothing gel. Selling these on the website or in-store creates 100% margin add-on revenue. Start with 3–5 products in Square catalog, add a Shop section to the website. Each lash client spends $15–30 more per visit.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-high">Setup: 3–4 hours</span>
+            <span class="tag tag-impact-high">High recurring impact</span>
+            <span class="tag tag-both">Together</span>
+            <span class="task-revenue">$15–30 per lash client</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="o2">
+        <input type="checkbox" id="o2">
+        <div class="task-body">
+          <div class="task-title">Launch a loyalty points program via Square Loyalty</div>
+          <div class="task-desc">Square has a built-in loyalty program (Square Loyalty, ~$45/mo). Clients earn points per dollar spent and redeem for services. This increases return visit rate by 30–40%. Threading clients who visit every 3 weeks become clients who visit every 2 weeks to earn rewards faster.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">2 hours setup</span>
+            <span class="tag tag-impact-high">High retention impact</span>
+            <span class="tag tag-you">You set up Square Loyalty</span>
+            <span class="task-revenue">+30% return visit rate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="o3">
+        <input type="checkbox" id="o3">
+        <div class="task-body">
+          <div class="task-title">Add a blog section to website for SEO content</div>
+          <div class="task-desc">Topics: "How often should you thread eyebrows?", "Classic vs Volume Lashes — what's right for you?", "Best eyebrow threading in Upper East Side", "How to make lash extensions last longer." Each article captures long-tail Google searches and drives free organic traffic. Claude writes all of them.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">2 hours per article</span>
+            <span class="tag tag-impact-high">High SEO impact</span>
+            <span class="tag tag-me">Claude writes content</span>
+            <span class="task-revenue">Free Google traffic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="o4">
+        <input type="checkbox" id="o4">
+        <div class="task-body">
+          <div class="task-title">Partner with local hotels and businesses near UES</div>
+          <div class="task-desc">The Upper East Side has luxury hotels, high-end gyms, and bridal boutiques nearby. Approach the concierge desks with a referral card: "We'll give your guests 15% off their first visit." Hotel guests from out of town want beauty services and trust concierge recommendations. This can add 5–10 new clients per month at no ad cost.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">Ongoing outreach</span>
+            <span class="tag tag-impact-high">High new client acquisition</span>
+            <span class="tag tag-you">You do outreach</span>
+            <span class="task-revenue">5–10 new clients/month</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="o5">
+        <input type="checkbox" id="o5">
+        <div class="task-body">
+          <div class="task-title">Set up automated review request via Square</div>
+          <div class="task-desc">After every completed appointment, Square can automatically send a text asking for a Google review. Go to Square Dashboard → Marketing → Review Management. You have 200+ reviews — getting to 500 significantly helps search rankings. Automate this completely.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">20 min</span>
+            <span class="tag tag-impact-high">High SEO impact</span>
+            <span class="tag tag-you">You set up</span>
+            <span class="task-revenue">More reviews = more walk-ins</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="o6">
+        <input type="checkbox" id="o6">
+        <div class="task-body">
+          <div class="task-title">Build a "Book the Artist" feature for Swekchha and Sulona</div>
+          <div class="task-desc">Some clients specifically want to book with Swekchha or Sulona by name. Make this prominent on the website — "Book with Swekchha" and "Book with Sulona" as featured specialists with their own booking links. Named artist bookings command premium pricing and reduce no-shows significantly.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-med">2 hours</span>
+            <span class="tag tag-impact-med">Medium impact</span>
+            <span class="tag tag-me">Claude builds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="o7">
+        <input type="checkbox" id="o7">
+        <div class="task-body">
+          <div class="task-title">Add an online store for gift card bundles (e.g. $100 for $85)</div>
+          <div class="task-desc">Discounted gift card bundles sell especially well as gifts. Offer a $100 gift card for $85 (15% off) during holidays. The revenue comes in immediately, and gift card recipients often spend more than the card value. Easy to set up in Square and promote on the memberships page.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">30 min</span>
+            <span class="tag tag-impact-med">Good for holidays</span>
+            <span class="tag tag-you">Create in Square</span>
+            <span class="tag tag-me">Claude promotes on site</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ONGOING -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Ongoing Operations</h2>
+      <span class="phase-badge badge-ongoing">Every Week/Month</span>
+    </div>
+    <div class="task-list" data-group="ops">
+
+      <div class="task" data-id="oo1">
+        <input type="checkbox" id="oo1">
+        <div class="task-body">
+          <div class="task-title">Weekly: check GA4 for top traffic sources and booking conversion rate</div>
+          <div class="task-desc">GA4 → Reports → Acquisition → Traffic acquisition. See where your visitors come from (Google, Instagram, direct). If Instagram drives traffic but no bookings, the link in bio needs work. 15 minutes every Monday tells you where to focus the week.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">15 min/week</span>
+            <span class="tag tag-impact-high">Decision intelligence</span>
+            <span class="tag tag-you">You review</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="oo2">
+        <input type="checkbox" id="oo2">
+        <div class="task-body">
+          <div class="task-title">Monthly: review Square sales report — top services, avg ticket, repeat rate</div>
+          <div class="task-desc">Square Dashboard → Reports → Sales Summary. Track: total revenue, average transaction, top services by revenue, new vs returning customers. Compare month over month. If repeat rate drops, investigate why. If a service suddenly sells more, promote it harder.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">30 min/month</span>
+            <span class="tag tag-impact-high">Revenue intelligence</span>
+            <span class="tag tag-you">You review + share with Claude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="oo3">
+        <input type="checkbox" id="oo3">
+        <div class="task-body">
+          <div class="task-title">Monthly: update the promo banner for the season/holiday</div>
+          <div class="task-desc">The promo system in promotions.ts is ready — it takes 2 minutes to switch. Change the promo at the start of each month. Even clients who've seen the site before will notice a fresh offer. Ask Claude to update and push for you.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">2 min/month</span>
+            <span class="tag tag-impact-med">Consistent relevance</span>
+            <span class="tag tag-me">Claude updates + pushes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="oo4">
+        <input type="checkbox" id="oo4">
+        <div class="task-body">
+          <div class="task-title">Monthly: send one email to your subscriber list</div>
+          <div class="task-desc">Aim for one email per month minimum. Content: featured service, a before/after, the current promo, and a Book Now button. Keep it short — 3 paragraphs max. Open rate goal: 30%+. Click rate goal: 5%+. Claude writes the draft, you approve and send.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">30 min/month</span>
+            <span class="tag tag-impact-high">Drives repeat bookings</span>
+            <span class="tag tag-both">Claude drafts, you send</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" data-id="oo5">
+        <input type="checkbox" id="oo5">
+        <div class="task-body">
+          <div class="task-title">Quarterly: full website sanity check with Claude</div>
+          <div class="task-desc">Every 3 months, ask Claude to re-scan the codebase — check for broken links, outdated prices, expired promos, new features to add, SEO improvements. The website should improve every quarter, not stay static.</div>
+          <div class="task-meta">
+            <span class="tag tag-effort-low">1 hour/quarter</span>
+            <span class="tag tag-impact-med">Maintenance + growth</span>
+            <span class="tag tag-both">Review together</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TPM LEARNING SECTION -->
+  <div class="tpm-section">
+    <h2>🎓 Your TPM Learning Path</h2>
+    <p class="tpm-intro">A <strong>Technical Program Manager (TPM)</strong> bridges business goals and technical execution. You are already doing TPM work on this project — managing a website build, coordinating between tools (Square, GA4, Formspree, Behold), tracking priorities, and driving revenue outcomes. This section makes that learning intentional and transferable to any company or role.</p>
+
+    <div class="tpm-grid">
+      <div class="tpm-card">
+        <h4>What a TPM does</h4>
+        <ul>
+          <li>Defines scope, timeline, and success metrics</li>
+          <li>Breaks big goals into trackable tasks</li>
+          <li>Manages dependencies (task B can't start until task A is done)</li>
+          <li>Communicates status to stakeholders</li>
+          <li>Identifies and mitigates risks before they become problems</li>
+          <li>Bridges technical teams and business owners</li>
+        </ul>
+      </div>
+      <div class="tpm-card">
+        <h4>How this project teaches it</h4>
+        <ul>
+          <li>You are the project owner managing Claude as a technical resource</li>
+          <li>Prioritizing tasks = TPM scope management</li>
+          <li>The promo system = TPM release planning</li>
+          <li>GA4 + Square reports = TPM metrics tracking</li>
+          <li>Git commits + Vercel deploys = TPM release management</li>
+          <li>Formspree → Mailchimp integration = TPM systems thinking</li>
+        </ul>
+      </div>
+      <div class="tpm-card">
+        <h4>Frameworks you're using</h4>
+        <ul>
+          <li>MoSCoW prioritization (Must/Should/Could/Won't)</li>
+          <li>Phased delivery (Phase 1/2/3/4)</li>
+          <li>OKRs (Objective: grow revenue / KRs: 50 members, $16K/mo)</li>
+          <li>Risk log (what breaks if you don't fix the bridal form?)</li>
+          <li>Dependency mapping (Square URLs needed before memberships go live)</li>
+          <li>Retrospective (quarterly sanity check)</li>
+        </ul>
+      </div>
+      <div class="tpm-card">
+        <h4>Tools to learn next</h4>
+        <ul>
+          <li>Notion or Linear — for structured project tracking</li>
+          <li>Figma — to understand design specs and handoffs</li>
+          <li>GitHub — you're already using it; learn branching strategy</li>
+          <li>JIRA or Asana — used by tech companies for sprint planning</li>
+          <li>SQL basics — to query your own Square/GA4 data</li>
+          <li>Google Project Management Certificate (free on Coursera)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tpm-skill-list" data-group="tpm">
+
+      <div class="tpm-skill" data-id="t1">
+        <input type="checkbox" id="t1">
+        <div>
+          <div class="tpm-skill-title">Write a project brief before starting any new feature</div>
+          <div class="tpm-skill-desc">Before asking Claude to build something, write 2–3 sentences: what problem does this solve, who is the user, what does success look like? This is the single most important TPM habit.</div>
+          <div class="tpm-skill-project">Applied in: Every new website feature request</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t2">
+        <input type="checkbox" id="t2">
+        <div>
+          <div class="tpm-skill-title">Track your KPIs in a monthly dashboard</div>
+          <div class="tpm-skill-desc">TPMs live and die by metrics. Build a simple monthly tracker (spreadsheet is fine): revenue, active members, email subscribers, GA4 booking clicks, avg ticket. Review it every month and ask "why did this go up or down?"</div>
+          <div class="tpm-skill-project">Applied in: Monthly Square + GA4 review</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t3">
+        <input type="checkbox" id="t3">
+        <div>
+          <div class="tpm-skill-title">Write a post-mortem when something goes wrong</div>
+          <div class="tpm-skill-desc">When the Mother's Day promo was missed, a TPM would write: "What happened, why, what we'll do differently." Practice this — it's the most valued skill in tech. Blameless, factual, and forward-looking.</div>
+          <div class="tpm-skill-project">Applied in: Missed Mother's Day promo, git lock incidents</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t4">
+        <input type="checkbox" id="t4">
+        <div>
+          <div class="tpm-skill-title">Learn git branching: create a staging branch for experiments</div>
+          <div class="tpm-skill-desc">Right now all changes go directly to main and deploy to live. A TPM understands release management: create a "staging" branch for experiments, only merge to main when tested. Protects the live site from broken features.</div>
+          <div class="tpm-skill-project">Applied in: Website development workflow</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t5">
+        <input type="checkbox" id="t5">
+        <div>
+          <div class="tpm-skill-title">Complete Google Project Management Certificate (Coursera)</div>
+          <div class="tpm-skill-desc">Free with financial aid. 6 months, ~10 hours/week. Covers Agile, Scrum, Kanban, stakeholder management, risk registers, and project charters. This credential opens doors to TPM roles at any tech company.</div>
+          <div class="tpm-skill-project">Resource: coursera.org/professional-certificates/google-project-management</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t6">
+        <input type="checkbox" id="t6">
+        <div>
+          <div class="tpm-skill-title">Read "The Art of Project Management" by Scott Berkun</div>
+          <div class="tpm-skill-desc">Written by a former Microsoft PM. Covers how to actually run projects in the real world — not just theory. Practical frameworks for scope, decisions, and communication. One of the most-read books in the field.</div>
+          <div class="tpm-skill-project">Resource: Available on Amazon, ~$20</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t7">
+        <input type="checkbox" id="t7">
+        <div>
+          <div class="tpm-skill-title">Document your technical decisions with ADRs (Architecture Decision Records)</div>
+          <div class="tpm-skill-desc">Any time you make a significant tech choice (using Square over Stripe, Formspree over a custom backend, Behold for Instagram), write a 1-paragraph ADR: what decision, why this option, what alternatives were considered. TPMs are the institutional memory of a project.</div>
+          <div class="tpm-skill-project">Applied in: Square API choice, GA4 implementation, Vercel deployment</div>
+        </div>
+      </div>
+
+      <div class="tpm-skill" data-id="t8">
+        <input type="checkbox" id="t8">
+        <div>
+          <div class="tpm-skill-title">Build a risk register for the business</div>
+          <div class="tpm-skill-desc">A risk register lists what could go wrong and what you'll do about it. For UniqSwek: "Square API goes down → fallback to static prices." "A stylist leaves → cross-train on all services." "Website breaks → Vercel rollback steps." TPMs prevent fires; they don't just fight them.</div>
+          <div class="tpm-skill-project">Applied in: All phases of this project</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes-section">
+    <h3>Your Notes (saves automatically)</h3>
+    <textarea id="project-notes" placeholder="Add your notes, blockers, ideas, or status updates here..."></textarea>
+  </div>
+
+  <div class="footer-note">
+    <div>UniqSwek Beauty Studios — Master Project Plan · Built May 2026</div>
+    <div style="margin-top:0.4rem">All progress is saved in your browser's local storage. Open this file anytime to continue.</div>
+    <button class="reset-btn" onclick="resetAll()">Reset all checkboxes</button>
+  </div>
+
+</div>
+
+<script>
+const STORAGE_KEY = 'uniqswek-project-plan-v1';
+
+function getState() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; }
+}
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function updateProgress() {
+  const groups = {
+    website: document.querySelectorAll('[data-group="website"] .task'),
+    revenue: document.querySelectorAll('[data-group="revenue"] .task'),
+    marketing: document.querySelectorAll('[data-group="marketing"] .task'),
+    ops: document.querySelectorAll('[data-group="ops"] .task'),
+    tpm: document.querySelectorAll('[data-group="tpm"] .tpm-skill'),
+  };
+  let totalDone = 0, totalAll = 0;
+  for (const [key, items] of Object.entries(groups)) {
+    const done = Array.from(items).filter(t => t.querySelector('input').checked).length;
+    const all = items.length;
+    totalDone += done;
+    totalAll += all;
+    const pct = all ? Math.round((done / all) * 100) : 0;
+    const bar = document.getElementById('bar-' + key);
+    const count = document.getElementById('count-' + key);
+    if (bar) bar.style.width = pct + '%';
+    if (count) count.textContent = done + '/' + all + ' done';
+  }
+  const totalPct = totalAll ? Math.round((totalDone / totalAll) * 100) : 0;
+  document.getElementById('bar-total').style.width = totalPct + '%';
+  document.getElementById('count-total').textContent = totalDone + '/' + totalAll + ' done';
+}
+
+function init() {
+  const state = getState();
+  document.querySelectorAll('.task[data-id], .tpm-skill[data-id]').forEach(item => {
+    const id = item.dataset.id;
+    const cb = item.querySelector('input[type="checkbox"]');
+    if (state[id]) {
+      cb.checked = true;
+      item.classList.add('done');
+    }
+    cb.addEventListener('change', () => {
+      const s = getState();
+      if (cb.checked) { s[id] = true; item.classList.add('done'); }
+      else { delete s[id]; item.classList.remove('done'); }
+      saveState(s);
+      updateProgress();
+    });
+    item.addEventListener('click', (e) => {
+      if (e.target === cb) return;
+      cb.checked = !cb.checked;
+      cb.dispatchEvent(new Event('change'));
+    });
+  });
+
+  const notesEl = document.getElementById('project-notes');
+  if (state._notes) notesEl.value = state._notes;
+  notesEl.addEventListener('input', () => {
+    const s = getState();
+    s._notes = notesEl.value;
+    saveState(s);
+  });
+
+  updateProgress();
+}
+
+function resetAll() {
+  if (!confirm('Reset all checkboxes and notes? This cannot be undone.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
+  document.querySelectorAll('.done').forEach(el => el.classList.remove('done'));
+  document.getElementById('project-notes').value = '';
+  updateProgress();
+}
+
+init();
+</script>
+</body>
+</html>
