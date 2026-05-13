@@ -20,7 +20,7 @@ export const UES_MEMBERSHIPS: MembershipTier[] = [
   {
     id: "unlimited-threading",
     name: "Unlimited Threading",
-    price: 25,
+    price: 29.99,
     tagline: "Perfect brows, every week",
     accentColor: "rose",
     benefits: [
@@ -29,7 +29,7 @@ export const UES_MEMBERSHIPS: MembershipTier[] = [
       "10% off all other services",
     ],
     bestFor: "Threading regulars who want always-perfect brows",
-    squareUrl: "#", // TODO: paste Square subscription checkout URL here
+    squareUrl: "https://square.link/u/yHVmuqxb",
   },
   {
     id: "unlimited-facials",
@@ -44,7 +44,7 @@ export const UES_MEMBERSHIPS: MembershipTier[] = [
       "10% off all other services",
     ],
     bestFor: "Skincare-focused clients who want consistent results",
-    squareUrl: "#", // TODO: paste Square subscription checkout URL here
+    squareUrl: "https://square.link/u/n7ijmZS8",
   },
   // ── Add more tiers here as you create them in Square Dashboard ──
   // {

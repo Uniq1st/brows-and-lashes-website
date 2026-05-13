@@ -52,7 +52,7 @@ export const STORES = [
     bookingUrl:
       "https://book.squareup.com/appointments/l5f8uasy444v40/location/LPT50K5SGRJTC/services?rwg_token=AFd1xnEaECUSkKyBXSkHBl1EvPjIY8g4A3MnG3OXAB2IRwUjK5hoqRcJoOgU2C2zyrLyzyaCCD9kreZXo4n4Klyh6i8ZeCoVaQ%3D%3D",
     giftCardUrl: "https://app.squareup.com/gift/MLCDJZEEFWEJ0/order",
-    googleReviewUrl: "https://g.page/r/eyebrowshape/review",
+    googleReviewUrl: "https://g.page/r/CWe4SgtByzcwEAE/review",
     mapSrc:
       "https://maps.google.com/maps?q=59-15+71st+Ave,+Ridgewood,+NY+11385&output=embed",
   },
