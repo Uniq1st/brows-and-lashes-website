@@ -1,0 +1,20 @@
+{
+  "name": "uniqswek-social-automation",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Auto-posts to Instagram and Google Business Profile for UniqSwek Beauty Studios",
+  "scripts": {
+    "generate": "node generate-caption.mjs",
+    "post:ues": "node run-daily.mjs ues",
+    "post:ridgewood": "node run-daily.mjs ridgewood",
+    "post:both": "node run-daily.mjs both",
+    "test": "node test-connection.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "sharp": "^0.33.4",
+    "node-fetch": "^3.3.2",
+    "form-data": "^4.0.0",
+    "googleapis": "^144.0.0"
+  }
+}

@@ -1,0 +1,83 @@
+name: Social Media Auto-Post
+
+on:
+  # Runs at 9:00 AM ET (13:00 UTC) and 6:00 PM ET (22:00 UTC) every day
+  schedule:
+    - cron: "0 13 * * *"   # 9:00 AM ET
+    - cron: "0 22 * * *"   # 6:00 PM ET
+
+  # Also allows you to trigger it manually from GitHub → Actions tab
+  workflow_dispatch:
+    inputs:
+      store:
+        description: "Which store to post for"
+        required: false
+        default: "both"
+        type: choice
+        options:
+          - both
+          - ues
+          - ridgewood
+      dry_run:
+        description: "Dry run (preview only, no actual posting)"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: scripts/social-automation/package.json
+
+      - name: Install dependencies
+        working-directory: scripts/social-automation
+        run: npm install
+
+      - name: Run social post
+        working-directory: scripts/social-automation
+        env:
+          # Content generation
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+          # Image hosting
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+
+          # Instagram — UES (Brows & Lashes)
+          META_UES_IG_USER_ID: ${{ secrets.META_UES_IG_USER_ID }}
+          META_UES_ACCESS_TOKEN: ${{ secrets.META_UES_ACCESS_TOKEN }}
+
+          # Instagram — Ridgewood (Eyebrow Shape)
+          META_RIDGEWOOD_IG_USER_ID: ${{ secrets.META_RIDGEWOOD_IG_USER_ID }}
+          META_RIDGEWOOD_ACCESS_TOKEN: ${{ secrets.META_RIDGEWOOD_ACCESS_TOKEN }}
+
+          # Google Business Profile
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_UES_LOCATION_NAME: ${{ secrets.GOOGLE_UES_LOCATION_NAME }}
+          GOOGLE_RIDGEWOOD_LOCATION_NAME: ${{ secrets.GOOGLE_RIDGEWOOD_LOCATION_NAME }}
+
+          # Dry run flag
+          DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
+
+        run: node run-daily.mjs ${{ github.event.inputs.store || 'both' }}
+
+      - name: Upload output images as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: posted-images-${{ github.run_number }}
+          path: content/output/
+          retention-days: 7
+          if-no-files-found: ignore

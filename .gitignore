@@ -8,6 +8,10 @@ __v0_jsx-dev-runtime.ts
 
 # Environment variables
 .env*.local
+scripts/social-automation/.env
+
+# Generated social media output images (don't commit these)
+content/output/
 
 # Common ignores
 node_modules
