@@ -48,7 +48,7 @@ export const PROMOTIONS: Promo[] = [
     message: "☀️ Summer Glow — 15% off all waxing services this month. Book online or walk in.",
     promoCode: "SUMMERGLOW",
     ctaText: "Book now →",
-    ctaHref: "/#book",
+    ctaHref: "https://eyebrow-shape-by-uniqswek-inc.square.site?cc=SUMMERGLOW",
   },
   {
     id: "holiday",

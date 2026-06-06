@@ -53,6 +53,8 @@ export function Navigation() {
             )}
             <Link
               href={activePromo.ctaHref}
+              target={activePromo.ctaHref.startsWith("http") ? "_blank" : undefined}
+              rel={activePromo.ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
               className="underline underline-offset-2 font-medium hover:opacity-80 transition-opacity"
             >
               {activePromo.ctaText}
