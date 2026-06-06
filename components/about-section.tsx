@@ -41,7 +41,15 @@ export function AboutSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-border">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-12 border-t border-border">
+              <div>
+                <p className="text-4xl md:text-5xl font-light text-primary">#2</p>
+                <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-2">On Google Maps · UES</p>
+              </div>
+              <div>
+                <p className="text-4xl md:text-5xl font-light text-primary">200+</p>
+                <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-2">Five-Star Reviews</p>
+              </div>
               <div>
                 <p className="text-4xl md:text-5xl font-light text-primary">8+</p>
                 <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-2">Years Experience</p>
@@ -49,10 +57,6 @@ export function AboutSection() {
               <div>
                 <p className="text-4xl md:text-5xl font-light text-primary">5K+</p>
                 <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-2">Happy Clients</p>
-              </div>
-              <div>
-                <p className="text-4xl md:text-5xl font-light text-primary">15+</p>
-                <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-2">Services</p>
               </div>
             </div>
           </div>

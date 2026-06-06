@@ -117,7 +117,7 @@ export function TestimonialsSection() {
             <span className="block italic">are saying</span>
           </h2>
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-4">
-            200+ five-star reviews in our first year — thank you, New York.
+            Ranked #2 on Google Maps — Upper East Side. 200+ five-star reviews and counting.
           </p>
         </div>
 
