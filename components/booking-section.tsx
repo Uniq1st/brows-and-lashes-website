@@ -3,9 +3,12 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, MapPin, Phone, Gift } from "lucide-react"
 import { STORES } from "@/lib/stores"
+import { getActivePromo } from "@/lib/promotions"
 import { trackBooking, trackPhone, trackGiftCard } from "@/lib/analytics"
 
 export function BookingSection() {
+  const activePromo = getActivePromo()
+
   return (
     <section id="book" className="py-24 md:py-32 bg-primary text-primary-foreground">
       <div className="max-w-6xl mx-auto px-6">
@@ -61,7 +64,7 @@ export function BookingSection() {
                 className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase px-8 w-full"
               >
                 <a
-                  href={store.bookingUrl}
+                  href={activePromo?.promoBookingUrls?.[store.id] ?? store.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackBooking(store.id, "booking-section")}

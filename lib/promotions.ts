@@ -3,6 +3,7 @@ export type Promo = {
   active: boolean
   message: string
   promoCode?: string
+  promoBookingUrls?: Record<string, string>
   ctaText: string
   ctaHref: string
 }
@@ -47,6 +48,10 @@ export const PROMOTIONS: Promo[] = [
     active: true,
     message: "☀️ Summer Glow — 15% off all waxing services this month. Book online or walk in.",
     promoCode: "SUMMERGLOW",
+    promoBookingUrls: {
+      "brows-and-lashes": "https://www.uniqswek.com?cc=SUMMERGLOW",
+      "eyebrow-shape":    "https://eyebrow-shape-by-uniqswek-inc.square.site?cc=SUMMERGLOW",
+    },
     ctaText: "Book now →",
     ctaHref: "/#book",
   },
