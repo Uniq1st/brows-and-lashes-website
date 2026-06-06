@@ -20,16 +20,34 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: 'UniqSwek Beauty Studios | Best Eyebrow Threading & Lashes in NYC',
-  description: 'Expert eyebrow threading, lash extensions, and facials by licensed cosmetologists at UniqSwek Beauty Studios. Locations in Upper East Side and Ridgewood.',
-  keywords: 'eyebrow threading NYC, lash extensions, facials, waxing, UniqSwek, beauty studio, Upper East Side, Ridgewood Queens, licensed cosmetologist, Swekchha Luitel',
+  description: 'Top-rated eyebrow threading, lash extensions, waxing & facials on the Upper East Side of Manhattan and Ridgewood Queens. 200+ five-star reviews. Walk-ins welcome.',
+  keywords: 'eyebrow threading Upper East Side, threading salon NYC, best threading NYC, lash extensions Upper East Side, beauty salon Upper East Side, threading near me Manhattan, eyebrow threading Lexington Avenue, threading 86th street, eyebrow waxing NYC, facials Upper East Side, lash extensions Manhattan, beauty studio 10028, brows and lashes NYC, UniqSwek, Swekchha Luitel, eyebrow threading Queens, lash extensions Ridgewood, beauty salon Ridgewood NY 11385',
   metadataBase: new URL('https://uniqswek.com'),
+  alternates: {
+    canonical: 'https://uniqswek.com',
+  },
   openGraph: {
     title: 'UniqSwek Beauty Studios | Best Eyebrow Threading & Lashes in NYC',
-    description: 'Expert eyebrow threading, lash extensions, and facials by licensed cosmetologists at UniqSwek Beauty Studios. Locations in Upper East Side and Ridgewood.',
+    description: 'Top-rated eyebrow threading, lash extensions, waxing & facials on the Upper East Side of Manhattan and Ridgewood Queens. 200+ five-star reviews. Walk-ins welcome.',
     url: 'https://uniqswek.com',
     siteName: 'UniqSwek Beauty Studios',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: '/images/hero-bg.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'UniqSwek Beauty Studios — Eyebrow Threading & Lash Extensions, Upper East Side NYC',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@browsandlashesnyc',
+    title: 'UniqSwek Beauty Studios | Best Eyebrow Threading & Lashes in NYC',
+    description: 'Top-rated eyebrow threading, lash extensions, waxing & facials on the Upper East Side of Manhattan. 200+ five-star reviews.',
+    images: ['/images/hero-bg.jpg'],
   },
   icons: {
     icon: [
@@ -75,12 +93,22 @@ const localBusinessSchema = {
         "longitude": -73.9565
       },
       "openingHours": ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
-      "sameAs": ["https://www.instagram.com/browsandlashesnyc"],
+      "sameAs": [
+        "https://www.instagram.com/browsandlashesnyc",
+        "https://maps.google.com/?cid=5062374397789282115"
+      ],
       "hasMap": "https://maps.google.com/?q=1240+Lexington+Avenue+New+York+NY+10028",
+      "areaServed": [
+        { "@type": "City", "name": "New York" },
+        { "@type": "Neighborhood", "name": "Upper East Side" },
+        { "@type": "Neighborhood", "name": "Carnegie Hill" },
+        { "@type": "Neighborhood", "name": "Yorkville" },
+        { "@type": "Neighborhood", "name": "Lenox Hill" }
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
-        "reviewCount": "200",
+        "reviewCount": 200,
         "bestRating": "5"
       },
       "founder": {
@@ -105,8 +133,17 @@ const localBusinessSchema = {
         "addressCountry": "US"
       },
       "openingHours": ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
-      "sameAs": ["https://www.instagram.com/eyebrowshapenyc"],
+      "sameAs": [
+        "https://www.instagram.com/eyebrowshapenyc",
+        "https://maps.google.com/?cid=11390073009820246887"
+      ],
       "hasMap": "https://maps.google.com/?q=59-15+71st+Ave+Ridgewood+NY+11385",
+      "areaServed": [
+        { "@type": "City", "name": "Ridgewood" },
+        { "@type": "Neighborhood", "name": "Ridgewood Queens" },
+        { "@type": "Neighborhood", "name": "Maspeth" },
+        { "@type": "Neighborhood", "name": "Glendale" }
+      ],
       "founder": {
         "@type": "Person",
         "name": "Swekchha Luitel"

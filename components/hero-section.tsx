@@ -20,17 +20,17 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.4em] uppercase text-muted-foreground mb-6 animate-fade-up">
-          Two NYC Studios · One Standard of Beauty
+          Upper East Side Manhattan · Ridgewood Queens
         </p>
-        
+
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[1.1] tracking-tight mb-8 animate-fade-up text-balance" style={{ animationDelay: "0.1s" }}>
           Beauty with
           <span className="block italic">the Thread</span>
         </h1>
 
         <p className="max-w-2xl mx-auto text-lg md:text-xl font-[family-name:var(--font-montserrat)] font-light text-muted-foreground mb-10 animate-fade-up text-pretty" style={{ animationDelay: "0.2s" }}>
-          Your one-stop destination for all your beauty needs. Expert threading, facials, 
-          eyelash extensions, and waxing in the heart of the Upper East Side.
+          NYC&apos;s top-rated eyebrow threading, lash extensions, waxing &amp; facials.
+          Licensed cosmetologists. 200+ five-star reviews. Walk-ins welcome.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>

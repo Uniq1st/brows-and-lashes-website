@@ -3,10 +3,22 @@ import { LocationPage } from "@/components/location-page"
 import { STORES } from "@/lib/stores"
 
 export const metadata: Metadata = {
-  title: "Brows & Lashes by UniqSwek | Upper East Side, Manhattan NYC",
+  title: "Eyebrow Threading & Lash Extensions Upper East Side | Brows & Lashes by UniqSwek",
   description:
-    "Expert eyebrow threading, lash extensions, waxing & facials on the Upper East Side. Located at 1240 Lexington Ave. 200+ five-star Google reviews. Walk-ins welcome.",
-  keywords: "eyebrow threading Upper East Side, lash extensions Manhattan, waxing NYC, beauty salon 10028, threading near me, UniqSwek Manhattan",
+    "Best eyebrow threading & lash extensions on the Upper East Side, Manhattan. At 1240 Lexington Ave near 86th St. 200+ five-star Google reviews. Licensed cosmetologists. Walk-ins welcome.",
+  keywords: "eyebrow threading Upper East Side, threading salon Upper East Side NYC, lash extensions Upper East Side, beauty salon 10028, threading near me Manhattan, eyebrow threading Lexington Avenue, threading 86th street, waxing Upper East Side, facials Upper East Side, brow shaping Manhattan, Brows and Lashes by UniqSwek, best threading salon NYC",
+  alternates: {
+    canonical: "https://uniqswek.com/manhattan",
+  },
+  openGraph: {
+    title: "Eyebrow Threading & Lash Extensions Upper East Side | Brows & Lashes by UniqSwek",
+    description: "Best eyebrow threading & lash extensions on the Upper East Side. 1240 Lexington Ave, near 86th St. 200+ five-star reviews. Walk-ins welcome.",
+    url: "https://uniqswek.com/manhattan",
+    siteName: "UniqSwek Beauty Studios",
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/images/hero-bg.jpg", width: 1200, height: 630, alt: "Brows & Lashes by UniqSwek — Upper East Side Manhattan" }],
+  },
 }
 
 const uesTeam = [
@@ -16,15 +28,27 @@ const uesTeam = [
   { name: "Smarika",          role: "Store Manager & Tech",   initials: "SM", color: "bg-teal-100 text-teal-700" },
 ]
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://uniqswek.com" },
+    { "@type": "ListItem", "position": 2, "name": "Upper East Side Studio", "item": "https://uniqswek.com/manhattan" },
+  ],
+}
+
 export default function ManhattanPage() {
   const store = STORES[0]
   return (
-    <LocationPage
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <LocationPage
       store={store}
       storeId="brows-and-lashes"
       teamMembers={uesTeam}
       heroTagline="Your go-to threading and lash studio on the Upper East Side of Manhattan. Over 200 five-star reviews and counting."
       neighborhoodDesc="Located at 1240 Lexington Avenue in the heart of the Upper East Side, our Manhattan studio has served thousands of New Yorkers since opening. Whether you're a regular threading client or trying lash extensions for the first time, our licensed team ensures you leave looking and feeling your best. Steps from the 4/5/6 subway at 86th Street."
     />
+    </>
   )
 }
