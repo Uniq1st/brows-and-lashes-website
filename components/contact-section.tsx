@@ -119,6 +119,7 @@ export function ContactSection() {
                 <h4 className="text-lg font-medium mb-2">Hours</h4>
                 <div className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light space-y-1">
                   <p>{store.hours.weekdays}</p>
+                  {store.hours.saturday && <p>{store.hours.saturday}</p>}
                   <p>{store.hours.sunday}</p>
                 </div>
               </div>

@@ -16,10 +16,10 @@ export const STORES = [
     phone: "+1 (917) 388-2434",
     phoneHref: "tel:+19173882434",
     hours: {
-      weekdays: "Monday – Saturday: 10am – 8pm",
+      weekdays: "Monday – Friday: 9am – 8pm",
+      saturday: "Saturday: 10am – 8pm",
       sunday: "Sunday: 10am – 7pm",
-      // Schema.org format for JSON-LD
-      schema: ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
+      schema: ["Mo-Fr 09:00-20:00", "Sa 10:00-20:00", "Su 10:00-19:00"],
     },
     instagram: "@browsandlashesnyc",
     instagramUrl: "https://www.instagram.com/browsandlashesnyc",

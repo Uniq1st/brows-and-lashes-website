@@ -92,7 +92,7 @@ const localBusinessSchema = {
         "latitude": 40.7825,
         "longitude": -73.9565
       },
-      "openingHours": ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
+      "openingHours": ["Mo-Fr 09:00-20:00", "Sa 10:00-20:00", "Su 10:00-19:00"],
       "sameAs": [
         "https://www.instagram.com/browsandlashesnyc",
         "https://maps.google.com/?cid=5062374397789282115"

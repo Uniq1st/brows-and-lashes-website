@@ -109,7 +109,9 @@ export async function LocationPage({
                 <Clock className="w-5 h-5 text-primary mx-auto mb-2" />
                 <p className="font-[family-name:var(--font-montserrat)] text-sm font-medium mb-1">Hours</p>
                 <p className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground font-light">
-                  {store.hours.weekdays}<br />{store.hours.sunday}
+                  {store.hours.weekdays}<br />
+                  {store.hours.saturday && <>{store.hours.saturday}<br /></>}
+                  {store.hours.sunday}
                 </p>
               </div>
               <div>
