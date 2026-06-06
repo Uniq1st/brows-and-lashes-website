@@ -4,8 +4,6 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { STORES } from "@/lib/stores"
 
-// bookingId: Square service ID — fill these in from your Square Dashboard
-// (Items > Services) to enable direct service pre-selection in the booking flow.
 const services = [
   {
     category: "Threading & Brows",
@@ -14,33 +12,45 @@ const services = [
         name: "Eyebrow Threading",
         description: "Precise hair removal technique using thread for perfectly shaped brows with clean, defined lines.",
         duration: "15 mins",
-        bookingId: "", // TODO: add Square service ID
+        price: "$13",
+        bookingId: "",
       },
       {
         name: "Eyebrow Waxing",
         description: "Quick and effective brow shaping using premium wax for smooth, long-lasting results.",
         duration: "20 mins",
+        price: "$15",
         bookingId: "",
       },
       {
         name: "Eyebrow Tinting",
         description: "Semi-permanent dye enhances brow color for a naturally fuller, defined appearance.",
         duration: "20 mins",
+        price: "$20",
+        bookingId: "",
+      },
+      {
+        name: "Eyebrow Lamination",
+        description: "Restructures brow hairs into a sleek, uniform shape for a defined, full look that lasts 6–8 weeks.",
+        duration: "45 mins",
+        price: "$60",
         bookingId: "",
       },
       {
         name: "Male Threading",
         description: "Specialized threading service for men, including brow shaping and facial hair grooming.",
         duration: "15 mins",
+        price: "$13",
         bookingId: "",
       },
       {
         name: "Full Face Threading",
         description: "Complete facial hair removal including brows, upper lip, chin, and sides using threading technique.",
         duration: "30 mins",
+        price: "$45",
         bookingId: "",
       },
-    ]
+    ],
   },
   {
     category: "Lashes",
@@ -49,110 +59,212 @@ const services = [
         name: "Classic Lash Extensions",
         description: "One extension per natural lash for a subtle, natural enhancement that opens up your eyes.",
         duration: "90 mins",
+        price: "$125",
         bookingId: "",
       },
       {
         name: "Volume Lash Extensions",
         description: "Multiple lightweight extensions per natural lash for dramatic, full, glamorous lashes.",
         duration: "2 hours",
+        price: "$150",
         bookingId: "",
       },
       {
         name: "Hybrid Lash Extensions",
         description: "Perfect blend of classic and volume techniques for beautiful textured dimension.",
         duration: "2 hours",
+        price: "$150",
+        bookingId: "",
+      },
+      {
+        name: "Cluster Lash Extensions",
+        description: "Pre-made fans applied to natural lashes for a quick, bold, full look at an accessible price.",
+        duration: "45 mins",
+        price: "$35",
         bookingId: "",
       },
       {
         name: "Lash Lift & Tint",
-        description: "Semi-permanent curl and color enhancement for your natural lashes that lasts 6-8 weeks.",
+        description: "Semi-permanent curl and color enhancement for your natural lashes that lasts 6–8 weeks.",
         duration: "60 mins",
+        price: "$75",
         bookingId: "",
       },
       {
         name: "Eyelash Tinting",
         description: "Darken and define your natural lashes for a mascara-free, polished look.",
         duration: "20 mins",
+        price: "$30",
         bookingId: "",
       },
-    ]
+    ],
   },
   {
     category: "Waxing",
     items: [
       {
-        name: "Full Body Wax",
-        description: "Complete body waxing service for smooth, hair-free skin from head to toe.",
-        duration: "90 mins",
-        bookingId: "",
-      },
-      {
         name: "Brazilian Wax",
         description: "Professional bikini waxing for a clean, smooth finish with minimal discomfort.",
         duration: "30 mins",
+        price: "$45",
         bookingId: "",
       },
       {
-        name: "Leg Wax",
-        description: "Full or half leg waxing for silky smooth, hair-free legs that last weeks.",
-        duration: "45 mins",
-        bookingId: "",
-      },
-      {
-        name: "Arm Wax",
-        description: "Complete arm waxing for smooth, touchable skin all day long.",
+        name: "CBD Brazilian Wax",
+        description: "Brazilian wax with CBD-infused formula for extra soothing, reduced redness, and a calmer post-wax experience.",
         duration: "30 mins",
+        price: "$55",
+        bookingId: "",
+      },
+      {
+        name: "Upper Leg Wax",
+        description: "Waxing from the knee to the hip for smooth, hair-free skin on the upper leg.",
+        duration: "30 mins",
+        price: "$40",
+        bookingId: "",
+      },
+      {
+        name: "Lower Leg Wax",
+        description: "Waxing from the ankle to the knee for silky smooth lower legs that last weeks.",
+        duration: "30 mins",
+        price: "$40",
+        bookingId: "",
+      },
+      {
+        name: "Full Leg Wax",
+        description: "Complete leg waxing from ankle to hip for fully smooth, hair-free legs.",
+        duration: "45 mins",
+        price: "$60",
+        bookingId: "",
+      },
+      {
+        name: "Half Arms Wax",
+        description: "Waxing from wrist to elbow for smooth, hair-free forearms.",
+        duration: "30 mins",
+        price: "$35",
+        bookingId: "",
+      },
+      {
+        name: "Full Arms Wax",
+        description: "Complete arm waxing from wrist to shoulder for smooth, hair-free skin.",
+        duration: "30 mins",
+        price: "$45",
         bookingId: "",
       },
       {
         name: "Underarm Wax",
         description: "Quick and effective underarm hair removal for lasting smoothness.",
         duration: "15 mins",
+        price: "$20",
         bookingId: "",
       },
-    ]
+      {
+        name: "Full Body Wax",
+        description: "Complete body waxing service for smooth, hair-free skin from head to toe.",
+        duration: "90 mins",
+        price: "$150",
+        bookingId: "",
+      },
+    ],
   },
   {
     category: "Facials & More",
     items: [
       {
-        name: "Classic Facial",
-        description: "Deep cleansing facial treatment to rejuvenate and refresh your skin for a healthy glow.",
+        name: "Regular Herbal Facial",
+        description: "Deep cleansing herbal facial to rejuvenate and refresh your skin for a healthy, natural glow.",
         duration: "45 mins",
+        price: "$40",
         bookingId: "",
       },
       {
-        name: "Deep Cleanse Facial",
-        description: "Intensive facial with extractions and deep pore cleansing for clear, radiant skin.",
-        duration: "60 mins",
-        bookingId: "",
-      },
-      {
-        name: "Hydrating Facial",
-        description: "Nourishing treatment to restore moisture and plump dehydrated skin.",
+        name: "Gold Facial",
+        description: "Luxurious gold-infused treatment to brighten, firm, and revitalize your complexion.",
         duration: "50 mins",
+        price: "$65",
+        bookingId: "",
+      },
+      {
+        name: "Acne Facial",
+        description: "Intensive organic treatment targeting active breakouts and congested pores for clear, radiant skin.",
+        duration: "60 mins",
+        price: "$90",
+        bookingId: "",
+      },
+      {
+        name: "Four Layer Facial",
+        description: "Advanced four-layer treatment targeting fine lines, uneven tone, and texture for visibly younger-looking skin.",
+        duration: "60 mins",
+        price: "$85",
+        bookingId: "",
+      },
+      {
+        name: "Face Herbal Mask",
+        description: "Soothing herbal mask add-on to deeply nourish the skin and reduce redness after any service.",
+        duration: "20 mins",
+        price: "$20",
         bookingId: "",
       },
       {
         name: "Henna Tattoos",
         description: "Beautiful, intricate temporary henna designs for special occasions and celebrations.",
         duration: "30 mins",
+        price: "$15",
+        bookingId: "",
+      },
+    ],
+  },
+  {
+    category: "Massage",
+    items: [
+      {
+        name: "10 Min Head, Shoulder & Back",
+        description: "Quick tension-relief massage targeting the head, shoulders, and upper back to melt away stress.",
+        duration: "10 mins",
+        price: "$15",
         bookingId: "",
       },
       {
-        name: "Anti-Aging Facial",
-        description: "Rejuvenating treatment targeting fine lines and wrinkles for youthful, firm skin.",
-        duration: "60 mins",
+        name: "15 Min Head, Shoulder & Back",
+        description: "Extended relaxation massage for the head, shoulders, and back — perfect as a post-service add-on.",
+        duration: "15 mins",
+        price: "$25",
         bookingId: "",
       },
-    ]
-  }
+      {
+        name: "30 Min Head, Shoulder & Back",
+        description: "Full relaxation session covering head, neck, shoulders, and upper back for complete tension release.",
+        duration: "30 mins",
+        price: "$40",
+        bookingId: "",
+      },
+      {
+        name: "10 Min Face Lifting Massage",
+        description: "Targeted facial massage to stimulate circulation, reduce puffiness, and lift and tone the face.",
+        duration: "10 mins",
+        price: "$20",
+        bookingId: "",
+      },
+      {
+        name: "15 Min Face Lifting Massage",
+        description: "Extended facial lifting massage using sculpting techniques to naturally firm and contour the face.",
+        duration: "15 mins",
+        price: "$28",
+        bookingId: "",
+      },
+      {
+        name: "30 Min Face Lifting Massage",
+        description: "Full face lifting and contouring session for visible firming, toning, and a refreshed appearance.",
+        duration: "30 mins",
+        price: "$50",
+        bookingId: "",
+      },
+    ],
+  },
 ]
 
-// Build a booking URL for a given store + optional Square service ID
 function buildBookingUrl(storeBookingUrl: string, bookingId?: string) {
   if (!bookingId) return storeBookingUrl
-  // Square Appointments supports pre-selecting a service via the `services` param
   const url = new URL(storeBookingUrl)
   url.searchParams.set("services", bookingId)
   return url.toString()
@@ -206,7 +318,8 @@ export function ServicesSection() {
               className="group bg-card p-8 border border-border hover:border-primary/50 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-medium">{service.name}</h3>
+                <h3 className="text-xl font-medium pr-4">{service.name}</h3>
+                <span className="text-xl font-light text-primary shrink-0">{service.price}</span>
               </div>
               <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light text-sm leading-relaxed mb-4">
                 {service.description}
