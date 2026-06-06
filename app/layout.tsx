@@ -4,7 +4,8 @@ import { Analytics } from '@vercel/analytics/next'
 import Script from 'next/script'
 import './globals.css'
 
-const GA_ID = 'G-0WNZS7QG0N'
+const GA_ID   = 'G-0WNZS7QG0N'
+const GADS_ID = 'AW-18219073341'
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"],
@@ -168,12 +169,12 @@ export default function RootLayout({
       <body className={`${cormorant.variable} ${montserrat.variable} font-serif antialiased`}>
         {children}
         <Analytics />
-        {/* Google Analytics 4 */}
+        {/* Google Analytics 4 + Google Ads */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
-        <Script id="ga4-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -182,6 +183,7 @@ export default function RootLayout({
               page_path: window.location.pathname,
               send_page_view: true
             });
+            gtag('config', '${GADS_ID}');
           `}
         </Script>
       </body>
