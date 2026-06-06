@@ -5,7 +5,8 @@ import Script from 'next/script'
 import './globals.css'
 
 const GA_ID   = 'G-0WNZS7QG0N'
-const GADS_ID = 'AW-18219073341'
+const GADS_ID          = 'AW-18219073341'
+const GADS_PAGEVIEW_ID = 'AW-18219073341/00aoCJLhkLocEL3-w-9D'
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ["latin"],
@@ -184,6 +185,11 @@ export default function RootLayout({
               send_page_view: true
             });
             gtag('config', '${GADS_ID}');
+            gtag('event', 'conversion', {
+              send_to: '${GADS_PAGEVIEW_ID}',
+              value: 1.0,
+              currency: 'USD'
+            });
           `}
         </Script>
       </body>
