@@ -44,11 +44,16 @@ export function Navigation() {
       {showBanner && activePromo && (
         <div className="bg-primary text-primary-foreground px-4 py-2 flex items-center justify-center gap-3 relative">
           <Gift className="w-4 h-4 shrink-0 opacity-80" />
-          <p className="font-[family-name:var(--font-montserrat)] text-xs md:text-sm text-center">
+          <p className="font-[family-name:var(--font-montserrat)] text-xs md:text-sm text-center flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
             <span className="font-medium">{activePromo.message}</span>
+            {activePromo.promoCode && (
+              <span className="inline-flex items-center px-2 py-0.5 bg-primary-foreground/20 border border-primary-foreground/40 rounded-sm font-mono font-bold tracking-widest text-xs">
+                {activePromo.promoCode}
+              </span>
+            )}
             <Link
               href={activePromo.ctaHref}
-              className="ml-2 underline underline-offset-2 font-medium hover:opacity-80 transition-opacity"
+              className="underline underline-offset-2 font-medium hover:opacity-80 transition-opacity"
             >
               {activePromo.ctaText}
             </Link>

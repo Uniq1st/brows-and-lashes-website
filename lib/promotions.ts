@@ -2,6 +2,7 @@ export type Promo = {
   id: string
   active: boolean
   message: string
+  promoCode?: string
   ctaText: string
   ctaHref: string
 }
@@ -45,6 +46,7 @@ export const PROMOTIONS: Promo[] = [
     id: "summer",
     active: true,
     message: "☀️ Summer Glow — 15% off all waxing services this month. Book online or walk in.",
+    promoCode: "SUMMERGLOW",
     ctaText: "Book now →",
     ctaHref: "/#book",
   },
