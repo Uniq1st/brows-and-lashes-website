@@ -11,12 +11,12 @@ const team = [
     store: "Both Studios",
   },
   {
-    name: "Khushi",
-    role: "Licensed Cosmetologist",
-    initials: "KH",
-    color: "bg-violet-100 text-violet-700",
-    ring: "ring-violet-200",
-    bio: "A master of aesthetic balance, Khushi specializes in transformative brow shaping and skin-rejuvenating facials. Her expertise as a licensed cosmetologist ensures every client receives a treatment tailored perfectly to their unique features.",
+    name: "Mala",
+    role: "Licensed Technician",
+    initials: "MA",
+    color: "bg-indigo-100 text-indigo-700",
+    ring: "ring-indigo-200",
+    bio: "Mala is our go-to specialist for lash lifting, cluster lash extensions, and precision threading. Her steady hands and eye for detail consistently deliver results that clients come back for again and again.",
     store: "Upper East Side",
   },
   {
