@@ -1,3 +1,4 @@
+import { getPlaceRating } from "@/lib/google-reviews"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { LocationSelector } from "@/components/location-selector"
@@ -80,7 +81,11 @@ const serviceListSchema = {
   ],
 }
 
-export default function Home() {
+export default async function Home() {
+  const placeRating = await getPlaceRating(
+    process.env.GOOGLE_PLACE_ID_UES ?? ""
+  )
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -93,7 +98,7 @@ export default function Home() {
       <TeamSection />
       <BeforeAfterSection />
       <GallerySection />
-      <TestimonialsSection />
+      <TestimonialsSection placeRating={placeRating} />
       <InstagramSection />
       <EmailCaptureSection />
       <FaqSection />

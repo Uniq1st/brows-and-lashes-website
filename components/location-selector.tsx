@@ -3,8 +3,12 @@
 import { MapPin, Phone, Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { STORES } from "@/lib/stores"
+import { getActivePromo } from "@/lib/promotions"
+import { trackBooking } from "@/lib/analytics"
 
 export function LocationSelector() {
+  const activePromo = getActivePromo()
+
   return (
     <section id="locations" className="py-24 md:py-32 bg-secondary">
       <div className="max-w-7xl mx-auto px-6">
@@ -55,8 +59,9 @@ export function LocationSelector() {
                 <div className="flex items-start gap-3">
                   <Clock className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                   <div>
-                    <p>Mon – Sat: 10am – 8pm</p>
-                    <p>Sunday: 10am – 7pm</p>
+                    <p>{store.hours.weekdays}</p>
+                    {'saturday' in store.hours && store.hours.saturday && <p>{store.hours.saturday}</p>}
+                    <p>{store.hours.sunday}</p>
                   </div>
                 </div>
               </div>
@@ -65,7 +70,12 @@ export function LocationSelector() {
                 asChild
                 className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase mt-auto"
               >
-                <a href={store.bookingUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  href={activePromo?.promoBookingUrls?.[store.id] ?? store.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackBooking(store.id, "location-selector")}
+                >
                   Book at {store.name}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>

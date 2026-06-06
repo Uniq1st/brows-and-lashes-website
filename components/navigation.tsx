@@ -132,7 +132,7 @@ export function Navigation() {
                 {STORES.map((store) => (
                   <DropdownMenuItem key={store.id} asChild>
                     <a
-                      href={store.bookingUrl}
+                      href={activePromo?.promoBookingUrls?.[store.id] ?? store.bookingUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex flex-col items-start gap-0.5 py-3 cursor-pointer"
@@ -214,7 +214,7 @@ export function Navigation() {
                   {STORES.map((store) => (
                     <a
                       key={store.id}
-                      href={store.bookingUrl}
+                      href={activePromo?.promoBookingUrls?.[store.id] ?? store.bookingUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => { setIsOpen(false); trackBooking(store.id, "nav-mobile") }}

@@ -3,8 +3,9 @@
 import { useState } from "react"
 import { ChevronLeft, ChevronRight, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type { PlaceRating } from "@/lib/google-reviews"
 
-const testimonials = [
+const fallbackTestimonials = [
   {
     name: "Eliza Resutova",
     service: "Eyebrow Threading",
@@ -91,18 +92,41 @@ const testimonials = [
   }
 ]
 
-export function TestimonialsSection() {
+interface TestimonialsSectionProps {
+  placeRating?: PlaceRating | null
+}
+
+export function TestimonialsSection({ placeRating }: TestimonialsSectionProps = {}) {
+  // Normalise Google reviews into the same shape as the fallback list
+  const reviews = placeRating?.reviews?.length
+    ? placeRating.reviews.map((r) => ({
+        name: r.authorName,
+        service: "Google Review",
+        text: r.text,
+        rating: r.rating,
+        date: r.relativeTimeDescription,
+      }))
+    : fallbackTestimonials
+
+  const displayCount = placeRating?.reviewCount
+    ? `${placeRating.reviewCount}+`
+    : "200+"
+
+  const displayRating = placeRating?.rating
+    ? placeRating.rating.toFixed(1)
+    : "5.0"
+
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    setCurrentIndex((prev) => (prev + 1) % reviews.length)
   }
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length)
   }
 
-  const current = testimonials[currentIndex]
+  const current = reviews[currentIndex]
 
   return (
     <section id="testimonials" className="py-24 md:py-32 bg-card">
@@ -117,7 +141,7 @@ export function TestimonialsSection() {
             <span className="block italic">are saying</span>
           </h2>
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-4">
-            Ranked #2 on Google Maps — Upper East Side. 200+ five-star reviews and counting.
+            Ranked #2 on Google Maps — Upper East Side. {displayCount} five-star reviews and counting.
           </p>
         </div>
 
@@ -129,7 +153,7 @@ export function TestimonialsSection() {
             ))}
           </div>
           <span className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground">
-            5.0 · 200+ reviews on
+            {displayRating} · {displayCount} reviews on
           </span>
           <span className="font-[family-name:var(--font-montserrat)] text-sm font-medium flex items-center gap-1">
             <svg viewBox="0 0 24 24" className="w-4 h-4" xmlns="http://www.w3.org/2000/svg">
@@ -170,9 +194,11 @@ export function TestimonialsSection() {
             {/* Author */}
             <div>
               <p className="text-lg font-medium">{current.name}</p>
-              <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-1">
-                {current.service}
-              </p>
+              {current.service !== "Google Review" && (
+                <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-1">
+                  {current.service}
+                </p>
+              )}
               <p className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground/60 mt-2">
                 {current.date}
               </p>
@@ -193,7 +219,7 @@ export function TestimonialsSection() {
 
             {/* Dots */}
             <div className="flex items-center gap-2">
-              {testimonials.map((_, index) => (
+              {reviews.map((_: unknown, index: number) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
