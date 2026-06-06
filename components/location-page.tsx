@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer"
 import type { Store } from "@/lib/stores"
 import { getServices } from "@/lib/square"
 import type { SquareStoreId, SquareService } from "@/lib/square"
+import { getActivePromo } from "@/lib/promotions"
 
 interface LocationPageProps {
   store: Store
@@ -44,6 +45,9 @@ export async function LocationPage({
   const servicesByCategory = groupByCategory(squareServices)
   const categories = Array.from(servicesByCategory.keys())
 
+  const activePromo = getActivePromo()
+  const bookingUrl = activePromo?.promoBookingUrls?.[store.id] ?? store.bookingUrl
+
   return (
     <>
       <Navigation />
@@ -67,7 +71,7 @@ export async function LocationPage({
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href={store.bookingUrl}
+                href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-primary/90 transition-colors"
@@ -204,7 +208,7 @@ export async function LocationPage({
                         {items.map((svc) => (
                           <a
                             key={svc.variationId ?? svc.id}
-                            href={store.bookingUrl}
+                            href={bookingUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-start justify-between gap-4 p-4 border border-border hover:border-primary/40 hover:bg-card/50 transition-colors group"
@@ -257,7 +261,7 @@ export async function LocationPage({
 
             <div className="text-center">
               <a
-                href={store.bookingUrl}
+                href={bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-primary/90 transition-colors"
