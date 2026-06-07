@@ -5,7 +5,6 @@ import { LocationSelector } from "@/components/location-selector"
 import { AboutSection } from "@/components/about-section"
 import { ServicesSection } from "@/components/services-section"
 import { TeamSection } from "@/components/team-section"
-import { BeforeAfterSection } from "@/components/before-after-section"
 import { GallerySection } from "@/components/gallery-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { InstagramSection } from "@/components/instagram-section"
@@ -96,7 +95,6 @@ export default async function Home() {
       <AboutSection />
       <ServicesSection />
       <TeamSection />
-      <BeforeAfterSection />
       <GallerySection />
       <TestimonialsSection placeRating={placeRating} />
       <InstagramSection />

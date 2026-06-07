@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { STORES } from "@/lib/stores"
 
 const team = [
@@ -7,16 +8,18 @@ const team = [
     initials: "SL",
     color: "bg-rose-100 text-rose-700",
     ring: "ring-rose-200",
+    photo: "/images/team/swekchha.JPG",
     bio: "With over 8 years of experience in precision threading and lash artistry, Swekchha founded UniqSwek to bring a higher standard of personalized beauty to NYC. Her vision combines advanced techniques with a relaxing, client-focused environment.",
     store: "Both Studios",
   },
   {
-    name: "Mala",
-    role: "Licensed Technician",
-    initials: "MA",
-    color: "bg-indigo-100 text-indigo-700",
-    ring: "ring-indigo-200",
-    bio: "Mala is our go-to specialist for lash lifting, cluster lash extensions, and precision threading. Her steady hands and eye for detail consistently deliver results that clients come back for again and again.",
+    name: "Sammy",
+    role: "Store Manager & Licensed Technician",
+    initials: "SM",
+    color: "bg-teal-100 text-teal-700",
+    ring: "ring-teal-200",
+    photo: null,
+    bio: "As our dedicated Store Manager and a skilled licensed technician, Sammy ensures the highest standards of service at UniqSwek. She balances expert technical skill with a passion for creating a seamless, welcoming experience for every guest.",
     store: "Upper East Side",
   },
   {
@@ -25,16 +28,18 @@ const team = [
     initials: "AN",
     color: "bg-amber-100 text-amber-700",
     ring: "ring-amber-200",
+    photo: null,
     bio: "A favorite among our Upper East Side clients, Angel is known for her meticulous attention to detail and kind approach. Whether it's a perfect brow shape or a full set of lashes, she ensures every client leaves feeling confident.",
     store: "Upper East Side",
   },
   {
-    name: "Sammy",
-    role: "Store Manager & Licensed Technician",
-    initials: "SM",
-    color: "bg-teal-100 text-teal-700",
-    ring: "ring-teal-200",
-    bio: "As our dedicated Store Manager and a skilled licensed technician, Sammy ensures the highest standards of service at UniqSwek. She balances expert technical skill with a passion for creating a seamless, welcoming experience for every guest.",
+    name: "Mala",
+    role: "Licensed Technician",
+    initials: "MA",
+    color: "bg-indigo-100 text-indigo-700",
+    ring: "ring-indigo-200",
+    photo: null,
+    bio: "Mala is our go-to specialist for lash lifting, cluster lash extensions, and precision threading. Her steady hands and eye for detail consistently deliver results that clients come back for again and again.",
     store: "Upper East Side",
   },
 ]
@@ -66,9 +71,21 @@ export function TeamSection() {
             >
               {/* Avatar */}
               <div
-                className={`w-24 h-24 rounded-full ${member.color} ring-4 ${member.ring} flex items-center justify-center mb-6 text-2xl font-semibold tracking-wide transition-transform duration-300 group-hover:scale-105`}
+                className={`w-24 h-24 rounded-full ring-4 ${member.ring} mb-6 overflow-hidden transition-transform duration-300 group-hover:scale-105 shrink-0`}
               >
-                {member.initials}
+                {member.photo ? (
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    width={96}
+                    height={96}
+                    className="w-full h-full object-cover object-top"
+                  />
+                ) : (
+                  <div className={`w-full h-full ${member.color} flex items-center justify-center text-2xl font-semibold tracking-wide`}>
+                    {member.initials}
+                  </div>
+                )}
               </div>
 
               {/* Info */}
