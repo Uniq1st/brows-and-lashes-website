@@ -29,12 +29,12 @@ const team = [
     store: "Upper East Side",
   },
   {
-    name: "Smarika",
+    name: "Sammy",
     role: "Store Manager & Licensed Technician",
     initials: "SM",
     color: "bg-teal-100 text-teal-700",
     ring: "ring-teal-200",
-    bio: "As our dedicated Store Manager and a skilled licensed technician, Smarika ensures the highest standards of service at UniqSwek. She balances expert technical skill with a passion for creating a seamless, welcoming experience for every guest.",
+    bio: "As our dedicated Store Manager and a skilled licensed technician, Sammy ensures the highest standards of service at UniqSwek. She balances expert technical skill with a passion for creating a seamless, welcoming experience for every guest.",
     store: "Upper East Side",
   },
 ]
