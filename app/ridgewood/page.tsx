@@ -23,6 +23,9 @@ export const metadata: Metadata = {
 
 const ridgewoodTeam = [
   { name: "Swekchha Luitel", role: "Founder & Cosmetologist", initials: "SL", color: "bg-rose-100 text-rose-700" },
+  { name: "Sammy",           role: "Store Manager & Tech",    initials: "SM", color: "bg-teal-100 text-teal-700" },
+  { name: "Angel",           role: "Licensed Technician",     initials: "AN", color: "bg-amber-100 text-amber-700" },
+  { name: "Mala",            role: "Licensed Technician",     initials: "MA", color: "bg-indigo-100 text-indigo-700" },
 ]
 
 const breadcrumbSchema = {
