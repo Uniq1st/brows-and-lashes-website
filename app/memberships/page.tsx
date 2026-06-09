@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
@@ -42,7 +41,25 @@ async function getTiersForStore(
   try {
     const plans = await getSubscriptionPlans(storeSquareId)
     if (plans.length > 0) {
-      return plans.map((p, i) => squarePlanToTier(p, i))
+      return plans.map((p, i) => {
+        const base = squarePlanToTier(p, i)
+        // Merge in squareUrl, benefits, and display metadata from the matching
+        // fallback tier — the Square API doesn't expose subscription checkout URLs.
+        const match = fallback.find(
+          (f) => f.name.toLowerCase() === base.name.toLowerCase()
+        )
+        return match
+          ? {
+              ...base,
+              squareUrl: match.squareUrl,
+              benefits: match.benefits.length ? match.benefits : base.benefits,
+              bestFor: match.bestFor || base.bestFor,
+              tagline: match.tagline || base.tagline,
+              accentColor: match.accentColor,
+              popular: match.popular,
+            }
+          : base
+      })
     }
   } catch (err) {
     console.warn(`Could not fetch Square subscription plans for ${storeSquareId}:`, err)
