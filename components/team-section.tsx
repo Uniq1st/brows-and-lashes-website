@@ -10,7 +10,7 @@ const team = [
     color: "bg-rose-100 text-rose-700",
     ring: "ring-rose-200",
     photo: "/images/team/swekchha.JPG",
-    bio: "With over 8 years of experience in precision threading and lash artistry, Swekchha founded UniqSwek to bring a higher standard of personalized beauty to NYC. Her vision combines advanced techniques with a relaxing, client-focused environment.",
+    bio: "Swekchha founded UniqSwek with a clear vision: every client deserves a consistently exceptional experience. She personally trains each technician in the Brows & Lashes way — precision threading, waxing, facials, and eyelash extensions — ensuring the same high standard of service, every visit, every time.",
     store: "Both Studios",
   },
   {
