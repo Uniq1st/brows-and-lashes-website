@@ -4,6 +4,7 @@ import { STORES } from "@/lib/stores"
 const team = [
   {
     name: "Swekchha Luitel",
+    displayName: "Swek",
     role: "Founder & Licensed Cosmetologist",
     initials: "SL",
     color: "bg-rose-100 text-rose-700",
@@ -89,7 +90,7 @@ export function TeamSection() {
               </div>
 
               {/* Info */}
-              <h3 className="text-xl font-medium mb-1">{member.name}</h3>
+              <h3 className="text-xl font-medium mb-1">{("displayName" in member && member.displayName) ? member.displayName : member.name}</h3>
               <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase text-primary mb-1">
                 {member.role}
               </p>
