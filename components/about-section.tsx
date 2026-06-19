@@ -38,6 +38,9 @@ export function AboutSection() {
               <p>
                 At UniqSwek, we combine advanced techniques with premium products in a clean, relaxing environment. Your beauty and confidence are our top priorities — and always will be.
               </p>
+              <p className="font-semibold text-foreground">
+                Want to book with Swek directly? She takes clients by appointment only for eyebrow threading, tinting, and facials — call us to schedule your visit.
+              </p>
             </div>
 
             {/* Stats */}
