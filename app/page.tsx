@@ -12,6 +12,7 @@ import { EmailCaptureSection } from "@/components/email-capture-section"
 import { FaqSection } from "@/components/faq-section"
 import { BookingSection } from "@/components/booking-section"
 import { ContactSection } from "@/components/contact-section"
+import { SocialSection } from "@/components/social-section"
 import { Footer } from "@/components/footer"
 import { StickyBookButton } from "@/components/sticky-book-button"
 
@@ -102,6 +103,7 @@ export default async function Home() {
       <FaqSection />
       <BookingSection />
       <ContactSection />
+      <SocialSection />
       <Footer />
       <StickyBookButton />
     </main>

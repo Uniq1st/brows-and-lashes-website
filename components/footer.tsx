@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram } from "lucide-react"
+import { Instagram, MapPin } from "lucide-react"
 import { STORES } from "@/lib/stores"
 
 function YelpIcon({ className }: { className?: string }) {
@@ -24,33 +24,48 @@ export function Footer() {
             <p className="font-[family-name:var(--font-montserrat)] text-background/70 font-light mt-4 max-w-sm leading-relaxed">
               Two NYC studios under one brand. Expert threading, lash extensions, waxing & facials — where beauty meets artistry.
             </p>
-            <div className="flex gap-4 mt-6">
+            <div className="flex flex-col gap-4 mt-6">
               {STORES.map((store) => (
-                <a
-                  key={store.id}
-                  href={store.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={store.instagram}
-                  className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
-                >
-                  <Instagram className="w-5 h-5" />
-                  <span className="sr-only">{store.instagram}</span>
-                </a>
+                <div key={store.id}>
+                  <p className="font-[family-name:var(--font-montserrat)] text-[10px] tracking-widest uppercase text-background/40 mb-2">
+                    {store.name}
+                  </p>
+                  <div className="flex gap-3">
+                    <a
+                      href={store.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${store.instagram} on Instagram`}
+                      className="w-11 h-11 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
+                    >
+                      <Instagram className="w-5 h-5" />
+                      <span className="sr-only">{store.instagram}</span>
+                    </a>
+                    <a
+                      href={store.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={`${store.name} on Google Maps`}
+                      className="w-11 h-11 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
+                    >
+                      <MapPin className="w-5 h-5" />
+                      <span className="sr-only">{store.name} on Google Maps</span>
+                    </a>
+                    {store.yelpUrl && (
+                      <a
+                        href={store.yelpUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={`${store.name} on Yelp`}
+                        className="w-11 h-11 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
+                      >
+                        <YelpIcon className="w-5 h-5" />
+                        <span className="sr-only">{store.name} on Yelp</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
               ))}
-              {STORES.map((store) => store.yelpUrl ? (
-                <a
-                  key={`yelp-${store.id}`}
-                  href={store.yelpUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={`${store.name} on Yelp`}
-                  className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
-                >
-                  <YelpIcon className="w-5 h-5" />
-                  <span className="sr-only">{store.name} on Yelp</span>
-                </a>
-              ) : null)}
             </div>
           </div>
 
