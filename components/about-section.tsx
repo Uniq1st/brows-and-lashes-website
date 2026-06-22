@@ -30,7 +30,7 @@ export function AboutSection() {
             </h2>
             <div className="space-y-6 font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed">
               <p>
-                UniqSwek was founded by <span className="text-foreground font-medium">Swekchha Luitel</span> with one vision: bring expert, precision beauty services to New York City. What started as a single studio on the Upper East Side of Manhattan has grown into two NYC locations — a testament to the trust and love of our incredible clients.
+                UniqSwek was founded by <span className="text-foreground font-medium">Swekchha Luitel (Swek)</span> with one vision: bring expert, precision beauty services to New York City. What started as a single studio on the Upper East Side of Manhattan has grown into two NYC locations — a testament to the trust and love of our incredible clients.
               </p>
               <p>
                 Our team of highly trained specialists is passionate about delivering personalized, high-quality services tailored to your unique preferences. Whether you&apos;re shaping your brows with meticulous threading, achieving smooth, radiant skin with our waxing and facial treatments, or adding drama to your eyes with stunning lash extensions, we prioritize your comfort and satisfaction every step of the way.

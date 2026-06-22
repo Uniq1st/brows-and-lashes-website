@@ -64,7 +64,7 @@ const faqs = [
       },
       {
         q: "Are your specialists licensed?",
-        a: "Yes — every specialist at UniqSwek is a licensed cosmetologist or licensed technician in New York State. Our team is led by founder Swekchha Luitel, who has over 8 years of experience. We maintain strict hygiene standards with new tools and sanitized equipment for every client."
+        a: "Yes — every specialist at UniqSwek is a licensed cosmetologist or licensed technician in New York State. Our team is led by founder Swekchha Luitel (Swek), who has over 8 years of experience. We maintain strict hygiene standards with new tools and sanitized equipment for every client."
       },
       {
         q: "Do you offer services for men?",

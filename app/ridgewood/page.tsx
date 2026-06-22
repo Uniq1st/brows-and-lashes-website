@@ -47,7 +47,7 @@ export default function RidgewoodPage() {
       storeId="eyebrow-shape"
       teamMembers={ridgewoodTeam}
       heroTagline="Bringing UniqSwek's signature precision threading and lash artistry to Ridgewood, Queens."
-      neighborhoodDesc="Our Ridgewood studio at 59-15 71st Avenue brings the same standard of expert beauty services to Queens. Founded by Swekchha Luitel with the same vision that made our Manhattan studio a neighborhood favorite — precision, care, and a genuinely welcoming environment. Easy street parking and close to the M train."
+      neighborhoodDesc="Our Ridgewood studio at 59-15 71st Avenue brings the same standard of expert beauty services to Queens. Founded by Swekchha Luitel (Swek) with the same vision that made our Manhattan studio a neighborhood favorite — precision, care, and a genuinely welcoming environment. Easy street parking and close to the M train."
     />
     </>
   )

@@ -43,7 +43,7 @@ const faqSchema = {
     {
       "@type": "Question",
       "name": "Are your specialists licensed?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes — every specialist at UniqSwek is a licensed cosmetologist or licensed technician in New York State. Our team is led by founder Swekchha Luitel, who has over 8 years of experience." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — every specialist at UniqSwek is a licensed cosmetologist or licensed technician in New York State. Our team is led by founder Swekchha Luitel (Swek), who has over 8 years of experience." }
     },
     {
       "@type": "Question",
