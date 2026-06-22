@@ -9,10 +9,10 @@ export function AboutSection() {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden rounded-sm">
               <Image
-                src="/images/about.jpg"
-                alt="Brows and Lashes by UniqSwek studio"
+                src="/images/swek-threading.jpg"
+                alt="Swekchha Luitel threading a client at Brows & Lashes by UniqSwek"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             {/* Decorative Element */}
