@@ -2,6 +2,14 @@ import Link from "next/link"
 import { Instagram } from "lucide-react"
 import { STORES } from "@/lib/stores"
 
+function YelpIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M20.16 12.594l-4.995 1.875c-.31.12-.31.555 0 .674l4.995 1.875c.405.15.794-.24.654-.63l-1.875-4.995c-.12-.31-.554-.31-.674 0l.895 1.201zM11.07 18.223l-.792 5.2c-.06.42.314.735.72.614l5.25-1.636c.42-.12.51-.645.15-.886l-4.455-3.563c-.33-.255-.813-.075-.873.27zM9.6 13.47l-5.415-1.08c-.42-.09-.735.33-.57.72l2.1 5.07c.15.375.645.45.9.15l3.315-3.99c.24-.285.075-.765-.33-.87zm.9-1.725l3.705 4.22c.27.3.735.24.93-.12l2.594-5.34c.18-.36-.09-.78-.48-.78h-5.25c-.435 0-.69.42-.435.78l-.064-.76zm-.556-.944l1.426-5.04c.12-.42-.27-.78-.69-.63L5.43 7.47c-.405.15-.48.69-.135.944l4.41 3.15c.315.225.75.045.87-.315l-.43-.498z" />
+    </svg>
+  )
+}
+
 export function Footer() {
   return (
     <footer className="bg-foreground text-background py-16">
@@ -30,6 +38,19 @@ export function Footer() {
                   <span className="sr-only">{store.instagram}</span>
                 </a>
               ))}
+              {STORES.map((store) => store.yelpUrl ? (
+                <a
+                  key={`yelp-${store.id}`}
+                  href={store.yelpUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${store.name} on Yelp`}
+                  className="w-10 h-10 rounded-full bg-background/10 flex items-center justify-center hover:bg-background/20 transition-colors"
+                >
+                  <YelpIcon className="w-5 h-5" />
+                  <span className="sr-only">{store.name} on Yelp</span>
+                </a>
+              ) : null)}
             </div>
           </div>
 
