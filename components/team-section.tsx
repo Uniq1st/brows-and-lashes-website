@@ -30,7 +30,7 @@ const team = [
     initials: "AN",
     color: "bg-amber-100 text-amber-700",
     ring: "ring-amber-200",
-    photo: null,
+    photo: "/images/team/angel.jpg",
     bio: "Our resident sweetheart — Angel's kind, soft-spoken nature puts every client instantly at ease. She's skilled in threading, waxing, and tinting, and her gentle touch paired with a sharp eye for detail means you always leave looking and feeling your best.",
     store: "Upper East Side",
   },
