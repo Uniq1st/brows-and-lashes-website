@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, ChevronDown, X, Gift, Sparkles } from "lucide-react"
+import { Menu, ChevronDown, X, Gift, Sparkles, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -114,6 +114,15 @@ export function Navigation() {
             >
               <Sparkles className="w-3 h-3" />
               Memberships
+            </Link>
+
+            {/* Bridal highlight */}
+            <Link
+              href="/bridal"
+              className="text-sm font-[family-name:var(--font-montserrat)] tracking-wider uppercase text-primary font-medium flex items-center gap-1 hover:opacity-80 transition-opacity"
+            >
+              <Heart className="w-3 h-3" />
+              Bridal
             </Link>
 
             {/* Book Now dropdown */}

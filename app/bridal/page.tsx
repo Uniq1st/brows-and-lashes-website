@@ -12,6 +12,7 @@ const packages = [
     regularPrice: 223,
     packagePrice: 199,
     image: "/images/bridal-silver.jpg",
+    bookingUrl: "https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services/5K2U5LAYG7CC5QMKR3II3Q7Z",
     services: [
       "Eyebrow Threading",
       "Upper Lip Threading",
@@ -28,6 +29,7 @@ const packages = [
     regularPrice: 335,
     packagePrice: 299,
     image: "/images/bridal-gold.jpg",
+    bookingUrl: "https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services/N2SEYAG6KJ47BTN25Y6H5HIN",
     services: [
       "Full Face Threading",
       "Gold Facial",
@@ -44,6 +46,7 @@ const packages = [
     regularPrice: 455,
     packagePrice: 399,
     image: "/images/bridal-platinum.jpg",
+    bookingUrl: "https://book.squareup.com/appointments/4t8q4a3w43qqpa/location/LJDRXPJBMD5Y2/services/HGA7IKLDQJMECEXPA2IWUPRO",
     services: [
       "Full Face Threading",
       "30 min Head, Shoulder & Back Massage",
@@ -175,6 +178,7 @@ export default function BridalPage() {
               <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-3">Our Packages</p>
               <h2 className="text-4xl font-light">Choose your<span className="italic"> package</span></h2>
               <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-3 text-sm">All prices plus tax. Book in advance for guaranteed availability.</p>
+              <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground/60 font-light mt-1 text-xs">Currently available at our Upper East Side, Manhattan studio.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -214,7 +218,7 @@ export default function BridalPage() {
                       </div>
 
                       {/* Services */}
-                      <ul className="space-y-2 flex-1">
+                      <ul className="space-y-2 flex-1 mb-6">
                         {pkg.services.map((service) => (
                           <li key={service} className="flex items-start gap-2">
                             <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
@@ -222,6 +226,17 @@ export default function BridalPage() {
                           </li>
                         ))}
                       </ul>
+
+                      {/* Book button */}
+                      <a
+                        href={pkg.bookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 bg-primary text-primary-foreground py-3 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-primary/90 transition-colors"
+                      >
+                        Book {pkg.tier} Package
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
                 )
