@@ -1,54 +1,57 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
-import { Heart, Users, Sparkles, ArrowRight, Check, Phone, Mail } from "lucide-react"
+import { ArrowRight, Check, Phone, Mail } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { STORES } from "@/lib/stores"
 
 const packages = [
   {
-    icon: Heart,
-    name: "Bridal Package",
-    tagline: "For the bride",
-    description: "Full bridal beauty prep including eyebrow threading, lash extensions or lift, facial, and waxing. Timed perfectly for your big day.",
-    includes: [
-      "Bridal brow shaping & threading",
-      "Lash extensions or lash lift & tint",
-      "Pre-wedding hydrating facial",
-      "Full face threading (if needed)",
-      "Complimentary brow consult 2 weeks before",
+    tier: "Silver",
+    regularPrice: 223,
+    packagePrice: 199,
+    image: "/images/bridal-silver.jpg",
+    services: [
+      "Eyebrow Threading",
+      "Upper Lip Threading",
+      "Herbal Facial",
+      "Brazilian Wax",
+      "Under Arms Wax",
+      "Half Leg Wax",
+      "Half Arm Wax",
+      "Eyebrow Tinting",
     ],
-    note: "Booking 4–6 weeks in advance recommended",
   },
   {
-    icon: Users,
-    name: "Bridal Party",
-    tagline: "For 3+ guests",
-    description: "Coordinate your whole bridal party — bridesmaids, mothers of the bride/groom, and family. We'll schedule everyone seamlessly at one studio.",
-    includes: [
-      "Eyebrow threading or waxing for each guest",
-      "Lash services available per guest",
-      "Flexible scheduling for 3–10+ people",
-      "Group discount applied automatically",
-      "Both studios available for large parties",
+    tier: "Gold",
+    regularPrice: 335,
+    packagePrice: 299,
+    image: "/images/bridal-gold.jpg",
+    services: [
+      "Full Face Threading",
+      "Gold Facial",
+      "Cluster Eyelash Extension",
+      "Full Leg Wax",
+      "Full Arms Wax",
+      "Brazilian Wax",
+      "Under Arms Wax",
+      "Eyebrow Tinting",
     ],
-    note: "Groups of 5+ receive an additional 10% off",
   },
   {
-    icon: Sparkles,
-    name: "Special Occasions",
-    tagline: "Birthdays, proms & more",
-    description: "Quinceaneras, proms, office parties, girls' days — any occasion worth looking your best for. We love being part of your special moments.",
-    includes: [
-      "Any combination of services",
-      "Flexible group sizes",
-      "Walk-in friendly for smaller groups",
-      "Advance booking for guaranteed availability",
-      "Memento card for the occasion on request",
+    tier: "Platinum",
+    regularPrice: 455,
+    packagePrice: 399,
+    image: "/images/bridal-platinum.jpg",
+    services: [
+      "Full Face Threading",
+      "30 min Head, Shoulder & Back Massage",
+      "Seaweed Facial",
+      "Full Body Wax incl. Brazilian",
+      "Classic Individual Eyelash Extension",
+      "Eyebrow Tinting",
     ],
-    note: "Contact us for custom group packages",
   },
 ]
 
@@ -116,14 +119,14 @@ function InquiryForm({ store }: { store: typeof STORES[number] }) {
         disabled={status === "loading"}
         className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-primary/90 transition-colors disabled:opacity-60"
       >
-        {status === "loading" ? "Opening email…" : "Send Inquiry"}
+        {status === "loading" ? "Sending…" : "Send Inquiry"}
         <ArrowRight className="w-4 h-4" />
       </button>
       {status === "success" && (
         <div className="bg-primary/10 border border-primary/20 rounded-sm px-6 py-5 text-center">
-          <p className="font-[family-name:var(--font-montserrat)] text-primary font-medium mb-1">Inquiry received! ✨</p>
+          <p className="font-[family-name:var(--font-montserrat)] text-primary font-medium mb-1">Inquiry received!</p>
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground text-sm font-light">
-            We'll get back to you within 24 hours to confirm availability.
+            We&apos;ll get back to you within 24 hours to confirm availability.
           </p>
         </div>
       )}
@@ -145,17 +148,22 @@ export default function BridalPage() {
       <main className="pt-20">
 
         {/* Hero */}
-        <section className="py-24 md:py-32 bg-card text-center">
-          <div className="max-w-4xl mx-auto px-6">
-            <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">
-              Bridal & Group Bookings
+        <section className="relative py-32 md:py-44 text-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/bridal-hero.jpg')" }}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <div className="relative z-10 max-w-4xl mx-auto px-6">
+            <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-white/70 mb-4">
+              Bridal Packages
             </p>
-            <h1 className="text-5xl md:text-6xl font-light leading-tight mb-6">
+            <h1 className="text-5xl md:text-6xl font-light text-white leading-tight mb-6">
               Look stunning for
-              <span className="block italic">every moment</span>
+              <span className="block italic">your big day</span>
             </h1>
-            <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light text-lg max-w-2xl mx-auto">
-              Whether you're the bride, the bridal party, or a group celebrating a special occasion — we coordinate everything so you can focus on enjoying the day.
+            <p className="font-[family-name:var(--font-montserrat)] text-white/80 font-light text-lg max-w-2xl mx-auto">
+              Curated beauty packages designed for brides — combining threading, waxing, facials, and lash services at one exclusive price.
             </p>
           </div>
         </section>
@@ -163,30 +171,58 @@ export default function BridalPage() {
         {/* Packages */}
         <section className="py-20 bg-background">
           <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-3">Our Packages</p>
+              <h2 className="text-4xl font-light">Choose your<span className="italic"> package</span></h2>
+              <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-3 text-sm">All prices plus tax. Book in advance for guaranteed availability.</p>
+            </div>
+
             <div className="grid md:grid-cols-3 gap-8">
               {packages.map((pkg) => {
-                const Icon = pkg.icon
+                const savings = pkg.regularPrice - pkg.packagePrice
                 return (
-                  <div key={pkg.name} className="border border-border p-8 flex flex-col">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-6">
-                      <Icon className="w-5 h-5 text-primary" />
+                  <div key={pkg.tier} className="border border-border flex flex-col overflow-hidden">
+                    {/* Package image */}
+                    <div className="aspect-[4/3] bg-secondary relative overflow-hidden">
+                      <div
+                        className="w-full h-full bg-cover bg-center"
+                        style={{ backgroundImage: `url('${pkg.image}')` }}
+                      />
+                      {/* Savings badge */}
+                      <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase">
+                        Save ${savings}
+                      </div>
                     </div>
-                    <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-[0.3em] uppercase text-primary mb-2">{pkg.tagline}</p>
-                    <h3 className="text-2xl font-light mb-3">{pkg.name}</h3>
-                    <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground text-sm font-light leading-relaxed mb-6">
-                      {pkg.description}
-                    </p>
-                    <ul className="space-y-2 mb-6 flex-1">
-                      {pkg.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                          <span className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground font-light">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground/60 italic border-t border-border pt-4">
-                      {pkg.note}
-                    </p>
+
+                    <div className="p-8 flex flex-col flex-1">
+                      {/* Tier label */}
+                      <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-[0.3em] uppercase text-primary mb-2">
+                        {pkg.tier} Package
+                      </p>
+
+                      {/* Pricing */}
+                      <div className="mb-6">
+                        <div className="flex items-baseline gap-3 mb-1">
+                          <span className="text-3xl font-light">${pkg.packagePrice}</span>
+                          <span className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground uppercase tracking-wider">+ tax</span>
+                        </div>
+                        <p className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground/60">
+                          Regular price{" "}
+                          <span className="line-through">${pkg.regularPrice}</span>
+                          {" "}+ tax
+                        </p>
+                      </div>
+
+                      {/* Services */}
+                      <ul className="space-y-2 flex-1">
+                        {pkg.services.map((service) => (
+                          <li key={service} className="flex items-start gap-2">
+                            <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                            <span className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground font-light">{service}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )
               })}
@@ -232,9 +268,9 @@ export default function BridalPage() {
           <div className="max-w-2xl mx-auto px-6">
             <div className="text-center mb-12">
               <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">Get in Touch</p>
-              <h2 className="text-4xl font-light mb-4">Book your group<span className="block italic">experience</span></h2>
+              <h2 className="text-4xl font-light mb-4">Book your bridal<span className="block italic">experience</span></h2>
               <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light">
-                Fill in your details below and we'll get back to you within 24 hours to confirm availability and answer any questions.
+                Fill in your details below and we&apos;ll get back to you within 24 hours to confirm availability and answer any questions.
               </p>
             </div>
 
