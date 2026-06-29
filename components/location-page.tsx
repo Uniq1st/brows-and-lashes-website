@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { MapPin, Phone, Clock, Instagram, ArrowRight, Star, Tag } from "lucide-react"
+import { MapPin, Phone, Clock, Instagram, ArrowRight, Star } from "lucide-react"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import type { Store } from "@/lib/stores"
@@ -206,11 +206,6 @@ export async function LocationPage({
                 Everything we offer
                 <span className="block italic">at this studio</span>
               </h2>
-              {hasSquareServices && (
-                <p className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1">
-                  <Tag className="w-3 h-3" /> Prices listed are for this location
-                </p>
-              )}
             </div>
 
             {hasSquareServices ? (
@@ -245,11 +240,6 @@ export async function LocationPage({
                                 </p>
                               )}
                             </div>
-                            {svc.priceFormatted && (
-                              <span className="font-[family-name:var(--font-montserrat)] text-sm font-medium text-primary shrink-0">
-                                {svc.priceFormatted}
-                              </span>
-                            )}
                           </a>
                         ))}
                       </div>

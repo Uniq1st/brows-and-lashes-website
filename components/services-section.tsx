@@ -241,8 +241,7 @@ export function ServicesSection() {
               className="group bg-card p-8 border border-border hover:border-primary/50 transition-all duration-300"
             >
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-xl font-medium pr-4">{service.name}</h3>
-                <span className="text-xl font-light text-primary shrink-0">{service.price}</span>
+                <h3 className="text-xl font-medium">{service.name}</h3>
               </div>
               <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light text-sm leading-relaxed mb-4">
                 {service.description}
