@@ -73,9 +73,8 @@ export function Navigation() {
       {/* Nav Bar */}
       <div className="bg-background/80 backdrop-blur-md border-b border-border">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
-            UniqSwek
-            <span className="block text-sm font-light tracking-[0.3em] text-muted-foreground">Beauty Studios</span>
+          <Link href="/">
+            <img src="/brandlogo.JPG" alt="UniqSwek Beauty Studios" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

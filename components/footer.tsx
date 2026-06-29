@@ -17,9 +17,8 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="text-2xl font-semibold tracking-tight">
-              UniqSwek
-              <span className="block text-sm font-light tracking-[0.3em] text-background/70">Beauty Studios · NYC</span>
+            <Link href="/">
+              <img src="/brandlogo.JPG" alt="UniqSwek Beauty Studios" className="h-16 w-auto bg-white rounded-sm p-1" />
             </Link>
             <p className="font-[family-name:var(--font-montserrat)] text-background/70 font-light mt-4 max-w-sm leading-relaxed">
               Two NYC studios under one brand. Expert threading, lash extensions, waxing & facials — where beauty meets artistry.
