@@ -44,8 +44,15 @@ export const PROMOTIONS: Promo[] = [
     ctaHref: "/memberships",
   },
   {
-    id: "summer",
+    id: "july4",
     active: true,
+    message: "🎆 4th of July Special — 15% off Full Leg & Brazilian Wax. July 1–7 only. Limited spots!",
+    ctaText: "Book now →",
+    ctaHref: "/#book",
+  },
+  {
+    id: "summer",
+    active: false,
     message: "☀️ Summer Glow — 15% off all waxing services this month. Book online or walk in.",
     promoCode: "SUMMERGLOW",
     promoBookingUrls: {
