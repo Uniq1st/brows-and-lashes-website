@@ -18,7 +18,7 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/">
-              <img src="/images/brandlogo.JPG" alt="UniqSwek Beauty Studios" className="h-24 w-auto bg-white rounded-sm p-1" />
+              <img src="/images/brandlogo.JPG" alt="UniqSwek Beauty Studios" className="h-48 w-auto bg-white rounded-sm p-1" />
             </Link>
             <p className="font-[family-name:var(--font-montserrat)] text-background/70 font-light mt-4 max-w-sm leading-relaxed">
               Two NYC studios under one brand. Expert threading, lash extensions, waxing & facials — where beauty meets artistry.
