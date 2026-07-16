@@ -127,7 +127,7 @@ const COURSES = [
         subtitle: "Full Certification",
         includes: [
           "8 hours of intensive hands-on training",
-          "Classic, volume & advanced application",
+          "Classic lash application",
           "Mentorship from a senior cosmetologist",
           "Work on your own model",
           "Certificate of completion",
