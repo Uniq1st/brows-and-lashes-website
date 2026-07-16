@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, ChevronDown, X, Gift, Sparkles, Heart } from "lucide-react"
+import { Menu, ChevronDown, X, Gift, Sparkles, Heart, GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -124,6 +124,15 @@ export function Navigation() {
               Bridal
             </Link>
 
+            {/* Training highlight */}
+            <Link
+              href="/training"
+              className="text-sm font-[family-name:var(--font-montserrat)] tracking-wider uppercase text-primary font-medium flex items-center gap-1 hover:opacity-80 transition-opacity"
+            >
+              <GraduationCap className="w-3 h-3" />
+              Training
+            </Link>
+
             {/* Book Now dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -212,6 +221,16 @@ export function Navigation() {
                   className="font-[family-name:var(--font-montserrat)] text-lg tracking-wider uppercase text-foreground hover:text-primary transition-colors"
                 >
                   Bridal & Groups
+                </Link>
+
+                {/* Training */}
+                <Link
+                  href="/training"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 font-[family-name:var(--font-montserrat)] text-lg tracking-wider uppercase text-primary font-medium"
+                >
+                  <GraduationCap className="w-4 h-4" />
+                  Training
                 </Link>
 
                 {/* Book buttons */}
