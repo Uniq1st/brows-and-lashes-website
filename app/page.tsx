@@ -93,23 +93,6 @@ export default async function Home() {
       <Navigation />
       <HeroSection />
 
-      {/* 4th of July Promo — remove after July 7 */}
-      <section className="py-14 bg-card">
-        <div className="max-w-3xl mx-auto px-6 flex flex-col items-center gap-6 text-center">
-          <img
-            src="/images/4thofjuly.PNG"
-            alt="Fourth of July Special — 15% off Full Leg & Brazilian Wax, July 1–7 only. Limited spots."
-            className="w-full rounded-sm shadow-md"
-          />
-          <a
-            href="/#book"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-widest uppercase hover:bg-primary/90 transition-colors"
-          >
-            Book Now — Limited Spots
-          </a>
-        </div>
-      </section>
-
       <LocationSelector />
       <AboutSection />
       <ServicesSection />

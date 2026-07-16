@@ -45,7 +45,7 @@ export const PROMOTIONS: Promo[] = [
   },
   {
     id: "july4",
-    active: true,
+    active: false,
     message: "🎆 4th of July Special — 15% off Full Leg & Brazilian Wax. July 1–7 only. Limited spots!",
     ctaText: "Book now →",
     ctaHref: "/#book",
