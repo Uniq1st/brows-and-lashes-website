@@ -141,7 +141,7 @@ export function TestimonialsSection({ placeRating }: TestimonialsSectionProps = 
             <span className="block italic">are saying</span>
           </h2>
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-4">
-            Ranked #2 on Google Maps — Upper East Side. {displayCount} five-star reviews and counting.
+            Ranked #1 on Google Maps — Upper East Side. {displayCount} five-star reviews and counting.
           </p>
         </div>
 

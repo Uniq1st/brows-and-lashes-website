@@ -46,7 +46,7 @@ export function AboutSection() {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 pt-12 border-t border-border">
               <div>
-                <p className="text-4xl md:text-5xl font-light text-primary">#2</p>
+                <p className="text-4xl md:text-5xl font-light text-primary">#1</p>
                 <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase text-muted-foreground mt-2">On Google Maps · UES</p>
               </div>
               <div>

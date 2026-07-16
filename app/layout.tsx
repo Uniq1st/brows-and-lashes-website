@@ -22,16 +22,16 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'UniqSwek Beauty Studios | #2 Beauty Salon Upper East Side NYC',
-  description: 'Ranked #2 beauty salon on Google Maps — Upper East Side NYC. Expert eyebrow threading, lash extensions, waxing & facials. 200+ five-star reviews. Walk-ins welcome.',
+  title: 'UniqSwek Beauty Studios | #1 Beauty Salon Upper East Side NYC',
+  description: 'Ranked #1 beauty salon on Google Maps — Upper East Side NYC. Expert eyebrow threading, lash extensions, waxing & facials. 200+ five-star reviews. Walk-ins welcome.',
   keywords: 'eyebrow threading Upper East Side, threading salon NYC, best threading NYC, lash extensions Upper East Side, beauty salon Upper East Side, threading near me Manhattan, eyebrow threading Lexington Avenue, threading 86th street, eyebrow waxing NYC, facials Upper East Side, lash extensions Manhattan, beauty studio 10028, brows and lashes NYC, UniqSwek, Swekchha Luitel, eyebrow threading Queens, lash extensions Ridgewood, beauty salon Ridgewood NY 11385',
   metadataBase: new URL('https://uniqswek.com'),
   alternates: {
     canonical: 'https://uniqswek.com',
   },
   openGraph: {
-    title: 'UniqSwek Beauty Studios | #2 Beauty Salon Upper East Side NYC',
-    description: 'Ranked #2 beauty salon on Google Maps — Upper East Side NYC. Expert eyebrow threading, lash extensions, waxing & facials. 200+ five-star reviews. Walk-ins welcome.',
+    title: 'UniqSwek Beauty Studios | #1 Beauty Salon Upper East Side NYC',
+    description: 'Ranked #1 beauty salon on Google Maps — Upper East Side NYC. Expert eyebrow threading, lash extensions, waxing & facials. 200+ five-star reviews. Walk-ins welcome.',
     url: 'https://uniqswek.com',
     siteName: 'UniqSwek Beauty Studios',
     locale: 'en_US',
