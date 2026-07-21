@@ -25,16 +25,6 @@ const team = [
     store: "Upper East Side",
   },
   {
-    name: "Arati G",
-    role: "Licensed Technician & Threading Specialist",
-    initials: "AG",
-    color: "bg-amber-100 text-amber-700",
-    ring: "ring-amber-200",
-    photo: null,
-    bio: "Arati brings a calm, focused energy to every appointment. Her specialty is eyebrow threading — her precise technique and keen eye for symmetry consistently leave clients with beautifully defined brows. Clients love her gentle approach and consistent results.",
-    store: "Upper East Side",
-  },
-  {
     name: "Mala",
     role: "Licensed Technician & Wax Specialist",
     initials: "MA",
