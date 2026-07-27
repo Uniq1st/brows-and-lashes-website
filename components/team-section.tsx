@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Scissors, Sparkles, Star, Eye, Mail, Phone } from "lucide-react"
 import { STORES } from "@/lib/stores"
 
 const team = [
@@ -117,6 +118,64 @@ export function TeamSection() {
             Choose Your Studio
           </a>
         </div>
+
+        {/* ── We're Hiring ── */}
+        <div className="mt-24 border border-primary/20 bg-primary/5 p-10 md:p-14">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-[0.3em] uppercase text-primary mb-4">
+              Now Hiring · Upper East Side & Ridgewood
+            </p>
+            <h3 className="text-3xl md:text-4xl font-light leading-tight mb-4">
+              Join our
+              <span className="italic"> team</span>
+            </h3>
+            <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed mb-10 max-w-xl mx-auto">
+              We're looking for two passionate beauty professionals to grow with us. If you take pride in your craft and love making clients feel their best, we want to hear from you.
+            </p>
+
+            {/* Skills grid */}
+            <div className="grid sm:grid-cols-2 gap-4 text-left mb-10 max-w-xl mx-auto">
+              {[
+                { Icon: Scissors, label: "Eyebrow Threading", note: "Experience or training required" },
+                { Icon: Sparkles,  label: "Waxing",           note: "Waxing license or hands-on experience" },
+                { Icon: Star,      label: "Facials",          note: "Skincare knowledge a plus" },
+                { Icon: Eye,       label: "Eyelash Extensions", note: "Classic application experience" },
+              ].map(({ Icon, label, note }) => (
+                <div key={label} className="flex items-start gap-3 bg-background border border-border p-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Icon className="w-3.5 h-3.5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-medium text-sm">{label}</p>
+                    <p className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground mt-0.5">{note}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground mb-8">
+              Cosmetology license preferred · Part-time & full-time considered · Competitive pay
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="mailto:uniqueupreti44@gmail.com?subject=Job Application — UniqSwek Beauty Studios"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-widest uppercase hover:bg-primary/90 transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                Apply via Email
+              </a>
+              <a
+                href={STORES[0].phoneHref}
+                className="inline-flex items-center justify-center gap-2 border border-foreground px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-widest uppercase hover:bg-foreground hover:text-background transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                Call to Inquire
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   )
