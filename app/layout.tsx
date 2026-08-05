@@ -5,7 +5,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 import './globals.css'
 
-const GA_ID   = 'G-P8B303GTMR'
+const GA_ID   = 'G-0WNZS7QG0N'
+const GA_ID2  = 'G-P8B303GTMR'
 const GADS_ID          = 'AW-18219073341'
 const GADS_PAGEVIEW_ID = 'AW-18219073341/00aoCJLhkLocEL3-w-9D'
 
@@ -183,6 +184,10 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${GA_ID}', {
+              page_path: window.location.pathname,
+              send_page_view: true
+            });
+            gtag('config', '${GA_ID2}', {
               page_path: window.location.pathname,
               send_page_view: true
             });
