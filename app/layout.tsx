@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import Script from 'next/script'
 import './globals.css'
 
-const GA_ID   = 'G-0WNZS7QG0N'
+const GA_ID   = 'G-P8B303GTMR'
 const GADS_ID          = 'AW-18219073341'
 const GADS_PAGEVIEW_ID = 'AW-18219073341/00aoCJLhkLocEL3-w-9D'
 
