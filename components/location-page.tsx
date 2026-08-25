@@ -429,6 +429,33 @@ export async function LocationPage({
           </div>
         </section>
 
+        {/* ── Commutes & Transit ── */}
+        <section className="py-20 bg-background">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">
+                Getting Here
+              </p>
+              <h2 className="text-4xl font-light">
+                Commutes &<span className="italic"> Transit</span>
+              </h2>
+              <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-3">
+                Estimated travel times by car, subway, bus, walking, or bike
+              </p>
+            </div>
+            <div className="rounded-sm overflow-hidden border border-border" style={{ height: "480px" }}>
+              <iframe
+                src="https://storage.googleapis.com/maps-solutions-vsslzlwtwm/commutes/12vn/commutes.html"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                title={`Commutes and transit to ${store.fullName}`}
+              />
+            </div>
+          </div>
+        </section>
+
         {/* ── Memberships CTA ── */}
         <section className="py-16 bg-primary text-primary-foreground text-center">
           <div className="max-w-2xl mx-auto px-6">
