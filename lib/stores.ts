@@ -31,6 +31,7 @@ export const STORES = [
     googleMapsUrl: "https://maps.app.goo.gl/DfKPeZZg7Hhi3Pzc6",
     mapSrc:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.5!2d-73.9565!3d40.7825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258a2b1c3b5e7%3A0x1234567890abcdef!2s1240%20Lexington%20Ave%2C%20New%20York%2C%20NY%2010028!5e0!3m2!1sen!2sus!4v1699999999999!5m2!1sen!2sus",
+    transitMapSrc: "https://storage.googleapis.com/maps-solutions-vsslzlwtwm/commutes/12vn/commutes.html",
   },
   {
     id: "eyebrow-shape",
@@ -59,6 +60,7 @@ export const STORES = [
     googleMapsUrl: "https://maps.app.goo.gl/M6q94xZzZkQD9NXh7",
     mapSrc:
       "https://maps.google.com/maps?q=59-15+71st+Ave,+Ridgewood,+NY+11385&output=embed",
+    transitMapSrc: "https://storage.googleapis.com/maps-solutions-vsslzlwtwm/locator-plus/gyhj/locator-plus.html",
   },
 ] as const
 

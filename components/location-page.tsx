@@ -445,7 +445,7 @@ export async function LocationPage({
             </div>
             <div className="rounded-sm overflow-hidden border border-border" style={{ height: "480px" }}>
               <iframe
-                src="https://storage.googleapis.com/maps-solutions-vsslzlwtwm/commutes/12vn/commutes.html"
+                src={store.transitMapSrc}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
