@@ -22,10 +22,10 @@ export const metadata: Metadata = {
 }
 
 const uesTeam = [
-  { name: "Swekchha Luitel", displayName: "Swek", role: "Founder & Licensed Cosmetologist", initials: "SL", color: "bg-rose-100 text-rose-700",   ring: "ring-rose-200",   photo: "/images/team/swekchha.jpg" },
-  { name: "Sammy",                                 role: "Store Manager & Lash Lift Specialist", initials: "SM", color: "bg-teal-100 text-teal-700",   ring: "ring-teal-200",   photo: null },
-  { name: "Angel",                                 role: "Licensed Technician",              initials: "AN", color: "bg-amber-100 text-amber-700",  ring: "ring-amber-200",  photo: "/images/team/angel.jpg" },
-  { name: "Mala",                                  role: "Licensed Technician & Wax Specialist", initials: "MA", color: "bg-indigo-100 text-indigo-700", ring: "ring-indigo-200", photo: null },
+  { name: "Swekchha Luitel", displayName: "Swek",   role: "Founder & Licensed Cosmetologist",  initials: "SL", color: "bg-rose-100 text-rose-700",   ring: "ring-rose-200",   photo: "/images/team/swekchha.jpg" },
+  { name: "Babita Sharma",   displayName: "Babita", role: "Senior Licensed Technician",         initials: "BS", color: "bg-pink-100 text-pink-700",   ring: "ring-pink-200",   photo: "/images/team/babita.jpg" },
+  { name: "Sammy",                                  role: "Store Manager & Lash Lift Specialist", initials: "SM", color: "bg-teal-100 text-teal-700", ring: "ring-teal-200",   photo: "/images/team/sammy.jpg" },
+  { name: "Mala",                                   role: "Licensed Technician & Wax Specialist", initials: "MA", color: "bg-indigo-100 text-indigo-700", ring: "ring-indigo-200", photo: "/images/team/mala.jpg" },
 ]
 
 const breadcrumbSchema = {
