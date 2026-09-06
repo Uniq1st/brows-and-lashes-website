@@ -313,6 +313,126 @@ export async function LocationPage({
           </div>
         </section>
 
+        {/* ── Aftercare & Products ── */}
+        <section className="py-20 bg-card">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">
+                After Your Visit
+              </p>
+              <h2 className="text-4xl font-light">
+                Aftercare &<span className="italic"> products</span>
+              </h2>
+              <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light mt-3 max-w-xl mx-auto">
+                We use professional-grade products and want your results to last. Here's how to care for your skin and lashes after each service.
+              </p>
+            </div>
+
+            {/* Aftercare Tips */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+              {[
+                {
+                  service: "Threading",
+                  tips: [
+                    "Avoid touching the area for 2–4 hours",
+                    "Skip makeup on brows the same day",
+                    "Apply a gentle moisturizer or aloe gel",
+                    "No hot showers or steam directly after",
+                  ],
+                },
+                {
+                  service: "Waxing",
+                  tips: [
+                    "Apply aloe vera gel to soothe skin immediately",
+                    "Avoid sun exposure & tanning for 24 hrs",
+                    "No tight clothing over waxed areas",
+                    "Exfoliate gently after 48 hrs to prevent ingrowns",
+                  ],
+                },
+                {
+                  service: "Lash Extensions",
+                  tips: [
+                    "Keep lashes dry for the first 24 hours",
+                    "Avoid oil-based products near the eyes",
+                    "Do not rub or pick at your extensions",
+                    "Brush daily with a clean spoolie",
+                  ],
+                },
+                {
+                  service: "Facials",
+                  tips: [
+                    "Apply SPF before going outside",
+                    "Use gentle, fragrance-free cleanser for 48 hrs",
+                    "Avoid heavy makeup the same day",
+                    "Stay hydrated and keep skin moisturized",
+                  ],
+                },
+              ].map((item) => (
+                <div key={item.service} className="bg-background border border-border p-6">
+                  <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-[0.2em] uppercase text-primary mb-3 font-medium">
+                    {item.service}
+                  </p>
+                  <ul className="space-y-2">
+                    {item.tips.map((tip) => (
+                      <li key={tip} className="flex items-start gap-2">
+                        <span className="w-1 h-1 rounded-full bg-primary shrink-0 mt-2" />
+                        <span className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground font-light leading-relaxed">
+                          {tip}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Products */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {/* Aftercare gel */}
+              <div className="flex gap-5 border border-border bg-background p-6 items-center">
+                <div className="relative w-24 h-32 shrink-0 rounded-sm overflow-hidden">
+                  <Image
+                    src="/images/product-wax-gel.jpg"
+                    alt="Clean+Easy Soothe aloe vera post-wax gel"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-widest uppercase text-primary mb-1">
+                    Post-Wax Treatment
+                  </p>
+                  <h3 className="font-medium text-lg mb-1">Clean+Easy Soothe</h3>
+                  <p className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground font-light leading-relaxed">
+                    Aloe vera–infused gel that calms and soothes skin immediately after waxing. We use this professional-grade treatment in-studio and recommend applying at home too.
+                  </p>
+                </div>
+              </div>
+
+              {/* Branded mug */}
+              <div className="flex gap-5 border border-border bg-background p-6 items-center">
+                <div className="relative w-24 h-32 shrink-0 rounded-sm overflow-hidden">
+                  <Image
+                    src="/images/product-mug.jpg"
+                    alt="Brows and Lashes by UniqSwek branded mug"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="font-[family-name:var(--font-montserrat)] text-xs tracking-widest uppercase text-primary mb-1">
+                    Studio Merch · $9.99
+                  </p>
+                  <h3 className="font-medium text-lg mb-1">Branded Mug</h3>
+                  <p className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground font-light leading-relaxed">
+                    Take a little piece of the studio home. Our Brows & Lashes by UniqSwek mugs make a great gift — available in-store while supplies last.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Team ── */}
         {teamMembers && teamMembers.length > 0 && (
           <section className="py-20 bg-card">
