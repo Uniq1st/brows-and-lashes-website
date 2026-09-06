@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { ArrowRight, Sparkles } from "lucide-react"
+import { ArrowRight, Sparkles, Gift } from "lucide-react"
+import Image from "next/image"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { MembershipTabs } from "@/components/membership-tabs"
@@ -207,6 +208,55 @@ export default async function MembershipsPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Gift Card Spotlight ── */}
+        <section className="py-20 bg-background">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-0 overflow-hidden border border-border">
+              {/* Photo */}
+              <div className="relative aspect-[3/4] lg:aspect-auto lg:min-h-[520px]">
+                <Image
+                  src="/images/gift-card-model.jpg"
+                  alt="Brows and Lashes by UniqSwek gift card"
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="bg-card flex flex-col justify-center p-12 lg:p-16">
+                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-6 w-fit">
+                  <Gift className="w-4 h-4" />
+                  <span className="font-[family-name:var(--font-montserrat)] text-xs tracking-wider uppercase font-medium">
+                    Gift Cards
+                  </span>
+                </div>
+                <h2 className="text-4xl font-light leading-tight mb-6">
+                  Give the gift of
+                  <span className="block italic">beautiful brows</span>
+                </h2>
+                <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed mb-4">
+                  Not sure which membership to give? Our gift cards are the perfect present — redeemable for any service at either studio, with no expiration.
+                </p>
+                <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed mb-10">
+                  Birthdays, anniversaries, Mother's Day, or just because — a little beauty goes a long way.
+                </p>
+                <a
+                  href={GIFT_CARD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-widest uppercase hover:bg-primary/90 transition-colors w-fit"
+                >
+                  <Gift className="w-4 h-4" />
+                  Buy a Gift Card
+                </a>
+                <p className="font-[family-name:var(--font-montserrat)] text-xs text-muted-foreground mt-4">
+                  Valid at both Upper East Side & Ridgewood studios · No expiration
+                </p>
+              </div>
             </div>
           </div>
         </section>
