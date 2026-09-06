@@ -75,19 +75,20 @@ export async function LocationPage({
       <main className="pt-20">
 
         {/* ── Hero ── */}
-        <section className="relative py-28 md:py-36 bg-card overflow-hidden">
+        <section className="relative py-28 md:py-36 overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('${heroBg}')` }}
           />
-          <div className="relative max-w-5xl mx-auto px-6 text-center">
-            <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">
+          <div className="absolute inset-0 bg-black/55" />
+          <div className="relative max-w-5xl mx-auto px-6 text-center text-white">
+            <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-white/70 mb-4">
               {store.neighborhood}
             </p>
-            <h1 className="text-5xl md:text-7xl font-light leading-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-light leading-tight mb-6 text-white">
               {store.fullName}
             </h1>
-            <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light text-lg max-w-2xl mx-auto mb-10">
+            <p className="font-[family-name:var(--font-montserrat)] text-white/80 font-light text-lg max-w-2xl mx-auto mb-10">
               {heroTagline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -101,7 +102,7 @@ export async function LocationPage({
               </a>
               <a
                 href={store.phoneHref}
-                className="inline-flex items-center justify-center gap-2 border border-border px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-secondary transition-colors"
+                className="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-8 py-4 font-[family-name:var(--font-montserrat)] text-sm tracking-wider uppercase hover:bg-white/10 transition-colors"
               >
                 <Phone className="w-4 h-4" /> Call Us
               </a>
@@ -160,10 +161,10 @@ export async function LocationPage({
           <div className="max-w-5xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div className="aspect-square bg-secondary rounded-sm overflow-hidden relative">
               <Image
-                src="/images/swek-threading.jpg"
-                alt="Swekchha Luitel threading a client"
+                src="/images/swek-headshot.jpg"
+                alt="Swekchha Luitel — Founder of Brows & Lashes by UniqSwek"
                 fill
-                className="object-cover object-top"
+                className="object-cover object-center"
               />
             </div>
             <div>
