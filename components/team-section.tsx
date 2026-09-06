@@ -46,6 +46,16 @@ const team = [
     bio: "Mala is our waxing expert — clients trust her for smooth, precise results every single time. Her steady hands and deep knowledge of skin make her one of the most requested technicians at our Upper East Side studio.",
     store: "Upper East Side",
   },
+  {
+    name: "Gita",
+    role: "Licensed Technician",
+    initials: "GI",
+    color: "bg-emerald-100 text-emerald-700",
+    ring: "ring-emerald-200",
+    photo: null,
+    bio: "Gita brings a warm, attentive energy to every service. Her careful, detail-oriented approach ensures clients always leave looking their best.",
+    store: "Upper East Side",
+  },
 ]
 
 export function TeamSection() {
