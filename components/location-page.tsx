@@ -31,6 +31,7 @@ interface LocationPageProps {
   heroTagline: string
   neighborhoodDesc: string
   heroBg?: string
+  interiorPhotos?: string[]
 }
 
 // Group services by category
@@ -51,6 +52,7 @@ export async function LocationPage({
   heroTagline,
   neighborhoodDesc,
   heroBg = "/images/hero-bg.jpg",
+  interiorPhotos,
 }: LocationPageProps) {
   // Fetch real services from Square — falls back to empty array on error
   let squareServices: SquareService[] = []
@@ -196,6 +198,34 @@ export async function LocationPage({
             </div>
           </div>
         </section>
+
+        {/* ── Interior Gallery ── */}
+        {interiorPhotos && interiorPhotos.length > 0 && (
+          <section className="py-20 bg-background">
+            <div className="max-w-5xl mx-auto px-6">
+              <div className="text-center mb-10">
+                <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">
+                  Inside the Studio
+                </p>
+                <h2 className="text-4xl font-light">
+                  A space built for<span className="italic"> you</span>
+                </h2>
+              </div>
+              <div className={`grid gap-4 ${interiorPhotos.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"}`}>
+                {interiorPhotos.map((src, i) => (
+                  <div key={i} className="relative aspect-video overflow-hidden rounded-sm">
+                    <Image
+                      src={src}
+                      alt={`${store.fullName} interior view ${i + 1}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-700"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── Services ── */}
         <section className="py-20 bg-background">

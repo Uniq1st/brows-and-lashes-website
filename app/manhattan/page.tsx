@@ -49,6 +49,10 @@ export default function ManhattanPage() {
       heroTagline="Ranked #1 beauty salon on Google Maps — Upper East Side Manhattan. Over 200 five-star reviews and counting."
       neighborhoodDesc="Located at 1240 Lexington Avenue in the heart of the Upper East Side, our Manhattan studio has served thousands of New Yorkers since opening. Whether you're a regular threading client or trying lash extensions for the first time, our licensed team ensures you leave looking and feeling your best. Steps from the 4/5/6 subway at 86th Street."
       heroBg="/images/storefront-manhattan.jpg"
+      interiorPhotos={[
+        "/images/interior-manhattan-1.jpg",
+        "/images/interior-manhattan-2.jpg",
+      ]}
     />
     </>
   )
