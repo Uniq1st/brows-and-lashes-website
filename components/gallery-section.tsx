@@ -7,17 +7,23 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 const galleryImages = [
   { src: "/images/DSC04159.jpg", alt: "Eyebrow waxing and tinting service at UniqSwek", category: "Brows" },
   { src: "/images/DSC04099.jpg", alt: "Lash extension application by licensed specialist", category: "Lashes" },
+  { src: "/images/facial-1.jpg", alt: "Facial treatment — clay mask application at UniqSwek", category: "Facials" },
   { src: "/images/DSC04001.jpg", alt: "Precision eyebrow threading at Brows & Lashes by UniqSwek", category: "Brows" },
   { src: "/images/DSC04132.jpg", alt: "Classic lash extensions — natural and wispy", category: "Lashes" },
+  { src: "/images/facial-2.jpg", alt: "Steam facial treatment at UniqSwek Beauty Studios", category: "Facials" },
   { src: "/images/DSC04005.jpg", alt: "Eyebrow threading close-up — clean precise result", category: "Brows" },
   { src: "/images/DSC04007.jpg", alt: "Eyebrow threading detail — Upper East Side NYC", category: "Brows" },
+  { src: "/images/facial-3.jpg", alt: "LED light therapy facial at UniqSwek Beauty Studios", category: "Facials" },
   { src: "/images/DSC04004.jpg", alt: "Threading service at UniqSwek Beauty Studios", category: "Brows" },
   { src: "/images/DSC04142.jpg", alt: "Lash extensions result — beautiful full lashes", category: "Lashes" },
   { src: "/images/DSC04141.jpg", alt: "Lash extensions — before and after comparison", category: "Lashes" },
 ]
 
+const CATEGORIES = ["All", "Brows", "Lashes", "Facials"]
+
 export function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [activeCategory, setActiveCategory] = useState("All")
 
   return (
     <section id="gallery" className="py-24 md:py-32 bg-secondary">
@@ -32,13 +38,30 @@ export function GallerySection() {
             <span className="block italic">speak for themselves</span>
           </h2>
           <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light">
-            Browse our portfolio of stunning brow and lash transformations. Each result is tailored to enhance our client&apos;s natural beauty.
+            Browse our portfolio of stunning brow, lash, and facial transformations. Each result is tailored to enhance our client&apos;s natural beauty.
           </p>
+        </div>
+
+        {/* Category Filters */}
+        <div className="flex items-center justify-center gap-3 mb-10 flex-wrap">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`font-[family-name:var(--font-montserrat)] text-xs tracking-widest uppercase px-5 py-2 border transition-colors ${
+                activeCategory === cat
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-border text-muted-foreground hover:border-primary hover:text-foreground"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {galleryImages.map((image, index) => (
+          {galleryImages.filter(img => activeCategory === "All" || img.category === activeCategory).map((image, index) => (
             <div
               key={index}
               className="group relative aspect-square cursor-pointer overflow-hidden"
