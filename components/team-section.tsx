@@ -10,7 +10,7 @@ const team = [
     initials: "SL",
     color: "bg-rose-100 text-rose-700",
     ring: "ring-rose-200",
-    photo: "/images/team/swekchha.JPG",
+    photo: "/images/team/swekchha.jpg",
     bio: "Swekchha founded UniqSwek with a clear vision: every client deserves a consistently exceptional experience. She personally trains each technician in the Brows & Lashes way — precision threading, waxing, facials, and eyelash extensions — ensuring the same high standard of service, every visit, every time.",
     bioNote: "Want to book with Swek? She takes clients by appointment only for eyebrow threading, tinting, and facials — call us to schedule your visit.",
     store: "Both Studios",

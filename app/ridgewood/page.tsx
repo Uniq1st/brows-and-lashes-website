@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 }
 
 const ridgewoodTeam = [
-  { name: "Swekchha Luitel", displayName: "Swek", role: "Founder & Licensed Cosmetologist", initials: "SL", color: "bg-rose-100 text-rose-700",   ring: "ring-rose-200",   photo: "/images/team/swekchha.JPG" },
+  { name: "Swekchha Luitel", displayName: "Swek", role: "Founder & Licensed Cosmetologist", initials: "SL", color: "bg-rose-100 text-rose-700",   ring: "ring-rose-200",   photo: "/images/team/swekchha.jpg" },
   { name: "Sammy",                                 role: "Store Manager & Lash Lift Specialist", initials: "SM", color: "bg-teal-100 text-teal-700",   ring: "ring-teal-200",   photo: null },
   { name: "Angel",                                 role: "Licensed Technician",              initials: "AN", color: "bg-amber-100 text-amber-700",  ring: "ring-amber-200",  photo: "/images/team/angel.jpg" },
   { name: "Mala",                                  role: "Licensed Technician & Wax Specialist", initials: "MA", color: "bg-indigo-100 text-indigo-700", ring: "ring-indigo-200", photo: null },
