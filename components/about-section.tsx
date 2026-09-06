@@ -9,8 +9,8 @@ export function AboutSection() {
           <div className="relative">
             <div className="aspect-[4/5] relative overflow-hidden rounded-sm">
               <Image
-                src="/images/swek-threading.jpg"
-                alt="Swekchha Luitel threading a client at Brows & Lashes by UniqSwek"
+                src="/images/swek-headshot.jpg"
+                alt="Swekchha Luitel — Founder of Brows & Lashes by UniqSwek"
                 fill
                 className="object-cover object-top"
               />
