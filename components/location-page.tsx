@@ -30,6 +30,7 @@ interface LocationPageProps {
   teamMembers?: { name: string; displayName?: string; role: string; initials: string; color: string; ring?: string; photo?: string | null }[]
   heroTagline: string
   neighborhoodDesc: string
+  heroBg?: string
 }
 
 // Group services by category
@@ -49,6 +50,7 @@ export async function LocationPage({
   teamMembers,
   heroTagline,
   neighborhoodDesc,
+  heroBg = "/images/hero-bg.jpg",
 }: LocationPageProps) {
   // Fetch real services from Square — falls back to empty array on error
   let squareServices: SquareService[] = []
@@ -74,7 +76,7 @@ export async function LocationPage({
         <section className="relative py-28 md:py-36 bg-card overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{ backgroundImage: "url('/images/hero-bg.jpg')" }}
+            style={{ backgroundImage: `url('${heroBg}')` }}
           />
           <div className="relative max-w-5xl mx-auto px-6 text-center">
             <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">
