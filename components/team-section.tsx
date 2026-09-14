@@ -43,8 +43,8 @@ const team = [
     color: "bg-indigo-100 text-indigo-700",
     ring: "ring-indigo-200",
     photo: "/images/team/mala.jpg",
-    bio: "Mala is our waxing expert — clients trust her for smooth, precise results every single time. Her steady hands and deep knowledge of skin make her one of the most requested technicians at our Upper East Side studio.",
-    store: "Upper East Side",
+    bio: "Mala is our waxing expert — clients trust her for smooth, precise results every single time. Her steady hands and deep knowledge of skin make her one of the most requested technicians at both of our studios.",
+    store: "Both Studios",
   },
   {
     name: "Gita",
@@ -54,7 +54,7 @@ const team = [
     ring: "ring-emerald-200",
     photo: null,
     bio: "Gita brings a warm, attentive energy to every service. Her careful, detail-oriented approach ensures clients always leave looking their best.",
-    store: "Upper East Side",
+    store: "Both Studios",
   },
 ]
 
