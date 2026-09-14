@@ -26,7 +26,7 @@ const ridgewoodTeam = [
   { name: "Babita Sharma",   displayName: "Babita", role: "Senior Licensed Technician",           initials: "BS", color: "bg-pink-100 text-pink-700",   ring: "ring-pink-200",   photo: "/images/team/babita.jpg" },
   { name: "Sammy",                                  role: "Store Manager & Lash Lift Specialist", initials: "SM", color: "bg-teal-100 text-teal-700",   ring: "ring-teal-200",   photo: "/images/team/sammy.jpg" },
   { name: "Mala",                                   role: "Licensed Technician & Wax Specialist", initials: "MA", color: "bg-indigo-100 text-indigo-700", ring: "ring-indigo-200", photo: "/images/team/mala.jpg" },
-  { name: "Gita",                                   role: "Licensed Technician",                  initials: "GI", color: "bg-emerald-100 text-emerald-700", ring: "ring-emerald-200", photo: null },
+  { name: "Gita",                                   role: "Licensed Technician",                  initials: "GI", color: "bg-emerald-100 text-emerald-700", ring: "ring-emerald-200", photo: "/images/team/gita.jpg" },
 ]
 
 const breadcrumbSchema = {
@@ -49,6 +49,11 @@ export default function RidgewoodPage() {
       teamMembers={ridgewoodTeam}
       heroTagline="Bringing UniqSwek's signature precision threading and lash artistry to Ridgewood, Queens."
       neighborhoodDesc="Our Ridgewood studio at 59-15 71st Avenue brings the same standard of expert beauty services to Queens. Founded by Swekchha Luitel (Swek) with the same vision that made our Manhattan studio a neighborhood favorite — precision, care, and a genuinely welcoming environment. Easy street parking and close to the M train."
+      interiorPhotos={[
+        "/images/interior-ridgewood-1.jpg",
+        "/images/interior-ridgewood-2.jpg",
+        "/images/interior-ridgewood-3.jpg",
+      ]}
     />
     </>
   )

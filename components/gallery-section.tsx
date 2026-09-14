@@ -5,14 +5,18 @@ import { useState } from "react"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 
 const galleryImages = [
-  { src: "/images/DSC04159.jpg", alt: "Eyebrow waxing and tinting service at UniqSwek", category: "Brows" },
+  { src: "/images/threading-1.jpg", alt: "Eyebrow threading close-up — precision thread technique at UniqSwek", category: "Brows" },
+  { src: "/images/threading-2.jpg", alt: "Eyebrow threading service — expert hands shaping brows", category: "Brows" },
+  { src: "/images/threading-3.jpg", alt: "Eyebrow threading in progress at UniqSwek Beauty Studios", category: "Brows" },
+  { src: "/images/brows-result.jpg", alt: "Perfectly shaped eyebrows — threading result at UniqSwek", category: "Brows" },
   { src: "/images/DSC04099.jpg", alt: "Lash extension application by licensed specialist", category: "Lashes" },
-  { src: "/images/facial-1.jpg", alt: "Facial treatment — clay mask application at UniqSwek", category: "Facials" },
   { src: "/images/DSC04132.jpg", alt: "Classic lash extensions — natural and wispy", category: "Lashes" },
-  { src: "/images/facial-2.jpg", alt: "Steam facial treatment at UniqSwek Beauty Studios", category: "Facials" },
-  { src: "/images/facial-3.jpg", alt: "LED light therapy facial at UniqSwek Beauty Studios", category: "Facials" },
   { src: "/images/DSC04142.jpg", alt: "Lash extensions result — beautiful full lashes", category: "Lashes" },
   { src: "/images/DSC04141.jpg", alt: "Lash extensions — before and after comparison", category: "Lashes" },
+  { src: "/images/facial-4.jpg", alt: "Professional facial treatment with steam — Babita at UniqSwek", category: "Facials" },
+  { src: "/images/facial-5.jpg", alt: "LED light therapy facial at UniqSwek Beauty Studios", category: "Facials" },
+  { src: "/images/facial-1.jpg", alt: "Facial treatment — clay mask application at UniqSwek", category: "Facials" },
+  { src: "/images/facial-2.jpg", alt: "Steam facial treatment at UniqSwek Beauty Studios", category: "Facials" },
 ]
 
 const CATEGORIES = ["All", "Brows", "Lashes", "Facials"]

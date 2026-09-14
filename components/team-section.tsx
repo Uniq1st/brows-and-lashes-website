@@ -52,7 +52,7 @@ const team = [
     initials: "GI",
     color: "bg-emerald-100 text-emerald-700",
     ring: "ring-emerald-200",
-    photo: null,
+    photo: "/images/team/gita.jpg",
     bio: "Gita brings a warm, attentive energy to every service. Her careful, detail-oriented approach ensures clients always leave looking their best.",
     store: "Upper East Side",
   },
