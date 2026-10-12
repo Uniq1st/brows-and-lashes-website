@@ -78,6 +78,10 @@ const serviceListSchema = {
     { "@type": "ListItem", "position": 13, "name": "Four Layer Facial — $85",         "url": "https://uniqswek.com/#services" },
     { "@type": "ListItem", "position": 14, "name": "Male Threading — $13",            "url": "https://uniqswek.com/#services" },
     { "@type": "ListItem", "position": 15, "name": "Head, Shoulder & Back Massage — from $15", "url": "https://uniqswek.com/#services" },
+    { "@type": "ListItem", "position": 16, "name": "Organic CBD Wax",  "url": "https://uniqswek.com/#services" },
+    { "@type": "ListItem", "position": 17, "name": "Sugar Wax",        "url": "https://uniqswek.com/#services" },
+    { "@type": "ListItem", "position": 18, "name": "Hard Wax",         "url": "https://uniqswek.com/#services" },
+    { "@type": "ListItem", "position": 19, "name": "Ear Candling",     "url": "https://uniqswek.com/#services" },
   ],
 }
 

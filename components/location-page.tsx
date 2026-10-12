@@ -179,6 +179,7 @@ export async function LocationPage({
               </p>
               <p className="font-[family-name:var(--font-montserrat)] text-muted-foreground font-light leading-relaxed">
                 Walk-ins always welcome. Book online for guaranteed availability with your preferred specialist.
+                {storeId === "eyebrow-shape" && " Lash services at this location are by appointment only."}
               </p>
               <div className="flex items-center gap-3 mt-8">
                 {[...Array(5)].map((_, i) => (
@@ -239,6 +240,11 @@ export async function LocationPage({
                 Everything we offer
                 <span className="block italic">at this studio</span>
               </h2>
+              {storeId === "eyebrow-shape" && (
+                <p className="font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground mt-3">
+                  Lash services at this location are by appointment only — please book online or call ahead.
+                </p>
+              )}
             </div>
 
             {hasSquareServices ? (

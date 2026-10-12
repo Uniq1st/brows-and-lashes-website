@@ -45,6 +45,9 @@ const uesServices: ServiceCategory[] = [
     items: [
       { name: "Brazilian Wax",      description: "Professional bikini waxing for a clean, smooth finish with minimal discomfort.", duration: "30 mins", price: "$45", bookingId: "" },
       { name: "CBD Brazilian Wax",  description: "Brazilian wax with CBD-infused formula for extra soothing and reduced redness.", duration: "30 mins", price: "$55", bookingId: "" },
+      { name: "Organic CBD Wax",    description: "Soothing organic CBD-infused wax formula, gentle on sensitive skin with reduced redness and irritation.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
+      { name: "Sugar Wax",          description: "All-natural sugar paste hair removal — gentler on skin than traditional wax, with less redness and irritation.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
+      { name: "Hard Wax",           description: "Firm wax applied without strips for precise, less irritating hair removal on sensitive areas.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
       { name: "Upper Leg Wax",      description: "Waxing from knee to hip for smooth, hair-free upper legs.", duration: "30 mins", price: "$40", bookingId: "" },
       { name: "Lower Leg Wax",      description: "Waxing from ankle to knee for silky smooth lower legs.", duration: "30 mins", price: "$40", bookingId: "" },
       { name: "Full Leg Wax",       description: "Complete leg waxing from ankle to hip for fully smooth, hair-free legs.", duration: "45 mins", price: "$60", bookingId: "" },
@@ -62,6 +65,7 @@ const uesServices: ServiceCategory[] = [
       { name: "Acne Facial",           description: "Intensive organic treatment targeting breakouts and congested pores for clear skin.", duration: "60 mins", price: "$90", bookingId: "" },
       { name: "Four Layer Facial",     description: "Advanced four-layer treatment targeting fine lines, uneven tone, and texture.", duration: "60 mins", price: "$85", bookingId: "" },
       { name: "Face Herbal Mask",      description: "Soothing herbal mask add-on to deeply nourish and calm the skin after any service.", duration: "20 mins", price: "$20", bookingId: "" },
+      { name: "Ear Candling",          description: "Traditional ear candling treatment to promote relaxation and gentle ear wellness.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
       { name: "Henna Tattoos",         description: "Beautiful, intricate temporary henna designs for special occasions.", duration: "30 mins", price: "From $15", bookingId: "" },
     ],
   },
@@ -98,6 +102,9 @@ const ridgewoodServices: ServiceCategory[] = [
     items: [
       { name: "Lash Lift & Tint",        description: "Semi-permanent curl and color enhancement for your natural lashes, lasting 6–8 weeks.", duration: "60 mins", price: "$55", bookingId: "" },
       { name: "Lash Lift",               description: "Semi-permanent curl that lifts and opens the eyes without extensions.", duration: "45 mins", price: "$50", bookingId: "" },
+      { name: "Classic Lash Extensions", description: "One extension per natural lash for a subtle, natural look that opens up your eyes.", duration: "90 mins", price: "Ask for pricing", bookingId: "" },
+      { name: "Volume Lash Extensions",  description: "Multiple lightweight extensions per natural lash for dramatic, full, glamorous lashes.", duration: "2 hours", price: "Ask for pricing", bookingId: "" },
+      { name: "Hybrid Lash Extensions",  description: "A blend of classic and volume techniques for beautiful textured dimension.", duration: "2 hours", price: "Ask for pricing", bookingId: "" },
       { name: "Cluster Lash Extensions", description: "Pre-made fans for a quick, bold, full look at an accessible price.", duration: "45 mins", price: "$30", bookingId: "" },
       { name: "Eyelash Tinting",         description: "Darken and define your natural lashes for a mascara-free, polished look.", duration: "20 mins", price: "$18", bookingId: "" },
     ],
@@ -106,6 +113,10 @@ const ridgewoodServices: ServiceCategory[] = [
     category: "Waxing",
     items: [
       { name: "Brazilian Wax",       description: "Professional bikini waxing for a clean, smooth finish with minimal discomfort.", duration: "30 mins", price: "$35", bookingId: "" },
+      { name: "CBD Brazilian Wax",   description: "Brazilian wax with CBD-infused formula for extra soothing and reduced redness.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
+      { name: "Organic CBD Wax",     description: "Soothing organic CBD-infused wax formula, gentle on sensitive skin with reduced redness and irritation.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
+      { name: "Sugar Wax",           description: "All-natural sugar paste hair removal — gentler on skin than traditional wax, with less redness and irritation.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
+      { name: "Hard Wax",            description: "Firm wax applied without strips for precise, less irritating hair removal on sensitive areas.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
       { name: "Bikini Line Wax",     description: "Clean bikini line waxing for a neat, polished result.", duration: "20 mins", price: "$15", bookingId: "" },
       { name: "Deep Bikini Wax",     description: "Extended bikini waxing for a cleaner, more complete result.", duration: "25 mins", price: "$20", bookingId: "" },
       { name: "Full Legs Wax",       description: "Complete leg waxing from ankle to hip for fully smooth, hair-free legs.", duration: "45 mins", price: "$35", bookingId: "" },
@@ -129,6 +140,7 @@ const ridgewoodServices: ServiceCategory[] = [
       { name: "Acne Facial",           description: "Targeted treatment for active breakouts and congested pores.", duration: "60 mins", price: "$55", bookingId: "" },
       { name: "Seaweed Organic Facial",description: "Deeply hydrating organic seaweed treatment for nourished, balanced skin.", duration: "60 mins", price: "$65", bookingId: "" },
       { name: "4 Layer Facial",        description: "Advanced multi-layer treatment targeting fine lines, tone, and texture.", duration: "60 mins", price: "$75", bookingId: "" },
+      { name: "Ear Candling",          description: "Traditional ear candling treatment to promote relaxation and gentle ear wellness.", duration: "30 mins", price: "Ask for pricing", bookingId: "" },
       { name: "Henna Tattoos",         description: "Beautiful, intricate temporary henna designs for special occasions.", duration: "30 mins", price: "From $15", bookingId: "" },
     ],
   },
@@ -232,6 +244,12 @@ export function ServicesSection() {
             </button>
           ))}
         </div>
+
+        {activeLocation === "ridgewood" && resolvedCategory === "Lashes" && (
+          <p className="text-center font-[family-name:var(--font-montserrat)] text-sm text-muted-foreground mb-8 -mt-4">
+            Lash services at our Ridgewood studio are by appointment only — please book online or call ahead.
+          </p>
+        )}
 
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
