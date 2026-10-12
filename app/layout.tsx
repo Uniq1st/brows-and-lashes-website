@@ -76,8 +76,24 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://uniqswek.com/#organization",
+      "name": "UniqSwek Beauty Studios",
+      "url": "https://uniqswek.com",
+      "logo": "https://uniqswek.com/images/brandlogo.JPG",
+      "founder": {
+        "@type": "Person",
+        "name": "Swekchha Luitel"
+      },
+      "subOrganization": [
+        { "@id": "https://uniqswek.com/#brows-and-lashes" },
+        { "@id": "https://uniqswek.com/#eyebrow-shape" }
+      ]
+    },
+    {
       "@type": "BeautySalon",
       "@id": "https://uniqswek.com/#brows-and-lashes",
+      "parentOrganization": { "@id": "https://uniqswek.com/#organization" },
       "name": "Brows & Lashes by UniqSwek",
       "url": "https://uniqswek.com",
       "telephone": "+19173882434",
@@ -99,7 +115,8 @@ const localBusinessSchema = {
       "openingHours": ["Mo-Fr 09:00-20:00", "Sa 10:00-20:00", "Su 10:00-19:00"],
       "sameAs": [
         "https://www.instagram.com/browsandlashesnyc",
-        "https://maps.google.com/?cid=5062374397789282115"
+        "https://maps.google.com/?cid=5062374397789282115",
+        "https://www.yelp.com/biz/brows-and-lashes-new-york-5"
       ],
       "hasMap": "https://maps.google.com/?q=1240+Lexington+Avenue+New+York+NY+10028",
       "areaServed": [
@@ -123,6 +140,7 @@ const localBusinessSchema = {
     {
       "@type": "BeautySalon",
       "@id": "https://uniqswek.com/#eyebrow-shape",
+      "parentOrganization": { "@id": "https://uniqswek.com/#organization" },
       "name": "Eyebrow Shape by UniqSwek",
       "url": "https://uniqswek.com",
       "telephone": "+13478895027",
@@ -139,7 +157,8 @@ const localBusinessSchema = {
       "openingHours": ["Mo-Sa 10:00-20:00", "Su 10:00-19:00"],
       "sameAs": [
         "https://www.instagram.com/eyebrowshapenyc",
-        "https://maps.google.com/?cid=11390073009820246887"
+        "https://maps.google.com/?cid=11390073009820246887",
+        "https://www.yelp.com/biz/eyebrow-shape-by-uniqswek-new-york"
       ],
       "hasMap": "https://maps.google.com/?q=59-15+71st+Ave+Ridgewood+NY+11385",
       "areaServed": [

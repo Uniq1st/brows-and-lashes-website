@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { LocationPage } from "@/components/location-page"
 import { STORES } from "@/lib/stores"
+import { ridgewoodServices, buildServiceListItems } from "@/lib/services"
 
 export const metadata: Metadata = {
   title: "Eyebrow Threading & Lash Extensions Ridgewood Queens | Eyebrow Shape by UniqSwek",
@@ -17,8 +18,15 @@ export const metadata: Metadata = {
     siteName: "UniqSwek Beauty Studios",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/images/hero-bg.jpg", width: 1200, height: 630, alt: "Eyebrow Shape by UniqSwek — Ridgewood Queens NYC" }],
+    images: [{ url: "/images/interior-ridgewood-1.jpg", width: 1200, height: 630, alt: "Eyebrow Shape by UniqSwek — Ridgewood Queens NYC studio interior" }],
   },
+}
+
+const serviceListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Beauty Services at Eyebrow Shape by UniqSwek — Ridgewood Queens NYC",
+  "itemListElement": buildServiceListItems(ridgewoodServices, "https://uniqswek.com/ridgewood#services"),
 }
 
 const ridgewoodTeam = [
@@ -43,6 +51,7 @@ export default function RidgewoodPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceListSchema) }} />
       <LocationPage
       store={store}
       storeId="eyebrow-shape"

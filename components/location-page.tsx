@@ -230,7 +230,7 @@ export async function LocationPage({
         )}
 
         {/* ── Services ── */}
-        <section className="py-20 bg-background">
+        <section id="services" className="py-20 bg-background">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-12">
               <p className="font-[family-name:var(--font-montserrat)] text-sm tracking-[0.3em] uppercase text-primary mb-4">

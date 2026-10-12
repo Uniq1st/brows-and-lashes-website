@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { LocationPage } from "@/components/location-page"
 import { STORES } from "@/lib/stores"
+import { uesServices, buildServiceListItems } from "@/lib/services"
 
 export const metadata: Metadata = {
   title: "Eyebrow Threading Upper East Side | #1 on Google Maps | Brows & Lashes by UniqSwek",
@@ -17,8 +18,15 @@ export const metadata: Metadata = {
     siteName: "UniqSwek Beauty Studios",
     locale: "en_US",
     type: "website",
-    images: [{ url: "/images/hero-bg.jpg", width: 1200, height: 630, alt: "Brows & Lashes by UniqSwek — Upper East Side Manhattan" }],
+    images: [{ url: "/images/storefront-manhattan.jpg", width: 1200, height: 630, alt: "Brows & Lashes by UniqSwek — Upper East Side Manhattan storefront" }],
   },
+}
+
+const serviceListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Beauty Services at Brows & Lashes by UniqSwek — Upper East Side NYC",
+  "itemListElement": buildServiceListItems(uesServices, "https://uniqswek.com/manhattan#services"),
 }
 
 const uesTeam = [
@@ -43,6 +51,7 @@ export default function ManhattanPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceListSchema) }} />
       <LocationPage
       store={store}
       storeId="brows-and-lashes"

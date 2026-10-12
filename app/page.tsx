@@ -1,4 +1,5 @@
 import { getPlaceRating } from "@/lib/google-reviews"
+import { uesServices, buildServiceListItems } from "@/lib/services"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { LocationSelector } from "@/components/location-selector"
@@ -55,6 +56,21 @@ const faqSchema = {
       "name": "Do you offer services for men?",
       "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Male threading is one of our most popular services. We offer precise eyebrow shaping, beard line cleanup, and full facial threading for men. Walk-ins always welcome." }
     },
+    {
+      "@type": "Question",
+      "name": "Do you offer ear candling?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — ear candling is available at both our Upper East Side and Ridgewood studios as a relaxing addition to your visit." }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between sugar wax, hard wax, and regular wax?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sugar wax is an all-natural paste that's gentler on sensitive skin with less redness. Hard wax is applied without strips for a more precise, less irritating removal — ideal for sensitive areas. We also offer an Organic CBD Wax for extra soothing. All three are available at both studios." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is eyelash extension service walk-in at your Ridgewood studio?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lash services at our Ridgewood studio are by appointment only — please book online or call ahead. Walk-ins remain welcome for threading, waxing, and facials there. At our Upper East Side studio, lash extensions are available both by appointment and walk-in." }
+    },
   ],
 }
 
@@ -62,27 +78,7 @@ const serviceListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Beauty Services at UniqSwek — Upper East Side NYC",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1,  "name": "Eyebrow Threading — $13",         "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 2,  "name": "Eyebrow Lamination — $60",        "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 3,  "name": "Full Face Threading — $45",       "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 4,  "name": "Classic Lash Extensions — $125",  "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 5,  "name": "Volume Lash Extensions — $150",   "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 6,  "name": "Hybrid Lash Extensions — $150",   "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 7,  "name": "Lash Lift & Tint — $75",          "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 8,  "name": "Brazilian Wax — $45",             "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 9,  "name": "CBD Brazilian Wax — $55",         "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 10, "name": "Full Leg Wax — $60",              "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 11, "name": "Regular Herbal Facial — $40",     "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 12, "name": "Acne Facial — $90",               "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 13, "name": "Four Layer Facial — $85",         "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 14, "name": "Male Threading — $13",            "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 15, "name": "Head, Shoulder & Back Massage — from $15", "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 16, "name": "Organic CBD Wax",  "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 17, "name": "Sugar Wax",        "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 18, "name": "Hard Wax",         "url": "https://uniqswek.com/#services" },
-    { "@type": "ListItem", "position": 19, "name": "Ear Candling",     "url": "https://uniqswek.com/#services" },
-  ],
+  "itemListElement": buildServiceListItems(uesServices, "https://uniqswek.com/#services"),
 }
 
 export default async function Home() {

@@ -19,6 +19,10 @@ const faqs = [
         q: "Is threading better than waxing?",
         a: "Threading is preferred by many clients because it's chemical-free, extremely precise, and gentler on sensitive skin. It removes hair at the root without pulling at the skin, making it a great option if you use retinol, Accutane, or have reactive skin. Waxing is also offered for clients who prefer it."
       },
+      {
+        q: "What's the difference between sugar wax, hard wax, and regular wax?",
+        a: "Sugar wax is an all-natural paste that's gentler on sensitive skin with less redness. Hard wax is applied without strips for a more precise, less irritating removal — ideal for sensitive areas. We also offer an Organic CBD Wax for extra soothing. All three are available at both studios."
+      },
     ]
   },
   {
@@ -35,6 +39,10 @@ const faqs = [
       {
         q: "How do I care for my lash extensions at home?",
         a: "Avoid water and steam for the first 24 hours. After that: cleanse gently with an oil-free cleanser, brush daily with the spoolie we provide, avoid sleeping face-down, and stay away from oil-based makeup removers. Do not pull or pick at your extensions — this can damage your natural lashes."
+      },
+      {
+        q: "Is eyelash extension service walk-in at your Ridgewood studio?",
+        a: "Lash services at our Ridgewood studio are by appointment only — please book online or call ahead. Walk-ins remain welcome for threading, waxing, and facials there. At our Upper East Side studio, lash extensions are available both by appointment and walk-in."
       },
     ]
   },
@@ -69,6 +77,10 @@ const faqs = [
       {
         q: "Do you offer services for men?",
         a: "Absolutely. Male threading is one of our most popular services. We offer precise eyebrow shaping, beard line cleanup, and full facial threading for men. No appointment necessary — walk-ins are always welcome."
+      },
+      {
+        q: "Do you offer ear candling?",
+        a: "Yes — ear candling is available at both our Upper East Side and Ridgewood studios as a relaxing addition to your visit."
       },
     ]
   },
