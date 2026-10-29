@@ -125,7 +125,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="pt-8 border-t border-background/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="font-[family-name:var(--font-montserrat)] text-sm text-background/50 font-light">
-            © {new Date().getFullYear()} UniqSwek Beauty Studios · Founded by Swekchha Luitel (Swek). All rights reserved.
+            © {new Date().getFullYear()} UniqSwek Beauty Studios (uniqswek.com) · Founded by Swekchha Luitel (Swek). All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
