@@ -30,6 +30,12 @@ export function CartDrawer() {
   async function handleCheckout() {
     setLoading(true)
     setError(null)
+
+    // Guard against the request (or Square's API) hanging — surface an error
+    // instead of leaving the button spinning forever.
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 20000)
+
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -38,15 +44,28 @@ export function CartDrawer() {
           items: lines.map((l) => ({ productId: l.productId, quantity: l.quantity })),
           fulfillment,
         }),
+        signal: controller.signal,
       })
       const data = await res.json()
       if (!res.ok || !data.url) {
         throw new Error(data.error ?? "Checkout failed — please try again.")
       }
+      // Reset the button before navigating away — if the redirect doesn't
+      // fire for any reason (blocked by the browser, in-app webview, etc.),
+      // the user isn't left staring at a stuck spinner.
+      setLoading(false)
       window.location.href = data.url
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Checkout failed — please try again.")
+      const message =
+        err instanceof DOMException && err.name === "AbortError"
+          ? "Checkout is taking longer than expected — please try again or call the studio to order."
+          : err instanceof Error
+            ? err.message
+            : "Checkout failed — please try again."
+      setError(message)
       setLoading(false)
+    } finally {
+      clearTimeout(timeout)
     }
   }
 

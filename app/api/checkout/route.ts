@@ -15,6 +15,8 @@ import type { SquareStoreId } from "@/lib/square"
 import { STORES } from "@/lib/stores"
 import type { Fulfillment } from "@/lib/cart-context"
 
+export const maxDuration = 25 // seconds — give Square's API room before Vercel cuts the request off
+
 // $7.00 flat rate to start — adjust here once you've settled on real shipping rates,
 // or move this to Square Shipping Profiles later for carrier-calculated rates.
 const SHIPPING_FLAT_CENTS = 700
