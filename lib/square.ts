@@ -458,6 +458,12 @@ export interface CreatePaymentLinkInput {
   }>
   note?: string
   askForShippingAddress?: boolean
+  /** Order-level ad-hoc taxes, e.g. NYC sales tax applied to the whole order */
+  taxes?: Array<{
+    name: string
+    /** Percentage as a string, e.g. "8.875" for 8.875% */
+    percentage: string
+  }>
 }
 
 export interface SquarePaymentLink {
@@ -494,6 +500,15 @@ export async function createPaymentLink(
     order: {
       location_id: store.locationId,
       line_items: input.lineItems,
+      ...(input.taxes?.length
+        ? {
+            taxes: input.taxes.map((t) => ({
+              name: t.name,
+              percentage: t.percentage,
+              scope: "ORDER",
+            })),
+          }
+        : {}),
       ...(input.note ? { note: input.note.slice(0, 500) } : {}),
     },
     checkout_options: {

@@ -22,6 +22,12 @@ export const maxDuration = 25 // seconds — give Square's API room before Verce
 const SHIPPING_FLAT_CENTS = 700
 const DEFAULT_SHIPPING_STORE: SquareStoreId = "brows-and-lashes"
 
+// NYC combined sales tax: 4% NY State + 4.5% NYC local + 0.375% MTA surcharge.
+// Applied uniformly to every order for now (both studios are in NYC); shipped
+// orders outside NY technically shouldn't carry this — revisit if out-of-state
+// shipping volume becomes meaningful. Keep in sync with components/cart-drawer.tsx.
+const NYC_SALES_TAX_PERCENT = "8.875"
+
 type CheckoutItem = { productId: string; quantity: number }
 
 interface CheckoutRequestBody {
@@ -92,6 +98,7 @@ export async function POST(req: NextRequest) {
       lineItems,
       note,
       askForShippingAddress,
+      taxes: [{ name: "NYC Sales Tax", percentage: NYC_SALES_TAX_PERCENT }],
     })
     return NextResponse.json({ url: paymentLink.url })
   } catch (err) {

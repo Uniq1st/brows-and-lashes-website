@@ -10,6 +10,7 @@ import { STORES } from "@/lib/stores"
 
 // Keep in sync with app/api/checkout/route.ts
 const SHIPPING_FLAT_CENTS = 700
+const NYC_SALES_TAX_RATE = 0.08875 // 8.875% — NY State + NYC local + MTA surcharge
 
 function formatCents(cents: number) {
   return `$${(cents / 100).toFixed(2)}`
@@ -25,7 +26,9 @@ export function CartDrawer() {
   const [error, setError] = useState<string | null>(null)
 
   const shippingCents = fulfillment.type === "SHIPMENT" ? SHIPPING_FLAT_CENTS : 0
-  const orderTotalCents = totalCents + shippingCents
+  // Estimate only — Square calculates the authoritative tax amount at checkout.
+  const taxCents = Math.round((totalCents + shippingCents) * NYC_SALES_TAX_RATE)
+  const orderTotalCents = totalCents + shippingCents + taxCents
 
   async function handleCheckout() {
     setLoading(true)
@@ -171,6 +174,10 @@ export function CartDrawer() {
                     <span>{formatCents(shippingCents)}</span>
                   </div>
                 )}
+                <div className="flex justify-between text-muted-foreground">
+                  <span>NYC Sales Tax (8.875%)</span>
+                  <span>{formatCents(taxCents)}</span>
+                </div>
                 <div className="flex justify-between font-medium text-base pt-2 border-t border-border">
                   <span>Total</span>
                   <span>{formatCents(orderTotalCents)}</span>
