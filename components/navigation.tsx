@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, ChevronDown, X, Gift, Sparkles, Heart, GraduationCap } from "lucide-react"
+import { Menu, ChevronDown, X, Gift, Sparkles, Heart, GraduationCap, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
@@ -17,6 +17,7 @@ import {
 import { STORES } from "@/lib/stores"
 import { getActivePromo } from "@/lib/promotions"
 import { trackBooking, trackPhone } from "@/lib/analytics"
+import { useCart } from "@/lib/cart-context"
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -32,6 +33,7 @@ export function Navigation() {
   const [showBanner, setShowBanner] = useState(true)
   const pathname = usePathname()
   const isHome = pathname === "/"
+  const { totalItems, openCart } = useCart()
 
   // Prefix anchor links with "/" when not on home page
   const href = (anchor: string) => (isHome ? anchor : `/${anchor}`)
@@ -133,6 +135,14 @@ export function Navigation() {
               Training
             </Link>
 
+            {/* Shop */}
+            <Link
+              href="/shop"
+              className="text-sm font-[family-name:var(--font-montserrat)] tracking-wider uppercase text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Shop
+            </Link>
+
             {/* Book Now dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -165,6 +175,20 @@ export function Navigation() {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
+
+          {/* Cart */}
+          <button
+            onClick={openCart}
+            className="relative flex items-center justify-center w-9 h-9 text-foreground hover:text-primary transition-colors"
+            aria-label="Open cart"
+          >
+            <ShoppingBag className="w-5 h-5" />
+            {totalItems > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-primary text-primary-foreground text-[10px] leading-none flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
 
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -231,6 +255,16 @@ export function Navigation() {
                 >
                   <GraduationCap className="w-4 h-4" />
                   Training
+                </Link>
+
+                {/* Shop */}
+                <Link
+                  href="/shop"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 font-[family-name:var(--font-montserrat)] text-lg tracking-wider uppercase text-foreground hover:text-primary transition-colors"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  Shop
                 </Link>
 
                 {/* Book buttons */}

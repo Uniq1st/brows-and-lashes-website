@@ -7,6 +7,8 @@
  *   const services = await getServices("brows-and-lashes")
  */
 
+import { randomUUID } from "crypto"
+
 const SQUARE_API_BASE = "https://connect.squareup.com/v2"
 
 // ─── Store configs ────────────────────────────────────────────────────────────
@@ -444,6 +446,85 @@ export async function getSubscriptionPlans(
   return results
     .filter((p) => p.priceCents != null && p.priceCents > 0)
     .sort((a, b) => (a.priceCents ?? 0) - (b.priceCents ?? 0))
+}
+
+// ─── Checkout / Payment Links ──────────────────────────────────────────────────
+
+export interface CreatePaymentLinkInput {
+  lineItems: Array<{
+    name: string
+    quantity: string
+    base_price_money: { amount: number; currency: string }
+  }>
+  note?: string
+  askForShippingAddress?: boolean
+}
+
+export interface SquarePaymentLink {
+  id: string
+  url: string
+  orderId?: string
+}
+
+interface PaymentLinkResponse {
+  payment_link?: {
+    id: string
+    url: string
+    order_id?: string
+  }
+  errors?: SquareError[]
+}
+
+/**
+ * Creates a Square-hosted Payment Link for a retail order using ad-hoc line
+ * items (no pre-existing Catalog items required). Used by the /shop checkout
+ * flow — each call is a live mutation, never cached.
+ */
+export async function createPaymentLink(
+  storeId: SquareStoreId,
+  input: CreatePaymentLinkInput
+): Promise<SquarePaymentLink> {
+  const store = SQUARE_STORES[storeId]
+  if (!store.accessToken) {
+    throw new Error(`Missing Square access token for store: ${storeId}`)
+  }
+
+  const body = {
+    idempotency_key: randomUUID(),
+    order: {
+      location_id: store.locationId,
+      line_items: input.lineItems,
+      ...(input.note ? { note: input.note.slice(0, 500) } : {}),
+    },
+    checkout_options: {
+      redirect_url: "https://uniqswek.com/shop/thank-you",
+      ask_for_shipping_address: input.askForShippingAddress ?? false,
+    },
+  }
+
+  const res = await fetch(`${SQUARE_API_BASE}/online-checkout/payment-links`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${store.accessToken}`,
+      "Square-Version": "2024-06-04",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+    cache: "no-store",
+  })
+
+  const data: PaymentLinkResponse = await res.json()
+
+  if (!res.ok || data.errors?.length || !data.payment_link) {
+    const detail = data.errors?.map((e) => e.detail).join("; ") ?? res.statusText
+    throw new Error(`Square payment link error [${storeId}]: ${detail}`)
+  }
+
+  return {
+    id: data.payment_link.id,
+    url: data.payment_link.url,
+    orderId: data.payment_link.order_id,
+  }
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

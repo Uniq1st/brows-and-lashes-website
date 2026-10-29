@@ -101,6 +101,7 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { href: "/memberships", label: "✦ Memberships" },
+                { href: "/shop", label: "Shop" },
                 { href: "/bridal", label: "Bridal & Groups" },
                 { href: "/manhattan", label: "Upper East Side Studio" },
                 { href: "/ridgewood", label: "Ridgewood Studio" },
