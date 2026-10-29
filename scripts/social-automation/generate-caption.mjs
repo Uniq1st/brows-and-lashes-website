@@ -84,7 +84,6 @@ Return ONLY the caption + hashtags. No quotes, no commentary.`
  * Fallback caption when Claude is unavailable
  */
 function useFallbackCaption(service, store, hashtags) {
-  const { FALLBACK_CAPTIONS } = await import("./config.mjs")
   const serviceKey = service.includes("lash") ? "lashes"
     : service.includes("thread") ? "threading"
     : service.includes("member") ? "membership"
