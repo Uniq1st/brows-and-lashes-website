@@ -2,6 +2,8 @@
 
 Auto-posts to Instagram and Google Business Profile twice daily. Claude generates captions, your photos get a branded overlay, GitHub Actions posts everything automatically.
 
+There's also a one-command **broadcast tool** (`broadcast-update.mjs`) that adds a new service to Square, Google Business Profile, Instagram, and Facebook all at once — see [Broadcasting a New Service Everywhere](#broadcasting-a-new-service-everywhere) below.
+
 ---
 
 ## What Gets Posted
@@ -12,6 +14,7 @@ Auto-posts to Instagram and Google Business Profile twice daily. Claude generate
 | @eyebrowshapenyc (Instagram) | Branded photo + caption + hashtags | 9am + 6pm ET daily |
 | Google Business (UES) | Caption + photo + Book Now button | 9am + 6pm ET daily |
 | Google Business (Ridgewood) | Caption + photo + Book Now button | 9am + 6pm ET daily |
+| Facebook Pages (both) | Branded photo + caption | Only via `broadcast-update.mjs`, not the daily schedule |
 
 ---
 
@@ -56,6 +59,29 @@ Instagram requires a developer app to auto-post.
 - `META_RIDGEWOOD_ACCESS_TOKEN` — token for Ridgewood
 
 > **Token refresh:** Long-lived tokens expire in 60 days. Set a calendar reminder to refresh them, or set up a separate GitHub Action to auto-refresh (ask Claude to build this).
+
+---
+
+### Step 2.5 — Set Up Facebook Page Posting (10 minutes)
+
+This is **separate** from Instagram above — the Instagram token uses Instagram-login auth and has no permission to post to a Facebook Page.
+
+1. [developers.facebook.com](https://developers.facebook.com) → your app (from Step 2) → **Graph API Explorer**
+2. In the "User or Page" dropdown, select your **Facebook Page** (not your user account) — one at a time for each studio's Page
+3. Add permissions: `pages_manage_posts`, `pages_read_engagement`
+4. Generate the token, then [exchange it for a long-lived Page token](https://developers.facebook.com/docs/facebook-login/guides/access-tokens/get-long-lived) — Page tokens derived from a long-lived user token don't expire
+5. Find your **Page ID**: your Page → About → Page ID (or Graph API Explorer → `me?fields=id`)
+
+**Save these values:**
+- `META_UES_FB_PAGE_ID` / `META_UES_FB_PAGE_TOKEN` — for the Brows & Lashes Page
+- `META_RIDGEWOOD_FB_PAGE_ID` / `META_RIDGEWOOD_FB_PAGE_TOKEN` — for the Eyebrow Shape Page
+
+**Verify it worked** before relying on it:
+```bash
+node post-facebook.mjs check ues
+node post-facebook.mjs check ridgewood
+```
+This tells you exactly which permission is missing if posting fails, instead of a generic error.
 
 ---
 
@@ -119,9 +145,15 @@ Instagram requires images to be hosted at a public URL. Cloudinary gives you fre
 | `META_UES_ACCESS_TOKEN` | Step 2 above |
 | `META_RIDGEWOOD_IG_USER_ID` | Step 2 above |
 | `META_RIDGEWOOD_ACCESS_TOKEN` | Step 2 above |
+| `META_UES_FB_PAGE_ID` | Step 2.5 above |
+| `META_UES_FB_PAGE_TOKEN` | Step 2.5 above |
+| `META_RIDGEWOOD_FB_PAGE_ID` | Step 2.5 above |
+| `META_RIDGEWOOD_FB_PAGE_TOKEN` | Step 2.5 above |
 | `GOOGLE_SERVICE_ACCOUNT_JSON` | Step 4 above (paste entire JSON) |
 | `GOOGLE_UES_LOCATION_NAME` | Step 4 above |
 | `GOOGLE_RIDGEWOOD_LOCATION_NAME` | Step 4 above |
+| `SQUARE_UES_ACCESS_TOKEN` | Same token as the website's `.env.local` — needs write (not just read) scope for the broadcast tool below |
+| `SQUARE_RIDGEWOOD_ACCESS_TOKEN` | Same as above, for Ridgewood |
 
 ---
 
@@ -177,6 +209,43 @@ cd scripts/social-automation
 node run-daily.mjs ues       # Post for UES
 node run-daily.mjs ridgewood # Post for Ridgewood
 node run-daily.mjs both      # Post for both
+```
+
+---
+
+## Broadcasting a New Service Everywhere
+
+One command adds a new service to Square, lists it on Google Business Profile,
+and posts about it on Instagram + Facebook — instead of doing all four by hand.
+
+```bash
+cd scripts/social-automation
+node broadcast-update.mjs --store=ues --name="Nose Polishing" --price=25 \
+  --duration=20 --category="Facials & More" \
+  --description="Deep-cleansing nose treatment that gently clears blackheads."
+```
+
+**Always run without `--confirm` first** — it previews exactly what would be
+created/posted on every platform without writing anything. Once the preview
+looks right, add `--confirm` to actually run it live:
+
+```bash
+node broadcast-update.mjs --store=ues --name="Nose Polishing" --price=25 \
+  --duration=20 --category="Facials & More" \
+  --description="Deep-cleansing nose treatment that gently clears blackheads." \
+  --confirm
+```
+
+This touches real systems — your live Square catalog (tied to real bookings
+and payments) and your public Google Business Profile — so treat `--confirm`
+like a deploy, not a toggle. Each of the four steps (Square, Google services,
+Instagram, Facebook) fails independently and reports its own error, so a
+problem with one platform doesn't block the others.
+
+You can also run each piece on its own:
+```bash
+node update-square-catalog.mjs ues "Nose Polishing" 2500 20 "Facials & More" --confirm
+node update-google-services.mjs ues "Nose Polishing" --confirm
 ```
 
 ---

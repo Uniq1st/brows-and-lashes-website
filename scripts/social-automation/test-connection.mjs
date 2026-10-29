@@ -35,6 +35,16 @@ const checks = [
   { group: "Google Business", key: "GOOGLE_SERVICE_ACCOUNT_JSON", note: "See README Step 3" },
   { group: "Google Business", key: "GOOGLE_UES_LOCATION_NAME", note: "accounts/xxx/locations/yyy" },
   { group: "Google Business", key: "GOOGLE_RIDGEWOOD_LOCATION_NAME", note: "accounts/xxx/locations/yyy" },
+
+  // Facebook Page — separate token from Instagram above
+  { group: "Facebook (UES)", key: "META_UES_FB_PAGE_ID", note: "Your Page → About → Page ID" },
+  { group: "Facebook (UES)", key: "META_UES_FB_PAGE_TOKEN", note: "Graph API Explorer, long-lived Page token" },
+  { group: "Facebook (Ridgewood)", key: "META_RIDGEWOOD_FB_PAGE_ID", note: "Your Page → About → Page ID" },
+  { group: "Facebook (Ridgewood)", key: "META_RIDGEWOOD_FB_PAGE_TOKEN", note: "Graph API Explorer, long-lived Page token" },
+
+  // Square — same tokens the website uses, needed here with write scope
+  { group: "Square", key: "SQUARE_UES_ACCESS_TOKEN", note: "Same token as the website's .env.local" },
+  { group: "Square", key: "SQUARE_RIDGEWOOD_ACCESS_TOKEN", note: "Same token as the website's .env.local" },
 ]
 
 let allGood = true

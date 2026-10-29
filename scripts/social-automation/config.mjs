@@ -19,6 +19,9 @@ export const STORES = {
     // From Meta Developer App
     instagramUserId: process.env.META_UES_IG_USER_ID,
     instagramToken: process.env.META_UES_ACCESS_TOKEN,
+    // Facebook Page token — separate from the Instagram token above
+    facebookPageId: process.env.META_UES_FB_PAGE_ID,
+    facebookPageToken: process.env.META_UES_FB_PAGE_TOKEN,
     // From Google Cloud / Business Profile API
     googleLocationName: process.env.GOOGLE_UES_LOCATION_NAME, // e.g. "accounts/123/locations/456"
   },
@@ -37,6 +40,8 @@ export const STORES = {
     ],
     instagramUserId: process.env.META_RIDGEWOOD_IG_USER_ID,
     instagramToken: process.env.META_RIDGEWOOD_ACCESS_TOKEN,
+    facebookPageId: process.env.META_RIDGEWOOD_FB_PAGE_ID,
+    facebookPageToken: process.env.META_RIDGEWOOD_FB_PAGE_TOKEN,
     googleLocationName: process.env.GOOGLE_RIDGEWOOD_LOCATION_NAME,
   },
 }

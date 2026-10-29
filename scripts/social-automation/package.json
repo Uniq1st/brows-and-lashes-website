@@ -8,7 +8,9 @@
     "post:ues": "node run-daily.mjs ues",
     "post:ridgewood": "node run-daily.mjs ridgewood",
     "post:both": "node run-daily.mjs both",
-    "test": "node test-connection.mjs"
+    "test": "node test-connection.mjs",
+    "check:facebook": "node post-facebook.mjs check",
+    "broadcast": "node broadcast-update.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.30.0",
