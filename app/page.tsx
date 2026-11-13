@@ -16,6 +16,7 @@ import { ContactSection } from "@/components/contact-section"
 import { SocialSection } from "@/components/social-section"
 import { Footer } from "@/components/footer"
 import { StickyBookButton } from "@/components/sticky-book-button"
+import { HolidayPromoPopup } from "@/components/holiday-promo-popup"
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -90,6 +91,7 @@ export default async function Home() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceListSchema) }} />
+      <HolidayPromoPopup />
       <Navigation />
       <HeroSection />
 
